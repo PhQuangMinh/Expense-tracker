@@ -2,7 +2,6 @@ module org.example.projectassignment {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.web;
-
     requires org.controlsfx.controls;
     requires com.dlsc.formsfx;
     requires net.synedra.validatorfx;
@@ -13,4 +12,5 @@ module org.example.projectassignment {
 
     opens org.example.projectassignment to javafx.fxml;
     exports org.example.projectassignment;
+
 }
