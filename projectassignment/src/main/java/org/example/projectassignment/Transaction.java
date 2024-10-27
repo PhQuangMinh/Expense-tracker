@@ -1,8 +1,9 @@
 package org.example.projectassignment;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Transaction {
+public class Transaction implements Serializable {
     private LocalDate date ;
     private String note;
     private double amount;
