@@ -3,6 +3,8 @@ package org.example.projectassignment.view;
 
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
@@ -19,6 +21,13 @@ import java.util.ArrayList;
 public class Calendar extends Pane {
     @FXML
     private GridPane gridPaneCalendar;
+
+    @FXML
+
+    private ScrollPane spendHistory;
+
+    @FXML
+    private FlowPane flowPane;
 
     @FXML
     private Label income;
@@ -39,7 +48,7 @@ public class Calendar extends Pane {
         BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/data_calendar.txt"));
         String line;
         while ((line = reader.readLine()) != null) {
-            listCalendarDays.add(new CalendarDay(line, reader.readLine(), reader.readLine()));
+            listCalendarDays.add(new CalendarDay(line, reader.readLine(), reader.readLine(), reader.readLine()));
         }
     }
 
@@ -58,7 +67,7 @@ public class Calendar extends Pane {
     }
 
     private StackPane setCalendarDay(CalendarDay calendarDay){
-        Label dayLabel = new Label(String.valueOf(calendarDay.getDate()));
+        Label dayLabel = new Label(String.valueOf(calendarDay.getDate().charAt(0))+ calendarDay.getDate().charAt(1));
         dayLabel.setStyle("-fx-font-size: 14;");
         dayLabel.setAlignment(Pos.TOP_LEFT);
 
@@ -83,6 +92,35 @@ public class Calendar extends Pane {
         return cell;
     }
 
+    private String setTextDetailSpend(CalendarDay calendarDay){
+//        return calendarDay.getCategory() + " ".repeat(Math.max(0, Constant.LABEL_CALENDAR_HISTORY_WIDTH - calendarDay.getIncome().length() - calendarDay.getCategory().length() - 250)) +
+//                calendarDay.getIncome();
+//        System.out.println(Constant.LABEL_CALENDAR_HISTORY_WIDTH - calendarDay.getIncome().length() - calendarDay.getCategory().length() - 250);
+//        return calendarDay.getCategory() + calendarDay.getIncome();
+        return calendarDay.getCategory() + " ".repeat(Math.max(0, 80)) +
+                calendarDay.getIncome() + "đ";
+    }
+
+    private void setCalendarDayHistory(CalendarDay calendarDay){
+        Label dateHistory = new Label(calendarDay.getDate());
+        dateHistory.setPrefSize(Constant.LABEL_CALENDAR_HISTORY_WIDTH, 20);
+        dateHistory.setStyle("-fx-font-size: 12px; -fx-font-weight: bold;-fx-background-color: #EEECEC;");
+        dateHistory.setStyle("-fx-border-color: black; " + "-fx-border-width: 2; " + "-fx-padding: 3; ");
+        Label spendHistory = new Label(setTextDetailSpend(calendarDay));
+        spendHistory.setPrefSize(Constant.LABEL_CALENDAR_HISTORY_WIDTH, 30);
+        spendHistory.setStyle("-fx-font-size: 18px; -fx-font-weight: bold;");
+        flowPane.getChildren().addAll(dateHistory, spendHistory);
+    }
+
+    private void setSpendHistory(){
+        spendHistory.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        flowPane.setVgap(0.5);
+        flowPane.getChildren().addAll();
+        for (CalendarDay calendarDay : listCalendarDays){
+            setCalendarDayHistory(calendarDay);
+        }
+    }
+
     public void initialize() throws IOException {
         loadData();
         int totalIncome = 0, totalExpense = 0;
@@ -101,5 +139,10 @@ public class Calendar extends Pane {
         income.setText(String.valueOf(totalIncome));
         expense.setText(String.valueOf(totalExpense));
         total.setText(String.valueOf(totalIncome - totalExpense));
+        if (listCalendarDays.isEmpty()){
+            spendHistory.setVisible(false);
+            return;
+        }
+        setSpendHistory();
     }
 }
