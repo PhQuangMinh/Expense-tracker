@@ -18,13 +18,13 @@ public class Controller {
     @FXML
     private Button submitButton;
     @FXML
-    private Button EatButton;
+    private Button eatButton;
     @FXML
-    private Button ClothesButton;
+    private Button clothesButton;
     @FXML
-    private Button ElectricButton;
+    private Button electricButton;
     @FXML
-    private Button BuyButton;
+    private Button buyButton;
 
 
     private List <Transaction> transactions;
@@ -44,7 +44,7 @@ public class Controller {
         Transaction transaction = new Transaction( date , note , Double.parseDouble(amount) , category);
         transactions.add(transaction);
         TransactionExporter exporter = new TransactionExporter();
-        exporter.exportTransaction(transactions , "D:\\BTL-OOP\\projectassignment\\Output\\file.txt");
+        exporter.exportTransaction(transactions , "FileBinary.txt");
         noteField.clear();
         amountField.clear();
         datePicker.setValue(null);
@@ -55,7 +55,7 @@ public class Controller {
         handleSubmit();
     }
     private String getButtonText(){
-        return EatButton.getText();
+        return eatButton.getText();
     }
 
 }
