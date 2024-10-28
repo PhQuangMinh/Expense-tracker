@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.projectassignment.controller.ChooseDateController">
+   <children>
+      <HBox alignment="CENTER_LEFT" layoutY="104.0" prefHeight="40.0" prefWidth="600.0" styleClass="hbox-choose-day">
+         <children>
+            <Label text="Ngày">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="20.0" right="70.0" />
+               </HBox.margin>
+            </Label>
+            <Button mnemonicParsing="false" onAction="#onActionDecreaseDay" text="&lt;">
+               <HBox.margin>
+                  <Insets left="30.0" />
+               </HBox.margin>
+            </Button>
+            <DatePicker fx:id="datePicker">
+               <HBox.margin>
+                  <Insets left="30.0" right="30.0" />
+               </HBox.margin>
+            </DatePicker>
+            <Button mnemonicParsing="false" onAction="#onActionIncreaseDay" text="&gt;" />
+         </children>
+      </HBox>
+   </children>
+</Pane>
