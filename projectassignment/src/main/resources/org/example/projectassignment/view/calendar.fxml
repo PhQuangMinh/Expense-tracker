@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
@@ -27,6 +29,11 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
     </GridPane>
+   <ScrollPane fx:id="spendHistory" layoutY="515.0" prefHeight="235.0" prefWidth="600.0" style="-fx-background-color: #FFEDA2;">
+      <content>
+         <FlowPane fx:id="flowPane" prefHeight="235.0" prefWidth="600.0" style="-fx-background-color: #FCF2CC;" />
+      </content>
+   </ScrollPane>
    <Label alignment="CENTER" layoutX="70.0" layoutY="445.0" prefHeight="30.0" prefWidth="100.0" style="-fx-text-fill: green;" text="Thu nhập">
       <font>
          <Font name="System Bold" size="20.0" />
