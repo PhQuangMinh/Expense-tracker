@@ -7,56 +7,37 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.projectassignment.Controller">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.projectassignment.Controller">
    <children>
       <AnchorPane prefHeight="30.0" prefWidth="600.0">
          <children>
-            <HBox prefHeight="30.0" prefWidth="300.0">
-               <children>
-                  <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="300.0" text="Tiền thu" />
-               </children>
-            </HBox>
-            <Button layoutX="300.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="300.0" text="Tiền chi" />
+            <Button layoutX="300.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" text="Tiền chi" />
+            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" text="Tiền thu" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="30.0" prefWidth="600.0">
          <children>
-            <Label layoutY="7.0" text="Ngày " />
-            <DatePicker fx:id="datePicker" layoutX="64.0" layoutY="3.0" prefHeight="25.0" prefWidth="500.0" />
+            <Label layoutY="7.0" prefHeight="39.0" prefWidth="64.0" text="Ngày " />
+            <DatePicker fx:id="datePicker" layoutX="64.0" layoutY="3.0" prefHeight="40.0" prefWidth="500.0" />
          </children></AnchorPane>
       <AnchorPane prefHeight="30.0" prefWidth="600.0">
          <children>
             <Text layoutX="3.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" />
-            <TextField fx:id="noteField" layoutX="64.0" layoutY="3.0" prefHeight="25.0" prefWidth="500.0" />
-            <Label layoutY="7.0" text="Ghi chú" />
+            <TextField fx:id="noteField" layoutX="64.0" layoutY="12.0" prefHeight="40.0" prefWidth="500.0" />
+            <Label layoutY="7.0" prefHeight="39.0" prefWidth="64.0" text="Ghi chú" />
          </children></AnchorPane>
       <AnchorPane prefHeight="30.0" prefWidth="600.0">
          <children>
-            <Label layoutY="7.0" text="Tiền chi" />
-            <TextField fx:id="amountField" layoutX="64.0" layoutY="3.0" prefHeight="25.0" prefWidth="500.0" />
+            <Label layoutY="14.0" prefHeight="39.0" prefWidth="64.0" text="Tiền chi" />
+            <TextField fx:id="amountField" layoutX="64.0" layoutY="15.0" prefHeight="40.0" prefWidth="500.0" />
          </children></AnchorPane>
-      <AnchorPane layoutX="10.0" layoutY="40.0" prefHeight="30.0" prefWidth="600.0">
+      <AnchorPane prefHeight="750.0" prefWidth="600.0">
          <children>
-            <Label layoutY="7.0" text="Danh mục " />
-         </children>
-      </AnchorPane>
-      <AnchorPane prefHeight="251.0" prefWidth="600.0">
-         <children>
-            <Button layoutX="-3.0" layoutY="147.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="600.0" text="Nhập khoản Tiền chi" />
-            <Button fx:id="submitButton" contentDisplay="TOP" layoutY="173.0" mnemonicParsing="false" onAction="#submmitAction" prefHeight="89.0" prefWidth="150.0" text="Nhập vào">
-               <graphic>
-                  <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@pngtree-pencil-icon-png-image_1753753.jpg" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button layoutX="150.0" layoutY="173.0" mnemonicParsing="false" prefHeight="89.0" prefWidth="150.0">
+            <Button fx:id="submitButton" layoutY="410.0" mnemonicParsing="false" onAction="#submitAction" prefHeight="55.0" prefWidth="600.0" text="Nhập khoản Tiền chi" />
+            <Button layoutX="150.0" layoutY="465.0" mnemonicParsing="false" prefHeight="89.0" prefWidth="150.0">
                <graphic>
                   <ImageView fitHeight="56.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -65,7 +46,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button layoutX="300.0" layoutY="173.0" mnemonicParsing="false" prefHeight="89.0" prefWidth="150.0">
+            <Button layoutX="300.0" layoutY="465.0" mnemonicParsing="false" prefHeight="89.0" prefWidth="150.0">
                <graphic>
                   <ImageView fitHeight="56.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -74,7 +55,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button layoutX="450.0" layoutY="173.0" mnemonicParsing="false" prefHeight="89.0" prefWidth="150.0">
+            <Button layoutX="450.0" layoutY="465.0" mnemonicParsing="false" prefHeight="89.0" prefWidth="150.0">
                <graphic>
                   <ImageView fitHeight="56.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -83,106 +64,120 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="EatButton" contentDisplay="TOP" layoutY="1.0" mnemonicParsing="false" onAction="#handleSubmit" prefHeight="72.0" prefWidth="90.0" text="Ăn uống">
+            <Button fx:id="foodAndDrinkButton" contentDisplay="TOP" layoutX="25.0" layoutY="295.0" mnemonicParsing="false" onAction="#handleCategorySelection" prefHeight="100.0" prefWidth="100.0" text="Ăn uống">
                <graphic>
-                  <ImageView fitHeight="33.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="60.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@b73fd715164faf833530038a46f54a8a.jpg" />
                      </image>
                   </ImageView>
                </graphic>
             </Button>
-            <Button contentDisplay="TOP" layoutY="73.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="90.0" text="Tiền nhà">
+            <Button fx:id="rentButton" contentDisplay="TOP" layoutX="25.0" layoutY="184.0" mnemonicParsing="false" onAction="#handleCategorySelection" prefHeight="100.0" prefWidth="100.0" text="Tiền nhà">
                <graphic>
-                  <ImageView fitHeight="33.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="60.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@pngtree-buy-home-line-icon-vector-png-image_5058448.jpg" />
                      </image>
                   </ImageView>
                </graphic>
             </Button>
-            <Button contentDisplay="TOP" layoutX="100.0" layoutY="1.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="90.0" text="Quần áo">
+            <Button fx:id="clothingButton" contentDisplay="TOP" layoutX="175.0" layoutY="295.0" mnemonicParsing="false" onAction="#handleCategorySelection" prefHeight="100.0" prefWidth="100.0" text="Quần áo">
                <graphic>
-                  <ImageView fitHeight="33.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="60.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@pngtree-t-shirt-line-icon-vector-png-image_1770959.jpg" />
                      </image>
                   </ImageView>
                </graphic>
             </Button>
-            <Button contentDisplay="TOP" layoutX="100.0" layoutY="73.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="90.0" text="Mỹ phẩm">
+            <Button fx:id="cosmeticsButton" contentDisplay="TOP" layoutX="175.0" layoutY="184.0" mnemonicParsing="false" onAction="#handleCategorySelection" prefHeight="100.0" prefWidth="100.0" text="Mỹ phẩm">
                <graphic>
-                  <ImageView fitHeight="33.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="60.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@pngtree-cosmetic-containers-icon-simple-style-png-image_5144481.jpg" />
                      </image>
                   </ImageView>
                </graphic>
             </Button>
-            <Button contentDisplay="TOP" layoutX="200.0" layoutY="1.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="90.0" text="Tiền điện">
+            <Button fx:id="electricityBillButton" contentDisplay="TOP" layoutX="325.0" layoutY="295.0" mnemonicParsing="false" onAction="#handleCategorySelection" prefHeight="100.0" prefWidth="100.0" text="Tiền điện">
                <graphic>
-                  <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@word-image-13581-2.jpeg" />
                      </image>
                   </ImageView>
                </graphic>
             </Button>
-            <Button contentDisplay="TOP" layoutX="300.0" layoutY="1.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="90.0" text="Mua sắm">
+            <Button fx:id="shoppingButton" contentDisplay="TOP" layoutX="175.0" layoutY="65.0" mnemonicParsing="false" onAction="#handleCategorySelection" prefHeight="100.0" prefWidth="100.0" text="Mua sắm">
                <graphic>
-                  <ImageView fitHeight="33.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="60.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@pngtree-flat-shopping-cart-png-image_4468023.jpg" />
                      </image>
                   </ImageView>
                </graphic>
             </Button>
-            <Button contentDisplay="TOP" layoutX="400.0" layoutY="1.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="90.0" text="Phí liên lạc">
+            <Button fx:id="communicationFeeButton" contentDisplay="TOP" layoutX="328.0" layoutY="65.0" mnemonicParsing="false" onAction="#handleCategorySelection" prefHeight="100.0" prefWidth="100.0" text="Phí liên lạc">
                <graphic>
-                  <ImageView fitHeight="33.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="60.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@vector-dien-thoai-7.jpg" />
                      </image>
                   </ImageView>
                </graphic>
             </Button>
-            <Button contentDisplay="TOP" layoutX="500.0" layoutY="1.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="90.0" text="Giáo dục">
+            <Button fx:id="educationButton" contentDisplay="TOP" layoutX="475.0" layoutY="65.0" mnemonicParsing="false" onAction="#handleCategorySelection" prefHeight="100.0" prefWidth="100.0" text="Giáo dục">
                <graphic>
-                  <ImageView fitHeight="33.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="60.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@pngtree-education-line-icon-png-image_9088921.png" />
                      </image>
                   </ImageView>
                </graphic>
             </Button>
-            <Button contentDisplay="TOP" layoutX="200.0" layoutY="73.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="90.0" text="Y tế">
+            <Button fx:id="healthcareButton" contentDisplay="TOP" layoutX="325.0" layoutY="184.0" mnemonicParsing="false" onAction="#handleCategorySelection" prefHeight="100.0" prefWidth="100.0" text="Y tế">
                <graphic>
-                  <ImageView fitHeight="33.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="60.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@pngtree-medical-sign-icon-design-png-image_1498010.jpg" />
                      </image>
                   </ImageView>
                </graphic>
             </Button>
-            <Button contentDisplay="TOP" layoutX="300.0" layoutY="73.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="90.0" text="Phí đi lại">
+            <Button fx:id="transportationFeeButton" contentDisplay="TOP" layoutX="475.0" layoutY="184.0" mnemonicParsing="false" onAction="#handleCategorySelection" prefHeight="100.0" prefWidth="100.0" text="Phí đi lại">
                <graphic>
-                  <ImageView fitHeight="33.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="60.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@6010bdf651a5a4ae04511014f2c4bcd6_t.jpeg" />
                      </image>
                   </ImageView>
                </graphic>
             </Button>
-            <Button contentDisplay="TOP" layoutX="400.0" layoutY="73.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="90.0" text="Giải trí">
+            <Button fx:id="entertainmentButton" contentDisplay="TOP" layoutX="25.0" layoutY="65.0" mnemonicParsing="false" onAction="#handleCategorySelection" prefHeight="100.0" prefWidth="100.0" text="Giải trí">
                <graphic>
-                  <ImageView fitHeight="33.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="60.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@lovepik-black-icon-entertainment-elements-collection-png-image_401151491_wh1200.png" />
                      </image>
                   </ImageView>
                </graphic>
             </Button>
-            <Button contentDisplay="TOP" layoutX="500.0" layoutY="73.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="90.0" text="Chỉnh sửa" />
+            <Button fx:id="editButton" contentDisplay="TOP" layoutX="475.0" layoutY="295.0" mnemonicParsing="false" onAction="#handleCategorySelection" prefHeight="100.0" prefWidth="100.0" text="Chỉnh sửa" />
+            <Button contentDisplay="TOP" layoutY="465.0" mnemonicParsing="false" prefHeight="89.0" prefWidth="150.0" text="Nhập vào">
+               <graphic>
+                  <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@pngtree-pencil-icon-png-image_1753753.jpg" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <AnchorPane layoutY="14.0" prefHeight="39.0" prefWidth="600.0">
+               <children>
+                  <Label layoutY="7.0" text="Danh mục " />
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
    </children>

@@ -10,7 +10,7 @@ import java.util.List;
 public class TransactionImporter {
     public List<Transaction> importTransaction (){
         List <Transaction> transactions = new ArrayList<>();
-        try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream("FileBinary"))){
+        try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream("FileBinary.in"))){
             while(true){
                 try{
                     Transaction transaction = (Transaction) ois.readObject();
