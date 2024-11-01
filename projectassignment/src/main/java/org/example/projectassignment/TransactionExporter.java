@@ -8,9 +8,10 @@ import java.util.List;
 
 public class TransactionExporter {
     public  void exportTransaction(List<Transaction> transactions , String filePath) {
-        try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("FileBinary.txt"))){
+        try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("FileBinary.in"))){
             for(Transaction transaction : transactions){
                 oos.writeObject(transaction);
+                System.out.println("Successful");
             }
         }
         catch(IOException e){

@@ -1,5 +1,6 @@
 package org.example.projectassignment;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
@@ -17,16 +18,44 @@ public class Controller {
     private TextField amountField;
     @FXML
     private Button submitButton;
-    @FXML
-    private Button eatButton;
-    @FXML
-    private Button clothesButton;
-    @FXML
-    private Button electricButton;
-    @FXML
-    private Button buyButton;
 
+    @FXML
+    private Button entertainmentButton;
 
+    @FXML
+    private Button shoppingButton;
+
+    @FXML
+    private Button communicationFeeButton;
+
+    @FXML
+    private Button educationButton;
+
+    @FXML
+    private Button rentButton;
+
+    @FXML
+    private Button cosmeticsButton;
+
+    @FXML
+    private Button healthcareButton;
+
+    @FXML
+    private Button transportationFeeButton;
+
+    @FXML
+    private Button foodAndDrinkButton;
+
+    @FXML
+    private Button clothingButton;
+
+    @FXML
+    private Button electricityBillButton;
+
+    @FXML
+    private Button editButton;
+
+    private String selectedCategory ;
     private List <Transaction> transactions;
 
     public Controller(){
@@ -38,24 +67,27 @@ public class Controller {
         if(date == null){
             System.out.println("date is null");
         }
-        String category = getButtonText();
         String note = noteField.getText();
         String amount = amountField.getText();
+        String category = selectedCategory ;
         Transaction transaction = new Transaction( date , note , Double.parseDouble(amount) , category);
-        transactions.add(transaction);
         TransactionExporter exporter = new TransactionExporter();
-        exporter.exportTransaction(transactions , "FileBinary.txt");
+        transactions.add(transaction);
+        exporter.exportTransaction(transactions , "FileBinary.in");
         noteField.clear();
         amountField.clear();
         datePicker.setValue(null);
-    }
 
+    }
     @FXML
-    private void submmitAction(){
+    private void submitAction(){
         handleSubmit();
     }
-    private String getButtonText(){
-        return eatButton.getText();
+    @FXML
+    private void handleCategorySelection(ActionEvent event){
+        Button button = (Button) event.getSource() ;
+        selectedCategory = button.getText() ;
     }
+
 
 }
