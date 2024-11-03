@@ -16,6 +16,8 @@ import javafx.scene.control.Label;
 import javafx.geometry.Insets;
 
 import java.io.*;
+import java.time.LocalDate;
+import java.time.YearMonth;
 import java.util.ArrayList;
 
 public class Calendar extends Pane {
@@ -37,7 +39,12 @@ public class Calendar extends Pane {
     @FXML
     private Label total;
 
+    @FXML
+    private Label labelShowYearMonth;
+
     private final ArrayList<CalendarDay> listCalendarDays;
+
+    private YearMonth currentYearMonth = YearMonth.now();
 
     public Calendar(){
         listCalendarDays = new ArrayList<>();
@@ -143,5 +150,27 @@ public class Calendar extends Pane {
             return;
         }
         setSpendHistory();
+
+        updateLabel();
     }
+
+    private void updateLabel() {
+        int month = currentYearMonth.getMonthValue();
+        int year = currentYearMonth.getYear();
+        int daysInMonth = currentYearMonth.lengthOfMonth();
+        labelShowYearMonth.setText(String.format("%d/%d (1/%d - %d/%d)", month, year, month, daysInMonth, month));
+    }
+
+    @FXML
+    private void decreaseMonth() {
+        currentYearMonth = currentYearMonth.minusMonths(1);
+        updateLabel();
+    }
+
+    @FXML
+    private void increaseMonth() {
+        currentYearMonth = currentYearMonth.plusMonths(1);
+        updateLabel();
+    }
+
 }
