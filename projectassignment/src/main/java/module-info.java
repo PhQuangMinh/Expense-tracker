@@ -14,7 +14,9 @@ module org.example.projectassignment {
 
     opens org.example.projectassignment to javafx.fxml;
     opens org.example.projectassignment.view to javafx.fxml;
+    opens org.example.projectassignment.controller to javafx.fxml;
 
     exports org.example.projectassignment;
-
+    exports org.example.projectassignment.view;
+    exports org.example.projectassignment.controller;
 }

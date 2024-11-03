@@ -2,13 +2,18 @@ package org.example.projectassignment.view;
 
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import org.example.projectassignment.common.Constant;
+import org.example.projectassignment.controller.SelectorMonthYearController;
 import org.example.projectassignment.model.CalendarDay;
 import javafx.scene.control.Label;
 
@@ -127,34 +132,56 @@ public class Calendar extends Pane {
         }
     }
 
-    public void initialize() throws IOException {
-        loadData();
+    private void createWeekdaysHeader() {
+        // Thêm các tên ngày vào hàng 0
+        for (int col = 0; col < 7; col++) {
+            gridPaneCalendar.add(setDay(String.valueOf(col+2)), col, 0); // Thêm vào hàng 0
+        }
+    }
+
+    private void updateCalendar() {
         int totalIncome = 0, totalExpense = 0;
-        for (int row=0;row < Constant.CALENDAR_ROW;row++) {
-            for (int col=0;col<Constant.CALENDAR_COLUMN;col++){
-                if (row == 0){
-                    gridPaneCalendar.add(setDay(String.valueOf(col+2)), col, 0);
+
+        // Xóa các ô cũ trong lịch
+        gridPaneCalendar.getChildren().removeIf(node -> GridPane.getRowIndex(node) > 0);
+
+        // Lấy ngày đầu tiên của tháng và tính vị trí bắt đầu
+        LocalDate firstDayOfMonth = currentYearMonth.atDay(1);
+        int daysInMonth = currentYearMonth.lengthOfMonth();
+        int startDayOfWeek = firstDayOfMonth.getDayOfWeek().getValue() - 1; // Chuyển thành 0 cho thứ Hai
+
+        // Điền các ngày vào bảng
+        int dayCounter = 1;
+        for (int row = 1; dayCounter <= daysInMonth; row++) {
+            for (int col = (row == 1) ? startDayOfWeek : 0; col < 7 && dayCounter <= daysInMonth; col++) {
+                LocalDate currentLocalDate = currentYearMonth.atDay(dayCounter);
+                String currentDate = String.format("%02d/%02d/%d", currentLocalDate.getDayOfMonth(), currentLocalDate.getMonthValue(), currentLocalDate.getYear());
+                // Kiểm tra xem ngày có trong danh sách không
+                CalendarDay foundDay = listCalendarDays.stream()
+                        .filter(cd -> cd.getDate().equals(currentDate))
+                        .findFirst()
+                        .orElse(null);
+
+                if (foundDay != null) {
+                    gridPaneCalendar.add(setCalendarDay(foundDay), col, row);
+                    totalIncome += Integer.parseInt(foundDay.getIncome());
+                    totalExpense += Integer.parseInt(foundDay.getExpense());
+                } else {
+                    gridPaneCalendar.add(setCalendarDay(new CalendarDay(currentDate, "", "", "")), col, row);
                 }
-                else{
-                    gridPaneCalendar.add(setCalendarDay(listCalendarDays.get((row-1)*Constant.CALENDAR_COLUMN+col)), col, row);
-                    totalIncome += Integer.parseInt(listCalendarDays.get((row-1)*Constant.CALENDAR_COLUMN+col).getIncome());
-                    totalExpense += Integer.parseInt(listCalendarDays.get((row-1)*Constant.CALENDAR_COLUMN+col).getExpense());
-                }
+                dayCounter++;
             }
         }
+
         income.setText(String.valueOf(totalIncome));
         expense.setText(String.valueOf(totalExpense));
         total.setText(String.valueOf(totalIncome - totalExpense));
         if (listCalendarDays.isEmpty()){
             spendHistory.setVisible(false);
-            return;
         }
-        setSpendHistory();
-
-        updateLabel();
     }
 
-    private void updateLabel() {
+    private void updateLabelShowMonthYear() {
         int month = currentYearMonth.getMonthValue();
         int year = currentYearMonth.getYear();
         int daysInMonth = currentYearMonth.lengthOfMonth();
@@ -162,15 +189,55 @@ public class Calendar extends Pane {
     }
 
     @FXML
-    private void decreaseMonth() {
+    private void onActionButtonDecreaseMonth() {
         currentYearMonth = currentYearMonth.minusMonths(1);
-        updateLabel();
+        updateLabelShowMonthYear();
+        updateCalendar();
     }
 
     @FXML
-    private void increaseMonth() {
+    private void onActionButtonIncreaseMonth() {
         currentYearMonth = currentYearMonth.plusMonths(1);
-        updateLabel();
+        updateLabelShowMonthYear();
+        updateCalendar();
+    }
+
+    @FXML
+    private void onMouseClickedLabelShowYearMonth() {
+        try {
+            FXMLLoader loader = new FXMLLoader(Calendar.class.getResource("SelectorYearMonth.fxml"));
+            Scene scene = new Scene(loader.load());
+
+            SelectorMonthYearController popUpController = loader.getController();
+
+            Stage selectorYearMonthStage = new Stage();
+            selectorYearMonthStage.initModality(Modality.APPLICATION_MODAL);
+            selectorYearMonthStage.setTitle("Chọn Tháng/Năm");
+            selectorYearMonthStage.setScene(scene);
+            selectorYearMonthStage.showAndWait();
+
+            // Lấy YearMonth đã chọn từ controller
+            YearMonth selectedYearMonth = popUpController.getSelectedYearMonth();
+            if (selectedYearMonth != null) {
+                currentYearMonth = selectedYearMonth;
+                updateLabelShowMonthYear();
+                updateCalendar();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void initialize() throws IOException {
+        loadData();
+
+        updateLabelShowMonthYear();
+
+        createWeekdaysHeader();
+
+        updateCalendar();
+
+        setSpendHistory();
     }
 
 }

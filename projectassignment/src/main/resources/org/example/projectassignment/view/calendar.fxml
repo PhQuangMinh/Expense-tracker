@@ -72,13 +72,13 @@
       </Label>
       <HBox alignment="CENTER" layoutY="71.0" prefHeight="50.0" prefWidth="600.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#decreaseMonth" prefHeight="30.0" prefWidth="30.0" text="&lt;" />
-            <Label fx:id="labelShowYearMonth" alignment="CENTER" prefHeight="35.0" prefWidth="390.0" styleClass="labelShowYearMonth" text="Label abcdsdaf sdaf ">
+            <Button mnemonicParsing="false" onAction="#onActionButtonDecreaseMonth" prefHeight="30.0" prefWidth="30.0" text="&lt;" />
+            <Label fx:id="labelShowYearMonth" alignment="CENTER" onMouseClicked="#onMouseClickedLabelShowYearMonth" prefHeight="35.0" prefWidth="390.0" styleClass="labelShowYearMonth" text="Label abcdsdaf sdaf ">
                <HBox.margin>
                   <Insets left="30.0" right="30.0" />
                </HBox.margin>
             </Label>
-            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#increaseMonth" prefHeight="30.0" prefWidth="30.0" text="&gt;" />
+            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#onActionButtonIncreaseMonth" prefHeight="30.0" prefWidth="30.0" text="&gt;" />
          </children></HBox>
    </children>
 </Pane>
