@@ -6,9 +6,10 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.projectassignment.controller.FeatureSelectionController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.projectassignment.controller.FeatureSelectionController">
     <children>
-        <HBox layoutY="750.0" prefHeight="50.0" prefWidth="600.0">
+        <Pane fx:id="screenContainer" prefHeight="700.0" prefWidth="600.0" />
+        <HBox layoutY="700.0" prefHeight="50.0" prefWidth="600.0">
             <children>
                 <Button mnemonicParsing="false" onAction="#onActionButtonInput" prefHeight="50.0" prefWidth="150.0" text="Nhập vào" />
                 <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#onActionButtonCalendar" prefHeight="50.0" prefWidth="150.0" text="Lịch" />
@@ -16,7 +17,5 @@
                 <Button layoutX="310.0" layoutY="10.0" mnemonicParsing="false" onAction="#onActionButtonOther" prefHeight="50.0" prefWidth="150.0" text="Khác" />
             </children>
         </HBox>
-        <StackPane layoutX="262.0" layoutY="345.0" prefHeight="150.0" prefWidth="200.0" />
-        <Pane fx:id="screenContainer" prefHeight="750.0" prefWidth="600.0" />
     </children>
 </Pane>
