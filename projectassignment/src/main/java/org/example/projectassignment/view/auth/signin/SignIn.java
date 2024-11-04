@@ -70,6 +70,6 @@ public class SignIn {
     }
 
     private void homePage(User user){
-
+        System.out.println("Welcome to");
     }
 }

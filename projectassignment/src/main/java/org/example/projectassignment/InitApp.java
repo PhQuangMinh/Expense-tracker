@@ -18,21 +18,8 @@ public class InitApp {
     }
 
     public void init(Stage stage) throws IOException {
-//        FXMLLoader loader = new FXMLLoader(Login.class.getResource("signin.fxml"));
-//        try {
-//            Parent root = loader.load();
-//            Login login = loader.getController();
-//            login.init(null);
-//            Scene scene = new Scene(root ,  600, 750);
-//            stage.setTitle("Sổ thu chi");
-//            stage.setScene(scene);
-//            stage.show();
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
         firebaseUser.getUsers().thenAccept(users -> {
             Platform.runLater(() -> {
-                System.out.println("CHAY");
                 FXMLLoader loader = new FXMLLoader(SignIn.class.getResource("signin.fxml"));
                 try {
                     Parent root = loader.load();

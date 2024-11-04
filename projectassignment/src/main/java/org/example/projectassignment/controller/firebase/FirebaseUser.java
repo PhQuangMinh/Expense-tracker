@@ -3,6 +3,7 @@ package org.example.projectassignment.controller.firebase;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 import com.google.auth.oauth2.GoogleCredentials;
@@ -24,7 +25,7 @@ public class FirebaseUser {
         FirebaseApp.initializeApp(options);
     }
 
-    public CompletableFuture<ArrayList<User>> getUsers() throws IOException {
+    public CompletableFuture<ArrayList<User>> getUsers(){
         CompletableFuture<ArrayList<User>> future = new CompletableFuture<>();
         try {
             initFirebase();
@@ -49,9 +50,11 @@ public class FirebaseUser {
         return future;
     }
 
-    public void saveUser(User user){
+    public void saveUser(List<User> listUsers){
         DatabaseReference dataRef = FirebaseDatabase.getInstance().getReference("users");
-        dataRef.child(user.getId()).setValueAsync(user);
+        for (User user : listUsers) {
+            dataRef.child(user.getId()).setValueAsync(user);
+        }
     }
 
     public void updateUser(User user){
