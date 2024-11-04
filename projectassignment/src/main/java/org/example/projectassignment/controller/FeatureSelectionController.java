@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.layout.Pane;
 import org.example.projectassignment.Main;
+
 import org.example.projectassignment.model.User;
 
 import java.io.IOException;
@@ -30,7 +31,7 @@ public class FeatureSelectionController {
     public void switchSpendingMoneyTab() throws IOException {
         FXMLLoader loader = new FXMLLoader(Main.class.getResource("view/SpendingMoney.fxml"));
         Parent screen = loader.load();
-        SpendingMoneyController screenController = loader.getController();
+        Expense screenController = loader.getController();
         screenController.setParentController(this);
         screenContainer.getChildren().clear();
         screenContainer.getChildren().add(screen);
@@ -39,7 +40,7 @@ public class FeatureSelectionController {
     public void switchRevenueTab() throws IOException {
         FXMLLoader loader = new FXMLLoader(Main.class.getResource("view/Revenue.fxml"));
         Parent screen = loader.load();
-        RevenueController screenController = loader.getController();
+        Income screenController = loader.getController();
         screenController.setParentController(this);
         screenContainer.getChildren().clear();
         screenContainer.getChildren().add(screen);
