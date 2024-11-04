@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.projectassignment.controller.FeatureSelectionController">
+    <children>
+        <Pane fx:id="screenContainer" prefHeight="700.0" prefWidth="600.0" />
+        <HBox layoutY="700.0" prefHeight="50.0" prefWidth="600.0">
+            <children>
+                <Button mnemonicParsing="false" onAction="#onActionButtonInput" prefHeight="50.0" prefWidth="150.0" text="Nhập vào" />
+                <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#onActionButtonCalendar" prefHeight="50.0" prefWidth="150.0" text="Lịch" />
+                <Button layoutX="160.0" layoutY="10.0" mnemonicParsing="false" onAction="#onActionButtonReport" prefHeight="50.0" prefWidth="150.0" text="Báo cáo" />
+                <Button layoutX="310.0" layoutY="10.0" mnemonicParsing="false" onAction="#onActionButtonOther" prefHeight="50.0" prefWidth="150.0" text="Khác" />
+            </children>
+        </HBox>
+    </children>
+</Pane>
