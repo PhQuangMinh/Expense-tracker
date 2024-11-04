@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.projectassignment.controller.SpendingMoneyController">
+   <children>
+      <AnchorPane prefHeight="30.0" prefWidth="600.0">
+         <children>
+            <Button layoutX="300.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" text="Tiền chi" />
+            <Button mnemonicParsing="false" onAction="#switchToRevenue" prefHeight="40.0" prefWidth="300.0" text="Tiền thu" />
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="30.0" prefWidth="600.0">
+         <children>
+            <Label layoutY="7.0" prefHeight="39.0" prefWidth="64.0" text="Ngày " />
+            <DatePicker fx:id="datePicker" layoutX="64.0" layoutY="3.0" prefHeight="40.0" prefWidth="500.0" />
+         </children></AnchorPane>
+      <AnchorPane prefHeight="30.0" prefWidth="600.0">
+         <children>
+            <Text layoutX="3.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+            <TextField fx:id="noteField" layoutX="64.0" layoutY="12.0" prefHeight="40.0" prefWidth="500.0" />
+            <Label layoutY="7.0" prefHeight="39.0" prefWidth="64.0" text="Ghi chú" />
+         </children></AnchorPane>
+      <AnchorPane prefHeight="241.0" prefWidth="600.0">
+         <children>
+            <Label layoutY="14.0" prefHeight="39.0" prefWidth="64.0" text="Tiền chi" />
+            <TextField fx:id="amountField" layoutX="64.0" layoutY="15.0" prefHeight="40.0" prefWidth="500.0" />
+            <Label layoutY="65.0" text="Danh mục" />
+         </children></AnchorPane>
+      <ScrollPane>
+         <content>
+            <AnchorPane prefHeight="600.0" prefWidth="600.0">
+               <children>
+                  <Button fx:id="foodAndDrinkButton" contentDisplay="TOP" layoutX="25.0" layoutY="245.0" mnemonicParsing="false" onAction="#handleCategorySelection" prefHeight="100.0" prefWidth="100.0" text="Ăn uống">
+                     <graphic>
+                        <ImageView fitHeight="60.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Image/b73fd715164faf833530038a46f54a8a.jpg" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="rentButton" contentDisplay="TOP" layoutX="25.0" layoutY="125.0" mnemonicParsing="false" onAction="#handleCategorySelection" prefHeight="100.0" prefWidth="100.0" text="Tiền nhà">
+                     <graphic>
+                        <ImageView fitHeight="60.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Image/pngtree-buy-home-line-icon-vector-png-image_5058448.jpg" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="clothingButton" contentDisplay="TOP" layoutX="175.0" layoutY="245.0" mnemonicParsing="false" onAction="#handleCategorySelection" prefHeight="100.0" prefWidth="100.0" text="Quần áo">
+                     <graphic>
+                        <ImageView fitHeight="60.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Image/pngtree-t-shirt-line-icon-vector-png-image_1770959.jpg" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="cosmeticsButton" contentDisplay="TOP" layoutX="175.0" layoutY="125.0" mnemonicParsing="false" onAction="#handleCategorySelection" prefHeight="100.0" prefWidth="100.0" text="Mỹ phẩm">
+                     <graphic>
+                        <ImageView fitHeight="60.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Image/pngtree-cosmetic-containers-icon-simple-style-png-image_5144481.jpg" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="electricityBillButton" contentDisplay="TOP" layoutX="325.0" layoutY="245.0" mnemonicParsing="false" onAction="#handleCategorySelection" prefHeight="100.0" prefWidth="100.0" text="Tiền điện">
+                     <graphic>
+                        <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Image/word-image-13581-2.jpeg" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="shoppingButton" contentDisplay="TOP" layoutX="175.0" layoutY="5.0" mnemonicParsing="false" onAction="#handleCategorySelection" prefHeight="100.0" prefWidth="100.0" text="Mua sắm">
+                     <graphic>
+                        <ImageView fitHeight="60.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Image/pngtree-flat-shopping-cart-png-image_4468023.jpg" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="communicationFeeButton" contentDisplay="TOP" layoutX="325.0" layoutY="5.0" mnemonicParsing="false" onAction="#handleCategorySelection" prefHeight="100.0" prefWidth="100.0" text="Phí liên lạc">
+                     <graphic>
+                        <ImageView fitHeight="60.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Image/vector-dien-thoai-7.jpg" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="educationButton" contentDisplay="TOP" layoutX="475.0" layoutY="5.0" mnemonicParsing="false" onAction="#handleCategorySelection" prefHeight="100.0" prefWidth="100.0" text="Giáo dục">
+                     <graphic>
+                        <ImageView fitHeight="60.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Image/pngtree-education-line-icon-png-image_9088921.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="healthcareButton" contentDisplay="TOP" layoutX="325.0" layoutY="125.0" mnemonicParsing="false" onAction="#handleCategorySelection" prefHeight="100.0" prefWidth="100.0" text="Y tế">
+                     <graphic>
+                        <ImageView fitHeight="60.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Image/pngtree-medical-sign-icon-design-png-image_1498010.jpg" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="transportationFeeButton" contentDisplay="TOP" layoutX="475.0" layoutY="125.0" mnemonicParsing="false" onAction="#handleCategorySelection" prefHeight="100.0" prefWidth="100.0" text="Phí đi lại">
+                     <graphic>
+                        <ImageView fitHeight="60.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Image/6010bdf651a5a4ae04511014f2c4bcd6_t.jpeg" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="entertainmentButton" contentDisplay="TOP" layoutX="25.0" layoutY="5.0" mnemonicParsing="false" onAction="#handleCategorySelection" prefHeight="100.0" prefWidth="100.0" text="Giải trí">
+                     <graphic>
+                        <ImageView fitHeight="60.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Image/lovepik-black-icon-entertainment-elements-collection-png-image_401151491_wh1200.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="editButton" contentDisplay="TOP" layoutX="475.0" layoutY="245.0" mnemonicParsing="false" onAction="#handleCategorySelection" prefHeight="100.0" prefWidth="100.0" text="Chỉnh sửa" />
+               </children>
+            </AnchorPane>
+         </content>
+      </ScrollPane>
+      <AnchorPane prefHeight="172.0" prefWidth="600.0">
+         <children>
+            <Button fx:id="submitButton" layoutY="-18.0" mnemonicParsing="false" onAction="#submitAction" prefHeight="73.0" prefWidth="600.0" text="Nhập khoản Tiền thu" />
+            <Button contentDisplay="TOP" layoutY="55.0" mnemonicParsing="false" prefHeight="89.0" prefWidth="150.0" text="Nhập vào">
+               <graphic>
+                  <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Image/pngtree-pencil-icon-png-image_1753753.jpg" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button layoutX="150.0" layoutY="55.0" mnemonicParsing="false" prefHeight="89.0" prefWidth="150.0">
+               <graphic>
+                  <ImageView fitHeight="56.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Image/transparent-appointment-icon-calendar-icon-date-icon-5d722e5c75d872.4991046015677640604827.jpg" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button layoutX="300.0" layoutY="55.0" mnemonicParsing="false" prefHeight="89.0" prefWidth="150.0">
+               <graphic>
+                  <ImageView fitHeight="56.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Image/pngtree-circle-chart-pie-quarter-graph-png-image_4816275.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button layoutX="450.0" layoutY="55.0" mnemonicParsing="false" prefHeight="89.0" prefWidth="150.0">
+               <graphic>
+                  <ImageView fitHeight="56.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Image/pngtree-ellipsis-black-glyph-ui-icon-flat-negative-space-ellipsis-vector-png-image_48303394.jpg" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>

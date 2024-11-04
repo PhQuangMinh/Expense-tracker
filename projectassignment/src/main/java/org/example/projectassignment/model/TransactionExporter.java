@@ -1,5 +1,4 @@
-package org.example.projectassignment;
-
+package org.example.projectassignment.model;
 
 import java.io.File;
 import java.io.FileOutputStream;

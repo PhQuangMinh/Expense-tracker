@@ -1,16 +1,24 @@
-package org.example.projectassignment;
-
+package org.example.projectassignment.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import org.example.projectassignment.model.Transaction;
+import org.example.projectassignment.model.TransactionExporter;
 
+
+import java.io.IOException;
 import java.time.LocalDate;
 
 import java.util.*;
-public class Controller {
+public class SpendingMoneyController {
     @FXML
     private DatePicker datePicker;
     @FXML
@@ -19,7 +27,6 @@ public class Controller {
     private TextField amountField;
     @FXML
     private Button submitButton;
-
 
     @FXML
     private Button entertainmentButton;
@@ -59,8 +66,20 @@ public class Controller {
 
     private String selectedCategory ;
     private List <Transaction> transactions;
+    private Stage stage ;
+    private Scene scene ;
+    private Parent root ;
 
-    public Controller(){
+    @FXML
+    public void switchToRevenue( ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/org/example/projectassignment/view/Revenue.fxml")) ;
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow() ;
+        scene = new Scene(root) ;
+        stage.setScene(scene) ;
+        stage.show() ;
+    }
+
+    public SpendingMoneyController(){
         transactions = new ArrayList<>();
     }
     @FXML
@@ -69,7 +88,6 @@ public class Controller {
         if(date == null){
             System.out.println("date is null");
         }
-
         String note = noteField.getText();
         String amount = amountField.getText();
         String category = selectedCategory ;
@@ -91,4 +109,6 @@ public class Controller {
         Button button = (Button) event.getSource() ;
         selectedCategory = button.getText() ;
     }
+
+
 }
