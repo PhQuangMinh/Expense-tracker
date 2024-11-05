@@ -79,7 +79,7 @@ public class SignUp {
         if (checkValid == 0){
             User user = new User(String.valueOf(listUsers.size()), firstName.getText(), lastName.getText(), email.getText(), password.getText());
             listUsers.add(user);
-            firebaseUser.saveUser(user);
+            firebaseUser.saveUser(listUsers);
             inform.setTextFill(Color.GREEN);
             inform.setText("Sign up successfully!");
             inform.setVisible(true);
