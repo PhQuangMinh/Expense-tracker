@@ -20,7 +20,7 @@
    <children>
       <AnchorPane prefHeight="30.0" prefWidth="600.0">
          <children>
-            <Button layoutX="300.0" mnemonicParsing="false" onAction="#switchToSpendingMoney" prefHeight="40.0" prefWidth="300.0" text="Tiền chi" />
+            <Button layoutX="300.0" mnemonicParsing="false" onAction="#onActionSwitchSpendingMoney" prefHeight="40.0" prefWidth="300.0" text="Tiền chi" />
             <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" text="Tiền thu" />
          </children>
       </AnchorPane>

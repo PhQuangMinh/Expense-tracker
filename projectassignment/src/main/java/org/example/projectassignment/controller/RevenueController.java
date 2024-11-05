@@ -63,19 +63,27 @@ public class RevenueController {
     @FXML
     private Button editButton;
 
+    @FXML
+    private Button buttonSwitchIncome;
+
     private String selectedCategory ;
     private List <Transaction> transactions;
     private Stage stage ;
     private Scene scene ;
     private Parent root ;
+    private FeatureSelectionController featureSelectionController;
+
+    public void setParentController(FeatureSelectionController controller) {
+        this.featureSelectionController = controller;
+    }
 
     @FXML
-    public void switchToSpendingMoney( ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/org/example/projectassignment/view/SpendingMoney.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow() ;
-        scene = new Scene(root) ;
-        stage.setScene(scene) ;
-        stage.show() ;
+    public void onActionSwitchSpendingMoney (ActionEvent event) throws IOException {
+        try {
+            featureSelectionController.switchSpendingMoneyTab();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public RevenueController(){
