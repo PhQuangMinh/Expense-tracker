@@ -12,6 +12,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import org.example.projectassignment.Main;
 import org.example.projectassignment.common.Constant;
 import org.example.projectassignment.controller.SelectorMonthYearController;
 import org.example.projectassignment.model.CalendarDay;
@@ -205,7 +206,7 @@ public class Calendar extends Pane {
     @FXML
     private void onMouseClickedLabelShowYearMonth() {
         try {
-            FXMLLoader loader = new FXMLLoader(Calendar.class.getResource("SelectorYearMonth.fxml"));
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("view/SelectorYearMonth.fxml"));
             Scene scene = new Scene(loader.load());
 
             SelectorMonthYearController popUpController = loader.getController();

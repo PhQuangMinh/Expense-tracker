@@ -1,8 +1,10 @@
 package org.example.projectassignment.controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import org.example.projectassignment.Main;
 
@@ -15,8 +17,37 @@ public class FeatureSelectionController {
     private void loadScreen(String fxmlFile) {
         try {
             // Tải FXML và thêm vào container
-            Parent screen = FXMLLoader.load(Main.class.getResource(fxmlFile));
-            screenContainer.getChildren().clear(); // Xóa màn hình cũ
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource(fxmlFile));
+            Parent screen = loader.load();
+            screenContainer.getChildren().clear();
+            screenContainer.getChildren().add(screen);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void switchSpendingMoneyTab() {
+        try {
+            // Tải FXML và thêm vào container
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("view/SpendingMoney.fxml"));
+            Parent screen = loader.load();
+            SpendingMoneyController screenController = loader.getController();
+            screenController.setParentController(this);
+            screenContainer.getChildren().clear();
+            screenContainer.getChildren().add(screen);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void switchRevenueTab() {
+        try {
+            // Tải FXML và thêm vào container
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("view/Revenue.fxml"));
+            Parent screen = loader.load();
+            RevenueController screenController = loader.getController();
+            screenController.setParentController(this);
+            screenContainer.getChildren().clear();
             screenContainer.getChildren().add(screen);
         } catch (IOException e) {
             e.printStackTrace();
@@ -25,7 +56,7 @@ public class FeatureSelectionController {
 
     @FXML
     private void onActionButtonInput() {
-        loadScreen("view/Revenue.fxml");
+        switchSpendingMoneyTab();
     }
 
     @FXML
