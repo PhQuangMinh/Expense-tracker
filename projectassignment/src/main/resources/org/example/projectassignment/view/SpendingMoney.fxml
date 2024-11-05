@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
@@ -11,12 +16,12 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.projectassignment.controller.SpendingMoneyController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.projectassignment.controller.SpendingMoneyController">
    <children>
       <AnchorPane prefHeight="30.0" prefWidth="600.0">
          <children>
             <Button layoutX="300.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" text="Tiền chi" />
-            <Button mnemonicParsing="false" onAction="#switchToRevenue" prefHeight="40.0" prefWidth="300.0" text="Tiền thu" />
+            <Button mnemonicParsing="false" onAction="#onActionButtonSwitchRevenue" prefHeight="40.0" prefWidth="300.0" text="Tiền thu" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="30.0" prefWidth="600.0">
@@ -146,43 +151,7 @@
       </ScrollPane>
       <AnchorPane prefHeight="172.0" prefWidth="600.0">
          <children>
-            <Button fx:id="submitButton" layoutY="-18.0" mnemonicParsing="false" onAction="#submitAction" prefHeight="73.0" prefWidth="600.0" text="Nhập khoản Tiền thu" />
-            <Button contentDisplay="TOP" layoutY="55.0" mnemonicParsing="false" prefHeight="89.0" prefWidth="150.0" text="Nhập vào">
-               <graphic>
-                  <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@Image/pngtree-pencil-icon-png-image_1753753.jpg" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button layoutX="150.0" layoutY="55.0" mnemonicParsing="false" prefHeight="89.0" prefWidth="150.0">
-               <graphic>
-                  <ImageView fitHeight="56.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@Image/transparent-appointment-icon-calendar-icon-date-icon-5d722e5c75d872.4991046015677640604827.jpg" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button layoutX="300.0" layoutY="55.0" mnemonicParsing="false" prefHeight="89.0" prefWidth="150.0">
-               <graphic>
-                  <ImageView fitHeight="56.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@Image/pngtree-circle-chart-pie-quarter-graph-png-image_4816275.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button layoutX="450.0" layoutY="55.0" mnemonicParsing="false" prefHeight="89.0" prefWidth="150.0">
-               <graphic>
-                  <ImageView fitHeight="56.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@Image/pngtree-ellipsis-black-glyph-ui-icon-flat-negative-space-ellipsis-vector-png-image_48303394.jpg" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
+            <Button fx:id="submitButton" layoutY="-18.0" mnemonicParsing="false" onAction="#submitAction" prefHeight="73.0" prefWidth="600.0" text="Nhập khoản Tiền chi" />
          </children>
       </AnchorPane>
    </children>
