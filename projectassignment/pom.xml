@@ -11,14 +11,43 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <junit.version>5.10.0</junit.version>
+        <junit.version>${project.junit.version}</junit.version>
+        <project.junit.version>5.10.0</project.junit.version>
+        <javafx-controls.version>21</javafx-controls.version>
+        <controlsfx.version>11.1.2</controlsfx.version>
+        <formsfx-core.version>11.6.0</formsfx-core.version>
+        <validatorfx.version>0.4.0</validatorfx.version>
+        <google-cloud-storage.version>2.36.1</google-cloud-storage.version>
+        <google-cloud-firestore.version>3.20.0</google-cloud-firestore.version>
+        <firebase-admin.version>9.2.0</firebase-admin.version>
     </properties>
 
     <dependencies>
         <dependency>
+            <groupId>com.google.cloud</groupId>
+            <artifactId>google-cloud-storage</artifactId>
+            <version>${google-cloud-storage.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.cloud</groupId>
+            <artifactId>google-cloud-core</artifactId>
+            <version>${google-cloud-storage.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.cloud</groupId>
+            <artifactId>google-cloud-firestore</artifactId>
+            <version>${google-cloud-firestore.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.firebase</groupId>
+            <artifactId>firebase-admin</artifactId>
+            <version>${firebase-admin.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
-            <version>21</version>
+            <version>${javafx-controls.version}</version>
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
@@ -43,12 +72,12 @@
         <dependency>
             <groupId>org.controlsfx</groupId>
             <artifactId>controlsfx</artifactId>
-            <version>11.1.2</version>
+            <version>${controlsfx.version}</version>
         </dependency>
         <dependency>
             <groupId>com.dlsc.formsfx</groupId>
             <artifactId>formsfx-core</artifactId>
-            <version>11.6.0</version>
+            <version>${formsfx-core.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.openjfx</groupId>
@@ -59,7 +88,7 @@
         <dependency>
             <groupId>net.synedra</groupId>
             <artifactId>validatorfx</artifactId>
-            <version>0.4.0</version>
+            <version>${validatorfx.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.openjfx</groupId>
@@ -75,7 +104,7 @@
         <dependency>
             <groupId>org.kordamp.bootstrapfx</groupId>
             <artifactId>bootstrapfx-core</artifactId>
-            <version>0.4.0</version>
+            <version>${validatorfx.version}</version>
         </dependency>
         <dependency>
             <groupId>eu.hansolo</groupId>
