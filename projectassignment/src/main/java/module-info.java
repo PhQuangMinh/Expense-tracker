@@ -29,4 +29,6 @@ module org.example.projectassignment {
     exports org.example.projectassignment.model;
     exports org.example.projectassignment.view.auth.signin;
     exports org.example.projectassignment.view.auth.signup;
+    exports org.example.projectassignment.controller.auth;
+    opens org.example.projectassignment.controller.auth to javafx.fxml;
 }

@@ -1,10 +1,9 @@
-package org.example.projectassignment.view.auth.signup;
+package org.example.projectassignment.controller.auth;
 
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import org.example.projectassignment.model.User;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ManagerSignUp {
