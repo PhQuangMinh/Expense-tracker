@@ -9,12 +9,12 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
+import org.example.projectassignment.controller.auth.ManagerSignUp;
 import org.example.projectassignment.controller.firebase.FirebaseUser;
 import org.example.projectassignment.model.User;
 import org.example.projectassignment.view.auth.signin.SignIn;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class SignUp {

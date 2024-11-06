@@ -9,12 +9,14 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
+import org.example.projectassignment.controller.RevenueController;
 import org.example.projectassignment.model.User;
 import org.example.projectassignment.view.auth.signup.SignUp;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 
 public class SignIn {
@@ -70,6 +72,15 @@ public class SignIn {
     }
 
     private void homePage(User user){
-        System.out.println("Welcome to");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/projectassignment/view/Revenue.fxml"));
+        try {
+            Parent root = loader.load();
+            pane.getChildren().clear();
+            pane.getChildren().add(root);
+            RevenueController revenueController = loader.getController();
+            revenueController.init(user);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

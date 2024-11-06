@@ -12,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.example.projectassignment.model.Transaction;
 import org.example.projectassignment.model.TransactionExporter;
+import org.example.projectassignment.model.User;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -72,6 +73,12 @@ public class RevenueController {
     private Scene scene ;
     private Parent root ;
     private FeatureSelectionController featureSelectionController;
+
+    private User user;
+
+    public void init(User user){
+        this.user = user;
+    }
 
     public void setParentController(FeatureSelectionController controller) {
         this.featureSelectionController = controller;
