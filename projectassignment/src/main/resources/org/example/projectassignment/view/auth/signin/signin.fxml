@@ -25,11 +25,6 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <Label fx:id="forgotPassword" blendMode="DARKEN" layoutX="370.0" layoutY="400.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.8" styleClass="label-button" text="Forget Password?">
-         <font>
-            <Font name="Arial" size="12.0" />
-         </font>
-      </Label>
       <Button fx:id="signIn" cache="true" layoutX="223.0" layoutY="469.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="128.0" text="Sign In" textFill="WHITE">
          <font>
             <Font name="Arial Bold" size="20.0" />
