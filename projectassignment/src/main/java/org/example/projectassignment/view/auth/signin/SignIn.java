@@ -9,14 +9,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
-import org.example.projectassignment.controller.RevenueController;
+import org.example.projectassignment.controller.FeatureSelectionController;
 import org.example.projectassignment.model.User;
 import org.example.projectassignment.view.auth.signup.SignUp;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 
 public class SignIn {
@@ -42,7 +40,13 @@ public class SignIn {
     public void init(List<User> listUsers){
         this.listUsers = listUsers;
         inform.setVisible(false);
-        signIn.setOnAction(event -> signInAction());
+        signIn.setOnAction(event -> {
+            try {
+                signInAction();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
         signUp.setOnMouseClicked(event -> signUpAction());
     }
 
@@ -59,7 +63,7 @@ public class SignIn {
         }
     }
 
-    private void signInAction(){
+    private void signInAction() throws IOException {
         for (User user : listUsers){
             if(user.getEmail().equals(email.getText()) && user.getPassword().equals(password.getText())){
                 homePage(user);
@@ -71,16 +75,12 @@ public class SignIn {
         inform.setText("Email or password is incorrect");
     }
 
-    private void homePage(User user){
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/projectassignment/view/Revenue.fxml"));
-        try {
-            Parent root = loader.load();
-            pane.getChildren().clear();
-            pane.getChildren().add(root);
-            RevenueController revenueController = loader.getController();
-            revenueController.init(user);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+    private void homePage(User user) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/projectassignment/view/FeatureSelection.fxml"));
+        Parent root = loader.load();
+        pane.getChildren().clear();
+        pane.getChildren().add(root);
+        FeatureSelectionController featureSelect = loader.getController();
+        featureSelect.init(user);
     }
 }

@@ -76,12 +76,8 @@ public class SpendingMoneyController {
     }
 
     @FXML
-    public void onActionButtonSwitchRevenue(ActionEvent event) {
-        try {
-            featureSelectionController.switchRevenueTab();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public void onActionButtonSwitchRevenue(ActionEvent event) throws IOException {
+        featureSelectionController.switchRevenueTab();
     }
 
     public SpendingMoneyController(){
