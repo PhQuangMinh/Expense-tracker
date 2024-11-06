@@ -9,10 +9,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import org.example.projectassignment.model.InitCategory;
 import org.example.projectassignment.model.Transaction;
 import org.example.projectassignment.model.TransactionExporter;
-
+import org.example.projectassignment.view.CustomButton;
 import java.io.IOException;
 import java.time.LocalDate;
 
@@ -65,6 +67,8 @@ public class RevenueController {
 
     @FXML
     private Button buttonSwitchIncome;
+    @FXML
+    private GridPane revenueGridPane ;
 
     private String selectedCategory ;
     private List <Transaction> transactions;
@@ -72,10 +76,11 @@ public class RevenueController {
     private Scene scene ;
     private Parent root ;
     private FeatureSelectionController featureSelectionController;
-
+    public static List<CustomButton> categoryButtons = new ArrayList<>();
     public void setParentController(FeatureSelectionController controller) {
         this.featureSelectionController = controller;
     }
+
 
     @FXML
     public void onActionSwitchSpendingMoney (ActionEvent event) throws IOException {
@@ -84,6 +89,17 @@ public class RevenueController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    @FXML
+    public void switchToEditCategoryRevenue(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/projectassignment/view/EditCategoryRevenue.fxml"));
+        Parent root = loader.load();
+        EditCategoryRevenueController controller = loader.getController();
+        controller.updateCategory(categoryButtons);
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     public RevenueController(){
@@ -107,15 +123,17 @@ public class RevenueController {
         datePicker.setValue(null);
 
     }
+
     @FXML
     private void submitAction(){
         handleSubmit();
+
     }
     @FXML
-    private void handleCategorySelection(ActionEvent event){
-        Button button = (Button) event.getSource() ;
-        selectedCategory = button.getText() ;
+    private void handleCategorySelection(ActionEvent event) {
+        Button button = (Button) event.getSource();
+        selectedCategory = button.getText();
+        InitCategory category = new InitCategory();
+        category.addButton(revenueGridPane , categoryButtons);
     }
-
-
 }

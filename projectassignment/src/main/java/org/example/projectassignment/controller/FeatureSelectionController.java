@@ -56,6 +56,8 @@ public class FeatureSelectionController {
 
     @FXML
     private void onActionButtonInput() {
+//        RevenueController controller = new RevenueController();
+//        controller.addButton();
         switchSpendingMoneyTab();
     }
 
@@ -73,4 +75,5 @@ public class FeatureSelectionController {
     private void onActionButtonOther() {
         loadScreen("view/OtherScreen.fxml");
     }
+
 }
