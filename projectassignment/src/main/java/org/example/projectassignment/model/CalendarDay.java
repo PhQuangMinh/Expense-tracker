@@ -1,15 +1,19 @@
 package org.example.projectassignment.model;
 
+import java.time.LocalDate;
+import java.util.List;
+
 public class CalendarDay {
     private String date;
-    private String income;
-    private String expense;
-    private String category;
-    public CalendarDay(String date, String income, String expense, String category) {
+    private List<Transaction> listTransactions;
+
+    public CalendarDay(){
+
+    }
+
+    public CalendarDay(String date, List<Transaction> listTransaction) {
         this.date = date;
-        this.income = income;
-        this.expense = expense;
-        this.category = category;
+        this.listTransactions = listTransaction;
     }
 
     public String getDate() {
@@ -20,27 +24,11 @@ public class CalendarDay {
         this.date = date;
     }
 
-    public String getExpense() {
-        return expense;
+    public List<Transaction> getListTransactions() {
+        return listTransactions;
     }
 
-    public void setExpense(String expense) {
-        this.expense = expense;
-    }
-
-    public String getIncome() {
-        return income;
-    }
-
-    public void setIncome(String income) {
-        this.income = income;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
+    public void setListTransactions(List<Transaction> listTransactions) {
+        this.listTransactions = listTransactions;
     }
 }

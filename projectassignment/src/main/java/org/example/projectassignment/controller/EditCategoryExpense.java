@@ -25,11 +25,11 @@ public class EditCategoryExpense {
     public void onActionSwitchSpendingMoney (ActionEvent event) throws IOException {
             FXMLLoader loader = new FXMLLoader (getClass().getResource("/org/example/projectassignment/view/FeatureSelection.fxml"));
             Parent root = loader.load() ;
-            FeatureSelectionController featureSelectionController = loader.getController() ;
+            FeatureSelection featureSelection = loader.getController() ;
             Scene scene = new Scene(root , 600 , 750) ;
             Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow() ;
             currentStage.setScene(scene);
-            featureSelectionController.switchSpendingMoneyTab();
+            featureSelection.switchExpenseMoneyTab();
 
     }
 

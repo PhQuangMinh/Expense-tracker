@@ -2,31 +2,23 @@ package org.example.projectassignment.controller;
 
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.Priority;
 import javafx.scene.layout.StackPane;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
-import org.example.projectassignment.Main;
+import org.example.projectassignment.common.TypeTransaction;
 import org.example.projectassignment.model.CalendarDay;
+import org.example.projectassignment.model.Transaction;
+import org.example.projectassignment.model.User;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 import java.time.YearMonth;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.IntStream;
 
-public class ReportScreenController {
+public class ReportScreen {
     @FXML
     private Label labelShowYearMonth;
     @FXML
@@ -49,22 +41,23 @@ public class ReportScreenController {
     private Pane paneOverlay;
 
     private YearMonth currentYearMonth;
-    private ArrayList<CalendarDay> listCalendarDays;
     private int flagFeature;
+    private User user;
 
-    public ReportScreenController() {
-        listCalendarDays = new ArrayList<>();
+    public ReportScreen() {
+    }
+
+    public void init(User user){
         currentYearMonth = YearMonth.now();
         flagFeature = 0;
+        this.user = user;
+        System.out.println(user);
+        updateLabelShowMonthYear();
+        updateLabelExpenseIncome();
+        updatePieChartExpense();
+        setupMonthYearSelector();
     }
 
-    private void loadData() throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/data_calendar.txt"));
-        String line;
-        while ((line = reader.readLine()) != null) {
-            listCalendarDays.add(new CalendarDay(line, reader.readLine(), reader.readLine(), reader.readLine()));
-        }
-    }
 
     private void updateLabelShowMonthYear() {
         int month = currentYearMonth.getMonthValue();
@@ -104,15 +97,7 @@ public class ReportScreenController {
 
     private void updatePieChartExpense() {
         pieChart.getData().clear();
-        int month = currentYearMonth.getMonthValue();
-        int year = currentYearMonth.getYear();
-        String currentMonth = String.format("%02d/%d", month, year);
-        Map<String, Long> expenseMap = new HashMap<>();
-        for (CalendarDay calendarDay : listCalendarDays) {
-            if (calendarDay.getDate().substring(3).equals(currentMonth)) {
-                expenseMap.put(calendarDay.getCategory(), expenseMap.getOrDefault(calendarDay.getCategory(), 0L) + Long.parseLong(calendarDay.getExpense()));
-            }
-        }
+        Map<String, Long> expenseMap = totalDataCategory(TypeTransaction.EXPENSE);
         for (Map.Entry<String, Long> entry : expenseMap.entrySet()) {
             pieChart.getData().add(new PieChart.Data(entry.getKey(), entry.getValue()));
         }
@@ -120,35 +105,49 @@ public class ReportScreenController {
 
     private void updatePieChartIncome() {
         pieChart.getData().clear();
-        int month = currentYearMonth.getMonthValue();
-        int year = currentYearMonth.getYear();
-        String currentMonth = String.format("%02d/%d", month, year);
-        Map<String, Long> incomeMap = new HashMap<>();
-        for (CalendarDay calendarDay : listCalendarDays) {
-            if (calendarDay.getDate().substring(3).equals(currentMonth)) {
-                incomeMap.put(calendarDay.getCategory(), incomeMap.getOrDefault(calendarDay.getCategory(), 0L) + Long.parseLong(calendarDay.getIncome()));
-            }
-        }
+        Map<String, Long> incomeMap = totalDataCategory(TypeTransaction.INCOME);
         for (Map.Entry<String, Long> entry : incomeMap.entrySet()) {
             pieChart.getData().add(new PieChart.Data(entry.getKey(), entry.getValue()));
         }
     }
 
+    private Map<String, Long> totalDataCategory(TypeTransaction typeTransaction){
+        int month = currentYearMonth.getMonthValue();
+        int year = currentYearMonth.getYear();
+        String currentMonth = String.format("%04d-%02d", year, month);
+        System.out.println(currentMonth);
+        Map<String, Long> totalMap = new HashMap<>();
+        for (CalendarDay calendarDay : user.getListCalendarDays()) {
+            if (calendarDay.getDate().substring(0, 7).equals(currentMonth)) {
+                for (Transaction transaction:calendarDay.getListTransactions()){
+                    if (transaction.getTypeTransaction() == typeTransaction)
+                        totalMap.put(transaction.getCategory(), totalMap.getOrDefault(transaction.getCategory(), 0L) + transaction.getAmount());
+                }
+            }
+        }
+        return totalMap;
+    }
+
     private void updateLabelExpenseIncome() {
         int month = currentYearMonth.getMonthValue();
         int year = currentYearMonth.getYear();
-        String currentMonth = String.format("%02d/%d", month, year);
+        String currentMonth = String.format("%04d-%02d", year, month);
 
         long totalExpense = 0;
         long totalIncome = 0;
-        long totalNetIncome = 0;
-        for (CalendarDay calendarDay : listCalendarDays) {
-            if (calendarDay.getDate().substring(3).equals(currentMonth)) {
-                totalExpense += Long.parseLong(calendarDay.getExpense());
-                totalIncome += Long.parseLong(calendarDay.getIncome());
+        for (CalendarDay calendarDay : user.getListCalendarDays()) {
+            if (calendarDay.getDate().substring(0, 7).equals(currentMonth)) {
+                for (Transaction transaction:calendarDay.getListTransactions()) {
+                    if (transaction.getTypeTransaction()== TypeTransaction.EXPENSE){
+                        totalExpense += transaction.getAmount();
+                    }
+                    else{
+                        totalIncome += transaction.getAmount();
+                    }
+                }
             }
         }
-        totalNetIncome = totalIncome - totalExpense;
+        long totalNetIncome = totalIncome - totalExpense;
 
         labelTotalExpense.setText(String.format("-%,dđ", totalExpense));
         labelTotalIncome.setText(String.format("+%,dđ", totalIncome));
@@ -196,16 +195,4 @@ public class ReportScreenController {
         paneOverlay.setVisible(false);
     }
 
-    public void initialize() throws IOException {
-        loadData();
-
-        updateLabelShowMonthYear();
-
-        updateLabelExpenseIncome();
-
-        updatePieChartExpense();
-
-        setupMonthYearSelector();
-
-    }
 }
