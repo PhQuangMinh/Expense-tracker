@@ -1,47 +1,60 @@
 package org.example.projectassignment.model;
 
+import org.example.projectassignment.common.TypeTransaction;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 
 public class Transaction implements Serializable {
-    private LocalDate date ;
     private String note;
-    private double amount;
+    private long amount;
     private String category;
+    private TypeTransaction typeTransaction;
 
-    public Transaction(LocalDate date , String note , double amount , String category) {
-        this.date = date;
+    public Transaction(){
+    }
+
+    public Transaction(String note , long amount , String category, TypeTransaction typeTransaction) {
         this.note = note;
         this.amount = amount;
         this.category = category;
+        this.typeTransaction = typeTransaction;
     }
 
-    public LocalDate getDate(){
-        return date;
-    }
-
-    public void setDate(LocalDate date){
-        this.date = date;
-    }
-
-    public String getNote(){
+    public String getNote() {
         return note;
     }
 
-    public void setNote(String note){
+    public void setNote(String note) {
         this.note = note;
     }
 
-    public double getAmount(){
+    public long getAmount() {
         return amount;
     }
 
-    public void setAmount(double amount){
+    public void setAmount(long amount) {
         this.amount = amount;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public TypeTransaction getTypeTransaction() {
+        return typeTransaction;
+    }
+
+    public void setTypeTransaction(TypeTransaction typeTransaction) {
+        this.typeTransaction = typeTransaction;
     }
 
     @Override
     public String toString(){
-        return date + " " + note + " " + amount + " " + category ;
+        return typeTransaction + " " + note + " " + amount + " " + category ;
     }
 }

@@ -1,14 +1,20 @@
 package org.example.projectassignment.model;
 
+import org.example.projectassignment.common.TypeTransaction;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
 public class User {
     private String id;
     private String firstName;
     private String lastName;
     private String email;
     private String password;
+    private List<CalendarDay> listCalendarDays;
 
     public User(){
-
     }
 
     public User(String id, String firstName, String lastName, String email, String password) {
@@ -17,8 +23,8 @@ public class User {
         this.lastName = lastName;
         this.email = email;
         this.password = password;
+        this.listCalendarDays = new ArrayList<>();
     }
-
 
     public String getId() {
         return id;
@@ -44,6 +50,14 @@ public class User {
         this.lastName = lastName;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -52,11 +66,25 @@ public class User {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
+    public List<CalendarDay> getListCalendarDays() {
+        return listCalendarDays;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setListCalendarDays(List<CalendarDay> listCalendarDays) {
+        this.listCalendarDays = listCalendarDays;
+    }
+
+    @Override
+    public String toString(){
+        if (listCalendarDays==null){
+            return firstName + " " + lastName;
+        }
+        for (CalendarDay calendarDay : listCalendarDays){
+            System.out.println(calendarDay.getDate());
+            for (Transaction transaction:calendarDay.getListTransactions()){
+                System.out.println(transaction);
+            }
+        }
+        return firstName + " " + lastName;
     }
 }

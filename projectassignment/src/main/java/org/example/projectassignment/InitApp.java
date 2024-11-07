@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.example.projectassignment.controller.firebase.FirebaseUser;
+import org.example.projectassignment.model.User;
 import org.example.projectassignment.view.auth.signin.SignIn;
 
 import java.io.IOException;
@@ -32,6 +33,12 @@ public class InitApp {
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
+                stage.setOnCloseRequest(event -> {
+                    firebaseUser.saveUser(users);
+                    for (User user : users) {
+                        System.out.println(user);
+                    }
+                });
             });
         });
     }

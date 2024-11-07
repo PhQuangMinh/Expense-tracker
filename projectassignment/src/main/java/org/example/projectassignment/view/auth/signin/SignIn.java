@@ -9,7 +9,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
-import org.example.projectassignment.controller.FeatureSelectionController;
+import org.example.projectassignment.controller.FeatureSelection;
+import org.example.projectassignment.model.CalendarDay;
+import org.example.projectassignment.model.Transaction;
 import org.example.projectassignment.model.User;
 import org.example.projectassignment.view.auth.signup.SignUp;
 
@@ -80,7 +82,7 @@ public class SignIn {
         Parent root = loader.load();
         pane.getChildren().clear();
         pane.getChildren().add(root);
-        FeatureSelectionController featureSelect = loader.getController();
+        FeatureSelection featureSelect = loader.getController();
         featureSelect.init(user);
     }
 }
