@@ -1,4 +1,4 @@
-package org.example.projectassignment.model;
+package org.example.projectassignment.controller;
 
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -7,9 +7,11 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import javafx.scene.layout.GridPane;
-import org.example.projectassignment.view.CustomButton;
+import org.example.projectassignment.model.CustomButton;
 
 import java.util.List;
+
+import static org.example.projectassignment.common.Constant.sizeButton;
 
 
 public class InitCategory {
@@ -20,17 +22,12 @@ public class InitCategory {
                 System.out.println(button.getText());
                 if(!button.getText().equals("Chỉnh sửa")) {
                     ImageView graphic = (ImageView) button.getGraphic();
-                    graphic.setFitHeight(70);
-                    graphic.setFitWidth(70);
                     Image image = graphic.getImage();
-                    CustomButton cb = new CustomButton(button.getText() ,image ) ;
-                    cb.setMaxHeight(100);
-                    cb.setMinHeight(100);
-                    cb.setMaxWidth(100);
-                    cb.setMinWidth(100);
-                    cb.setGraphic(graphic);
-                    cb.setContentDisplay(ContentDisplay.TOP);
-                    categoryButtons.add(cb);
+                    CustomButton newButton = new CustomButton(button.getText() ,image ) ;
+                    newButton.setButton();
+                    newButton.setPrefHeight(sizeButton);
+                    newButton.setPrefWidth(sizeButton);
+                    categoryButtons.add(newButton);
                 }
             }
         }

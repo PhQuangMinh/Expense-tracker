@@ -1,5 +1,7 @@
 package org.example.projectassignment.controller;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,22 +11,22 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import org.example.projectassignment.view.CustomButton;
-
+import javafx.stage.StageStyle;
+import javafx.util.Duration;
+import org.example.projectassignment.model.CustomButton;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.example.projectassignment.controller.EditCategorySpendingMoneyController.addSpendingMoney;
-import static org.example.projectassignment.controller.EditCategorySpendingMoneyController.editSpendingMoney;
-import static org.example.projectassignment.controller.RevenueController.categoryButtons;
-import static org.example.projectassignment.controller.SpendingMoneyController.spendingMoneyCategories ;
-import static org.example.projectassignment.controller.EditCategoryRevenueController.addRevenue;
-import static org.example.projectassignment.controller.EditCategoryRevenueController.editRevenue;
+import static org.example.projectassignment.common.Constant.sizeButton;
+import static org.example.projectassignment.controller.EditCategoryExpense.addSpendingMoney;
+import static org.example.projectassignment.controller.EditCategoryExpense.editSpendingMoney;
+import static org.example.projectassignment.controller.Income.incomeCategories;
+import static org.example.projectassignment.controller.Expense.expenseCategories ;
+import static org.example.projectassignment.controller.EditCategoryIncome.addRevenue;
+import static org.example.projectassignment.controller.EditCategoryIncome.editRevenue;
 
 
-public class EditButtonController {
+public class EditButton {
     @FXML
     private TextField nameButton ;
     @FXML
@@ -37,17 +39,18 @@ public class EditButtonController {
     @FXML
     private void deleteButton(ActionEvent event) throws IOException {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Confirmation");
-        alert.setHeaderText("Are you sure you want to delete this button?");
+        alert.setTitle("Xác nhận ");
+        alert.setHeaderText("Bạn có chắc chắn xóa nút không? ");
         if(alert.showAndWait().get() == ButtonType.OK){
-            if(categoryButtons.contains(customButton)) {
-                categoryButtons.remove(customButton);
+            if(incomeCategories.contains(customButton)) {
+                incomeCategories.remove(customButton);
                 switchToEditCategoryRevenue(event);
             }
             else{
-                spendingMoneyCategories.remove(customButton);
+                expenseCategories.remove(customButton);
                 switchToEditCategorySpendingMoney(event);
             }
+            notification("Xóa nút thành công!");
         }
     }
 
@@ -62,23 +65,19 @@ public class EditButtonController {
         }
     }
     public void getButton(CustomButton button){
-        customButton = button ;
-        nameButton.setText(customButton.getName());
-        editNameButton.setText(customButton.getName());
+        customButton = button;
+        nameButton.setText(button.getName());
+        editNameButton.setText(button.getName());
+        image = button.getImage() ;
     }
 
     @FXML
     private void saveEdit(ActionEvent event) throws IOException {
         customButton.setName(editNameButton.getText());
-        customButton.setMaxHeight(100);
-        customButton.setMinHeight(100);
-        customButton.setMaxWidth(100);
-        customButton.setMinWidth(100);
-        ImageView imageView = new ImageView(image);
-        imageView.setFitHeight(70);
-        imageView.setFitWidth(70);
-        customButton.setGraphic(imageView);
-        customButton.setContentDisplay(ContentDisplay.TOP);
+        customButton.setImage(image);
+        customButton.setButton() ;
+        customButton.setPrefHeight(sizeButton);
+        customButton.setPrefWidth(sizeButton);
         if(editSpendingMoney){
             switchToEditCategorySpendingMoney(event);
             editSpendingMoney = false;
@@ -87,54 +86,59 @@ public class EditButtonController {
             switchToEditCategoryRevenue(event);
             editRevenue = false;
         }
+        notification("Lưu thành công!");
     }
 
     @FXML
     private void addButton(ActionEvent event) throws IOException {
         String name = editNameButton.getText();
-        CustomButton cb = new CustomButton(name,image ) ;
-        cb.setMaxHeight(100);
-        cb.setMinHeight(100);
-        cb.setMaxWidth(100);
-        cb.setMinWidth(100);
-        ImageView imageView = new ImageView(image);
-        imageView.setFitHeight(70);
-        imageView.setFitWidth(70);
-        cb.setGraphic(imageView);
-        cb.setContentDisplay(ContentDisplay.TOP);
+        CustomButton newButton = new CustomButton(name,image ) ;
+        newButton.setButton();
+        newButton.setPrefHeight(sizeButton);
+        newButton.setPrefWidth(sizeButton);
+        if(image == null  && name.isEmpty()){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText("Bạn cần thêm tên nút hoặc ảnh của nút!");
+            alert.showAndWait();
+            return;
+        }
         if(addSpendingMoney){
-            spendingMoneyCategories.add(cb) ;
+            expenseCategories.add(newButton) ;
             switchToEditCategorySpendingMoney(event);
             addSpendingMoney = false;
         }
         else {
-            categoryButtons.add(cb);
+            incomeCategories.add(newButton);
             switchToEditCategoryRevenue(event);
             addRevenue = false;
         }
+        notification("Thêm nút thành công!");
     }
+
     @FXML
     public void switchToEditCategoryRevenue(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/projectassignment/view/EditCategoryRevenue.fxml"));
         Parent root = loader.load();
-        EditCategoryRevenueController controller = loader.getController();
-        controller.updateCategory(categoryButtons);
+        EditCategoryIncome controller = loader.getController();
+        controller.updateCategory(incomeCategories);
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
+
     @FXML
     public void switchToEditCategorySpendingMoney(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/projectassignment/view/EditCategorySpendingMoney.fxml"));
         Parent root = loader.load();
-        EditCategorySpendingMoneyController controller = loader.getController();
-        controller.updateCategorySpendingMoney(spendingMoneyCategories);
+        EditCategoryExpense controller = loader.getController();
+        controller.updateCategorySpendingMoney(expenseCategories);
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
+
     @FXML
     public void goBackEdit(ActionEvent event) throws IOException {
         if(editRevenue){
@@ -147,6 +151,7 @@ public class EditButtonController {
         }
 
     }
+
     @FXML
     public void goBackAdd(ActionEvent event) throws IOException {
         if(addRevenue){
@@ -157,6 +162,20 @@ public class EditButtonController {
             switchToEditCategorySpendingMoney(event);
             addSpendingMoney = false;
         }
+    }
 
+    private void notification(String text){
+        Stage notificationStage = new Stage();
+        notificationStage.initStyle(StageStyle.UNDECORATED);
+        StackPane root = new StackPane();
+        root.setStyle("-fx-background-color: #FFFFFF; -fx-padding: 10px;");
+        Label message = new Label(text);
+        root.getChildren().add(message);
+        Scene scene = new Scene(root);
+        notificationStage.setScene(scene);
+        notificationStage.show();
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), e -> notificationStage.close()));
+        timeline.setCycleCount(1);
+        timeline.play();
     }
 }

@@ -1,10 +1,8 @@
 package org.example.projectassignment.controller;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import org.example.projectassignment.Main;
 
@@ -28,10 +26,9 @@ public class FeatureSelectionController {
 
     public void switchSpendingMoneyTab() {
         try {
-            // Tải FXML và thêm vào container
             FXMLLoader loader = new FXMLLoader(Main.class.getResource("view/SpendingMoney.fxml"));
             Parent screen = loader.load();
-            SpendingMoneyController screenController = loader.getController();
+            Expense screenController = loader.getController();
             screenController.setParentController(this);
             screenContainer.getChildren().clear();
             screenContainer.getChildren().add(screen);
@@ -42,10 +39,9 @@ public class FeatureSelectionController {
 
     public void switchRevenueTab() {
         try {
-            // Tải FXML và thêm vào container
             FXMLLoader loader = new FXMLLoader(Main.class.getResource("view/Revenue.fxml"));
             Parent screen = loader.load();
-            RevenueController screenController = loader.getController();
+            Income screenController = loader.getController();
             screenController.setParentController(this);
             screenContainer.getChildren().clear();
             screenContainer.getChildren().add(screen);
@@ -56,8 +52,6 @@ public class FeatureSelectionController {
 
     @FXML
     private void onActionButtonInput() {
-//        RevenueController controller = new RevenueController();
-//        controller.addButton();
         switchSpendingMoneyTab();
     }
 

@@ -9,15 +9,15 @@ import javafx.scene.Parent ;
 import javafx.scene.control.Button ;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage ;
-import org.example.projectassignment.view.CustomButton;
+import org.example.projectassignment.model.CustomButton;
 
 import java.io.IOException ;
 
 import java.util.* ;
 
-import static org.example.projectassignment.controller.SpendingMoneyController.spendingMoneyCategories;
+import static org.example.projectassignment.controller.Expense.expenseCategories;
 
-public class EditCategoryRevenueController {
+public class EditCategoryIncome {
     @FXML
     private Button backButton ;
     @FXML
@@ -30,18 +30,20 @@ public class EditCategoryRevenueController {
     public static boolean editRevenue = false ;
     @FXML
     public void onActionButtonSwitchRevenue(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/org/example/projectassignment/view/Revenue.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow() ;
-        Scene scene = new Scene(root) ;
-        stage.setScene(scene) ;
-        stage.show() ;
+        FXMLLoader loader = new FXMLLoader (getClass().getResource("/org/example/projectassignment/view/FeatureSelection.fxml"));
+        Parent root = loader.load() ;
+        FeatureSelectionController featureSelectionController = loader.getController() ;
+        Scene scene = new Scene(root , 600 , 750) ;
+        Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow() ;
+        currentStage.setScene(scene);
+        featureSelectionController.switchRevenueTab();
     }
     @FXML
     public void switchToEditCategorySpendingMoney(ActionEvent event) throws IOException{
         FXMLLoader loader  = new  FXMLLoader(getClass().getResource("/org/example/projectassignment/view/EditCategorySpendingMoney.fxml"));
         Parent root = loader.load();
-        EditCategorySpendingMoneyController controller = loader.getController();
-        controller.updateCategorySpendingMoney(spendingMoneyCategories);
+        EditCategoryExpense controller = loader.getController();
+        controller.updateCategorySpendingMoney(expenseCategories);
         stage = (Stage)((Node)event.getSource()).getScene().getWindow() ;
         Scene scene = new Scene(root) ;
         stage.setScene(scene) ;
@@ -58,7 +60,7 @@ public class EditCategoryRevenueController {
             stage.setScene(scene) ;
             editRevenue = true ;
             stage.show() ;
-            EditButtonController controller = loader.getController() ;
+            EditButton controller = loader.getController() ;
             controller.getButton(button);
         }
         catch (IOException e){
