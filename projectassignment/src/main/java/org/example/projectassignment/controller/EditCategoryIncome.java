@@ -9,6 +9,7 @@ import javafx.scene.Parent ;
 import javafx.scene.control.Button ;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage ;
+import org.example.projectassignment.controller.feature.FeatureSelection;
 import org.example.projectassignment.model.CustomButton;
 
 import java.io.IOException ;
@@ -30,7 +31,7 @@ public class EditCategoryIncome {
     public static boolean editRevenue = false ;
     @FXML
     public void onActionButtonSwitchRevenue(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader (getClass().getResource("/org/example/projectassignment/view/FeatureSelection.fxml"));
+        FXMLLoader loader = new FXMLLoader (getClass().getResource("/org/example/projectassignment/view/feature/FeatureSelection.fxml"));
         Parent root = loader.load() ;
         FeatureSelection featureSelection = loader.getController() ;
         Scene scene = new Scene(root , 600 , 750) ;

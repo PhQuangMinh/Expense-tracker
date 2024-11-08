@@ -9,9 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
-import org.example.projectassignment.controller.FeatureSelection;
-import org.example.projectassignment.model.CalendarDay;
-import org.example.projectassignment.model.Transaction;
+import org.example.projectassignment.controller.feature.FeatureSelection;
 import org.example.projectassignment.model.User;
 import org.example.projectassignment.view.auth.signup.SignUp;
 
@@ -78,7 +76,7 @@ public class SignIn {
     }
 
     private void homePage(User user) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/projectassignment/view/FeatureSelection.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/projectassignment/view/feature/FeatureSelection.fxml"));
         Parent root = loader.load();
         pane.getChildren().clear();
         pane.getChildren().add(root);

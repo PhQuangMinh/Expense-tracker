@@ -1,10 +1,13 @@
-package org.example.projectassignment.controller;
+package org.example.projectassignment.controller.feature;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.layout.Pane;
 import org.example.projectassignment.Main;
+import org.example.projectassignment.controller.Expense;
+import org.example.projectassignment.controller.Income;
+import org.example.projectassignment.controller.ReportScreen;
 import org.example.projectassignment.model.User;
 import org.example.projectassignment.view.calendar.Calendar;
 
@@ -42,6 +45,10 @@ public class FeatureSelection {
         income.init(this, user);
     }
 
+    public void switchOtherTab() throws IOException {
+        loadScreen("view/feature/other/OtherScene.fxml");
+    }
+
     @FXML
     private void onActionButtonInput() throws IOException {
         switchExpenseMoneyTab();
@@ -63,6 +70,6 @@ public class FeatureSelection {
 
     @FXML
     private void onActionButtonOther() throws IOException {
-        loadScreen("view/OtherScreen.fxml");
+        loadScreen("view/feature/other/OtherScene.fxml");
     }
 }
