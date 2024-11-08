@@ -1,17 +1,14 @@
 package org.example.projectassignment.controller;
 
 import javafx.collections.FXCollections;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 import java.time.YearMonth;
 import java.util.stream.IntStream;
 
-public class SelectorMonthYearController {
+public class SelectorMonthYear {
     @FXML
     private ComboBox<Integer> monthComboBox;
     @FXML

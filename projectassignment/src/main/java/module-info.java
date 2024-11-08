@@ -30,5 +30,8 @@ module org.example.projectassignment {
     exports org.example.projectassignment.view.auth.signin;
     exports org.example.projectassignment.view.auth.signup;
     exports org.example.projectassignment.controller.auth;
+    exports org.example.projectassignment.common;
     opens org.example.projectassignment.controller.auth to javafx.fxml;
+    exports org.example.projectassignment.view.calendar;
+    opens org.example.projectassignment.view.calendar to javafx.fxml;
 }
