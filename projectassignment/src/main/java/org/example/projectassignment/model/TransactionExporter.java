@@ -11,7 +11,7 @@ public class TransactionExporter {
         try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("FileBinary.in"))){
             for(Transaction transaction : transactions){
                 oos.writeObject(transaction);
-                System.out.println("Successful");
+                System.out.println(transaction);
             }
         }
         catch(IOException e){
