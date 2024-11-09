@@ -82,7 +82,7 @@
                   </HBox>
                </graphic>
             </Button>
-            <Button alignment="CENTER" layoutX="10.0" layoutY="51.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="550.0" styleClass="option--button">
+            <Button alignment="CENTER" layoutX="10.0" layoutY="51.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction = "#onActionButtonEditPassword" prefHeight="40.0" prefWidth="550.0" styleClass="option--button">
                <graphic>
                   <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="40.0" prefWidth="550.0">
                      <children>
@@ -96,7 +96,7 @@
                         </ImageView>
                         <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" prefHeight="40.0" prefWidth="515.0" styleClass="option-button_hbox-label">
                            <children>
-                              <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="179.0" styleClass="option-button__label" text="option" />
+                              <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="179.0" styleClass="option-button__label" text="Thay đổi mật khẩu " />
                               <Region prefHeight="40.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
                               <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
                                  <image>
