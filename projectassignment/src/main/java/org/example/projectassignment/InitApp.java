@@ -19,6 +19,7 @@ public class InitApp {
     }
 
     public void init(Stage stage) throws IOException {
+
         firebaseUser = new FirebaseUser();
         firebaseUser.getUsers().thenAccept(users -> {
             Platform.runLater(() -> {
