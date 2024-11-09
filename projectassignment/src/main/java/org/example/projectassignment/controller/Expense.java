@@ -6,7 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import org.example.projectassignment.common.TypeTransaction;
-import org.example.projectassignment.controller.feature.FeatureSelection;
+import org.example.projectassignment.view.feature.FeatureSelection;
 import org.example.projectassignment.controller.home.input.ManagerInput;
 import org.example.projectassignment.model.User;
 

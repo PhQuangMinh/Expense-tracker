@@ -1,4 +1,4 @@
-package org.example.projectassignment.view.calendar;
+package org.example.projectassignment.view.feature.calendar;
 
 
 import javafx.fxml.FXML;
@@ -27,8 +27,6 @@ import org.example.projectassignment.model.User;
 import java.io.*;
 import java.time.LocalDate;
 import java.time.YearMonth;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Calendar extends Pane {
     @FXML
