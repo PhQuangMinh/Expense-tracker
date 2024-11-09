@@ -7,8 +7,9 @@ import javafx.scene.layout.Pane;
 import org.example.projectassignment.Main;
 import org.example.projectassignment.controller.Expense;
 import org.example.projectassignment.controller.Income;
+import org.example.projectassignment.view.feature.calendar.Calendar ;
 import org.example.projectassignment.model.User;
-import org.example.projectassignment.view.feature.calendar.Calendar;
+import org.example.projectassignment.view.feature.other.OtherScene;
 import org.example.projectassignment.view.feature.report.ReportScene;
 
 import java.io.IOException;
@@ -47,6 +48,8 @@ public class FeatureSelection {
 
     public void switchOtherTab() throws IOException {
         loadScreen("view/feature/other/OtherScene.fxml");
+        OtherScene otherScene = loader.getController();
+        otherScene.init(user);
     }
 
     @FXML
@@ -71,5 +74,7 @@ public class FeatureSelection {
     @FXML
     private void onActionButtonOther() throws IOException {
         loadScreen("view/feature/other/OtherScene.fxml");
+        OtherScene otherScene = loader.getController();
+        otherScene.init(user);
     }
 }

@@ -48,6 +48,7 @@ public class SignIn {
             }
         });
         signUp.setOnMouseClicked(event -> signUpAction());
+        inform.setVisible(false) ;
     }
 
     private void signUpAction(){
