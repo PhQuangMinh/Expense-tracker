@@ -1,4 +1,4 @@
-package org.example.projectassignment.controller.feature.other;
+package org.example.projectassignment.view.feature.other;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,7 +11,7 @@ import org.example.projectassignment.Main;
 
 import java.io.IOException;
 
-public class OtherSceneController {
+public class OtherScene {
     @FXML
     private void onActionButtonAnnualReport(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(Main.class.getResource("view/feature/other/annualreport/AnnualReportScene.fxml"));

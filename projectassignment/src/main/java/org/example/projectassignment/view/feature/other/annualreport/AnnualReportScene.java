@@ -1,4 +1,4 @@
-package org.example.projectassignment.controller.feature.other.annualreport;
+package org.example.projectassignment.view.feature.other.annualreport;
 
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -16,7 +16,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import org.example.projectassignment.Main;
-import org.example.projectassignment.controller.feature.FeatureSelection;
+import org.example.projectassignment.view.feature.FeatureSelection;
 
 import java.io.IOException;
 import java.time.YearMonth;
@@ -25,7 +25,7 @@ import java.util.Map;
 import java.util.Random;
 import java.util.stream.IntStream;
 
-public class AnnualReportSceneController {
+public class AnnualReportScene {
     @FXML
     private Label naviYearLabel;
     @FXML

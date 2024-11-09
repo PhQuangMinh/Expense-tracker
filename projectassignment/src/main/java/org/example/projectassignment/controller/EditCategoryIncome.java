@@ -9,7 +9,7 @@ import javafx.scene.Parent ;
 import javafx.scene.control.Button ;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage ;
-import org.example.projectassignment.controller.feature.FeatureSelection;
+import org.example.projectassignment.view.feature.FeatureSelection;
 import org.example.projectassignment.model.CustomButton;
 
 import java.io.IOException ;

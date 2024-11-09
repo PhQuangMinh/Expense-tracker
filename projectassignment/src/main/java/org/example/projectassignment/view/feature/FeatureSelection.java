@@ -1,4 +1,4 @@
-package org.example.projectassignment.controller.feature;
+package org.example.projectassignment.view.feature;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -7,9 +7,9 @@ import javafx.scene.layout.Pane;
 import org.example.projectassignment.Main;
 import org.example.projectassignment.controller.Expense;
 import org.example.projectassignment.controller.Income;
-import org.example.projectassignment.controller.ReportScreen;
 import org.example.projectassignment.model.User;
-import org.example.projectassignment.view.calendar.Calendar;
+import org.example.projectassignment.view.feature.calendar.Calendar;
+import org.example.projectassignment.view.feature.report.ReportScene;
 
 import java.io.IOException;
 
@@ -63,9 +63,9 @@ public class FeatureSelection {
 
     @FXML
     private void onActionButtonReport() throws IOException {
-        loadScreen("view/ReportScreen.fxml");
-        ReportScreen reportScreen = loader.getController();
-        reportScreen.init(user);
+        loadScreen("view/feature/report/ReportScene.fxml");
+        ReportScene reportScene = loader.getController();
+        reportScene.init(user);
     }
 
     @FXML
