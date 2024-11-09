@@ -9,7 +9,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.example.projectassignment.Main;
-import org.example.projectassignment.controller.feature.FeatureSelection;
+import org.example.projectassignment.view.feature.FeatureSelection;
 import org.example.projectassignment.model.User ;
 
 import java.io.IOException;
@@ -20,22 +20,17 @@ public class EditInformation {
     @FXML TextField lastName ;
     @FXML TextField email ;
     @FXML TextField id ;
-    @FXML TextField fullName ;
-    public EditInformation() {
-        user = new User("1234" , "Nguyen Van" , "Hoc" , "hoc@gmail.com" , "1234");
-    }
-    @FXML
-    public void getUserInformation(){
+    public void init(User user ){
+        this.user = user ;
         firstName.setText(user.getFirstName());
         lastName.setText(user.getLastName());
         email.setText(user.getEmail());
         id.setText(user.getId());
-        email.setEditable(false);
         id.setEditable(false);
-        fullName.setEditable(false);
+        email.setEditable(false);
     }
     @FXML
-    public void saveUserInformation(){
+    private  void saveUserInformation(ActionEvent event) throws IOException {
         if(firstName.getText().isEmpty() || lastName.getText().isEmpty() ){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setHeaderText("Tên không hợp lệ!");
@@ -47,12 +42,14 @@ public class EditInformation {
         alert.showAndWait();
         user.setFirstName(firstName.getText());
         user.setLastName(lastName.getText());
+        goBack(event);
     }
     @FXML
     private void goBack(ActionEvent event ) throws IOException {
         FXMLLoader loader = new FXMLLoader(Main.class.getResource("view/feature/FeatureSelection.fxml")) ;
         Parent root = loader.load() ;
         FeatureSelection featureSelection = loader.getController() ;
+        featureSelection.init(user);
         Scene scene = new Scene(root , 600 , 750 ) ;
         Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow() ;
         currentStage.setScene(scene);

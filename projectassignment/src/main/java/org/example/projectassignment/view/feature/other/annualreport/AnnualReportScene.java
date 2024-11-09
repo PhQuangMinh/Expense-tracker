@@ -16,6 +16,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import org.example.projectassignment.Main;
+import org.example.projectassignment.model.User;
 import org.example.projectassignment.view.feature.FeatureSelection;
 
 import java.io.IOException;
@@ -43,12 +44,16 @@ public class AnnualReportScene {
     @FXML
     private Label detailAvgAmount;
 
+    private User user ;
     private YearMonth currentYearMonth;
     private LinkedHashMap<String, Long> expenseMap;
     private LinkedHashMap<String, Long> incomeMap;
     private LinkedHashMap<String, Long> sumMap;
     private int flagFeature;
 
+    public void init(User user){
+        this.user = user ;
+    }
     private void loadDataCurrentYear() {
         Random random = new Random();
         expenseMap = new LinkedHashMap<>();
@@ -105,6 +110,7 @@ public class AnnualReportScene {
         FXMLLoader loader = new FXMLLoader(Main.class.getResource("view/feature/FeatureSelection.fxml"));
         Parent root = loader.load();
         FeatureSelection featureSelectionController = loader.getController();
+        featureSelectionController.init(user);
         Scene scene = new Scene(root, 600.0, 750.0);
         Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         currentStage.setScene(scene);
