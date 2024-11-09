@@ -6,7 +6,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
+import org.example.projectassignment.InitApp;
 import org.example.projectassignment.Main;
 import org.example.projectassignment.model.User;
 import org.example.projectassignment.view.EditInformation;
@@ -14,8 +17,10 @@ import org.example.projectassignment.view.EditPassword;
 import org.example.projectassignment.view.feature.other.annualreport.AnnualReportScene;
 
 import java.io.IOException;
+import java.util.Optional;
 
 public class OtherScene {
+    private Stage stage ;
 
     private User user ;
     public void init(User user){
@@ -51,5 +56,18 @@ public class OtherScene {
         Scene scene = new Scene(root);
         Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         currentStage.setScene(scene);
+    }
+    @FXML
+    private void onActionLogOut(ActionEvent event) throws IOException {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Đăng xuất");
+        alert.setHeaderText(null);
+        alert.setContentText("Bạn có chắc chắn đăng xuất không ?");
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK) {
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            InitApp initApp = new InitApp();
+            initApp.init(stage);
+        }
     }
 }
