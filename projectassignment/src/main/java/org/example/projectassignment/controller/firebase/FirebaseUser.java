@@ -15,14 +15,17 @@ import org.example.projectassignment.model.User;
 
 public class FirebaseUser {
     public void initFirebase() throws IOException {
-        String linkUrl = "https://sothuchi-60672-default-rtdb.firebaseio.com/";
-        String serviceAccountFile = "sothuchi-60672-firebase-adminsdk-6kazn-c16a300118.json";
-        FileInputStream serviceAccount = new FileInputStream(serviceAccountFile);
-        FirebaseOptions options = FirebaseOptions.builder()
-                .setCredentials(GoogleCredentials.fromStream(serviceAccount))
-                .setDatabaseUrl(linkUrl)
-                .build();
-        FirebaseApp.initializeApp(options);
+        if(FirebaseApp.getApps().isEmpty()) {
+            String linkUrl = "https://sothuchi-60672-default-rtdb.firebaseio.com/";
+            String serviceAccountFile = "sothuchi-60672-firebase-adminsdk-6kazn-c16a300118.json";
+            FileInputStream serviceAccount = new FileInputStream(serviceAccountFile);
+            FirebaseOptions options = FirebaseOptions.builder()
+                    .setCredentials(GoogleCredentials.fromStream(serviceAccount))
+                    .setDatabaseUrl(linkUrl)
+                    .build();
+            FirebaseApp.initializeApp(options);
+        }
+
     }
 
     public CompletableFuture<ArrayList<User>> getUsers(){
