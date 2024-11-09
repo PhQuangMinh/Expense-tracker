@@ -32,13 +32,15 @@ module org.example.projectassignment {
     exports org.example.projectassignment.controller.auth;
     exports org.example.projectassignment.common;
     opens org.example.projectassignment.controller.auth to javafx.fxml;
-    exports org.example.projectassignment.view.calendar;
-    opens org.example.projectassignment.view.calendar to javafx.fxml;
+    exports org.example.projectassignment.view.feature.calendar;
+    opens org.example.projectassignment.view.feature.calendar to javafx.fxml;
 
-    opens org.example.projectassignment.controller.feature to javafx.fxml;
-    exports org.example.projectassignment.controller.feature;
-    opens org.example.projectassignment.controller.feature.other to javafx.fxml;
-    exports org.example.projectassignment.controller.feature.other to javafx.fxml;
-    opens org.example.projectassignment.controller.feature.other.annualreport to javafx.fxml;
-    exports org.example.projectassignment.controller.feature.other.annualreport to javafx.fxml;
+    opens org.example.projectassignment.view.feature to javafx.fxml;
+    exports org.example.projectassignment.view.feature;
+    opens org.example.projectassignment.view.feature.other to javafx.fxml;
+    exports org.example.projectassignment.view.feature.other to javafx.fxml;
+    opens org.example.projectassignment.view.feature.other.annualreport to javafx.fxml;
+    exports org.example.projectassignment.view.feature.other.annualreport to javafx.fxml;
+    opens org.example.projectassignment.view.feature.report to javafx.fxml;
+    exports org.example.projectassignment.view.feature.report to javafx.fxml;
 }
