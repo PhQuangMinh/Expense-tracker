@@ -12,13 +12,14 @@ import org.example.projectassignment.view.auth.signin.SignIn;
 import java.io.IOException;
 
 public class InitApp {
-    private final FirebaseUser firebaseUser;
+    private  FirebaseUser firebaseUser;
 
-    InitApp(){
-        firebaseUser = new FirebaseUser();
+    public InitApp(){
+
     }
 
     public void init(Stage stage) throws IOException {
+        firebaseUser = new FirebaseUser();
         firebaseUser.getUsers().thenAccept(users -> {
             Platform.runLater(() -> {
                 FXMLLoader loader = new FXMLLoader(SignIn.class.getResource("signin.fxml"));
