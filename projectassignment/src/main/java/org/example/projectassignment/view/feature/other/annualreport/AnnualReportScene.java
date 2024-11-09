@@ -52,7 +52,7 @@ public class AnnualReportScene {
     private int flagFeature;
 
     public void init(User user){
-        this.user = user;
+        this.user = user ;
     }
     private void loadDataCurrentYear() {
         Random random = new Random();

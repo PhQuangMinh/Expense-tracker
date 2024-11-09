@@ -7,8 +7,8 @@ import javafx.scene.layout.Pane;
 import org.example.projectassignment.Main;
 import org.example.projectassignment.controller.Expense;
 import org.example.projectassignment.controller.Income;
-import org.example.projectassignment.view.feature.calendar.Calendar ;
 import org.example.projectassignment.model.User;
+import org.example.projectassignment.view.feature.calendar.Calendar;
 import org.example.projectassignment.view.feature.other.OtherScene;
 import org.example.projectassignment.view.feature.report.ReportScene;
 
