@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="600.0" stylesheets="@AnnualReportScene.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.projectassignment.controller.feature.other.annualreport.AnnualReportSceneController">
+   <children>
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="750.0" prefWidth="600.0">
+         <children>
+            <BorderPane id="header__borderpane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="600.0">
+               <center>
+                  <Label id="header__label" alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="340.0" text="Báo cáo trong năm" BorderPane.alignment="CENTER" />
+               </center>
+               <right>
+                  <Pane prefHeight="50.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
+               </right>
+               <left>
+                  <Button id="header__back-button" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#onActionButtonBackToOtherScene" prefHeight="50.0" prefWidth="100.0" styleClass="header__back-button" BorderPane.alignment="CENTER">
+                     <graphic>
+                        <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="35.0" prefWidth="100.0">
+                           <children>
+                              <ImageView fitHeight="35.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../Image/icons8-less-than-orange-100.png" />
+                                 </image>
+                              </ImageView>
+                              <Label id="header__back-label" prefHeight="35.0" prefWidth="40.0" text="Khác" />
+                           </children>
+                        </HBox>
+                     </graphic>
+                  </Button>
+               </left>
+            </BorderPane>
+            <HBox alignment="CENTER" layoutY="50.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="600.0" styleClass="navi-year__hbox">
+               <children>
+                  <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onActionButtonDecreaseYear" prefHeight="35.0" prefWidth="35.0" styleClass="navi-year__button">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Image/icons8-less-than-black-100.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+                  <Label fx:id="naviYearLabel" alignment="CENTER" onMouseClicked="#onMouseClickedNaviYearLabel" prefHeight="35.0" prefWidth="450.0" styleClass="navi-year__label" text="nam hien tai">
+                     <HBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Button layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onActionButtonIncreaseYear" prefHeight="35.0" prefWidth="35.0" styleClass="navi-year__button">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
+                           <image>
+                              <Image url="@../../../Image/icons8-less-than-black-100.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox alignment="TOP_CENTER" layoutY="100.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="600.0" styleClass="menu-bar__out-hbox">
+               <children>
+                  <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="35.0" prefWidth="360.0" styleClass="menu-bar__hbox">
+                     <children>
+                        <Button fx:id="button1" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#onActionButtonExpense" prefHeight="35.0" prefWidth="120.0" styleClass="menu-bar__button" text="Chi tiêu" />
+                        <Button fx:id="button2" layoutX="271.0" layoutY="16.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#onActionButtonIncome" prefHeight="35.0" prefWidth="120.0" styleClass="menu-bar__button" text="Thu nhập" />
+                        <Button fx:id="button3" layoutX="310.0" layoutY="16.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#onActionButtonTotal" prefHeight="35.0" prefWidth="120.0" styleClass="menu-bar__button" text="Tổng" />
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+            <Pane layoutY="150.0" prefHeight="300.0" prefWidth="600.0">
+               <children>
+                  <BarChart fx:id="barChart" prefHeight="300.0" prefWidth="600.0" styleClass="barchart__pane">
+                    <xAxis>
+                      <CategoryAxis side="BOTTOM" fx:id="xAxis" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis fx:id="yAxis" side="LEFT" />
+                    </yAxis>
+                  </BarChart>
+               </children>
+            </Pane>
+            <Pane layoutY="450.0" prefHeight="300.0" prefWidth="600.0">
+               <children>
+                  <ScrollPane fx:id="detailInforScrollPane" hbarPolicy="NEVER" prefHeight="300.0" prefWidth="600.0" styleClass="detail-infor__scroll-pane" vbarPolicy="NEVER">
+                     <content>
+                        <VBox alignment="TOP_CENTER" prefHeight="300.0" prefWidth="600.0">
+                           <children>
+                              <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="600.0" />
+                              <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="600.0" styleClass="detail-infor__hbox-total">
+                                 <children>
+                                    <Pane prefHeight="50.0" prefWidth="10.0" />
+                                    <Label fx:id="detailTotalTitle" prefHeight="35.0" prefWidth="100.0" styleClass="detail-infor__label" text="Tổng" />
+                                    <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                                    <Label fx:id="detailTotalAmount" styleClass="detail-infor__label" text="Label" />
+                                    <Pane layoutX="10.0" layoutY="10.0" prefHeight="50.0" prefWidth="10.0" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="600.0" styleClass="detail-infor__hbox-avg">
+                                 <children>
+                                    <Pane prefHeight="50.0" prefWidth="10.0" />
+                                    <Label fx:id="detailAvgTitle" prefHeight="35.0" prefWidth="120.0" styleClass="detail-infor__label" text="Trung bình" />
+                                    <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                                    <Label fx:id="detailAvgAmount" styleClass="detail-infor__label" text="Label" />
+                                    <Pane layoutX="10.0" layoutY="10.0" prefHeight="50.0" prefWidth="10.0" />
+                                 </children>
+                              </HBox>
+                              <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="600.0" />
+                              <VBox fx:id="detailInforVBox" prefHeight="100.0" prefWidth="600.0" />
+                           </children>
+                        </VBox>
+                     </content></ScrollPane>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+      <Pane fx:id="selectYearOverlayPane" prefHeight="700.0" prefWidth="600.0" styleClass="select-year__overlay-pane" visible="false">
+         <children>
+            <Pane fx:id="selectYearMainPane" layoutY="450.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="300.0" prefWidth="600.0" styleClass="select-year__main-pane">
+               <children>
+                  <ComboBox fx:id="yearComboBox" layoutX="225.0" layoutY="69.0" maxHeight="150.0" prefHeight="40.0" prefWidth="150.0" styleClass="select-year__combobox" visibleRowCount="6" />
+                  <HBox alignment="CENTER" prefHeight="50.0" prefWidth="600.0" styleClass="select-year__header">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#onActionCancelButton" styleClass="select-year__button" text="Bỏ qua">
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Pane maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                        <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#onActionButtonConfirmYear" styleClass="select-year__button" text="OK">
+                           <HBox.margin>
+                              <Insets right="20.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Pane>
+         </children>
+      </Pane>
+   </children>
+</StackPane>

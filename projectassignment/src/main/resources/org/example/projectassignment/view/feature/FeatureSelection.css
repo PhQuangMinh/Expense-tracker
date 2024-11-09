@@ -1,0 +1,17 @@
+.feature__button {
+    -fx-font-size: 16px;
+    -fx-text-fill: black;
+    -fx-background-color: white; /* Bỏ nền của button nếu cần */
+    -fx-border-color: transparent;
+}
+
+/* Hiệu ứng khi di chuột qua button */
+.feature__button:hover {
+    -fx-background-color: darkgray;
+    -fx-text-fill: white;
+}
+
+#feature__hbox {
+    -fx-border-width: 1 0 0 0;
+    -fx-border-color: darkgray;
+}
