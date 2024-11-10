@@ -8,12 +8,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
+import org.example.projectassignment.common.TypeTransaction;
 import org.example.projectassignment.model.user.ManagerUser;
+import org.example.projectassignment.model.user.informationuser.CalendarDay;
+import org.example.projectassignment.model.user.informationuser.Transaction;
+import org.example.projectassignment.model.user.informationuser.User;
 
 import java.time.YearMonth;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 import java.util.stream.IntStream;
 
 public class ReportScene {
@@ -41,7 +43,9 @@ public class ReportScene {
     private VBox detailVBox;
 
     private ManagerUser managerUser;
+    private User user;
     private YearMonth currentYearMonth;
+    private List<CalendarDay> listCalendarDays;
     private LinkedHashMap<String, Long> expenseMap;
     private LinkedHashMap<String, Long> incomeMap;
     private long totalExpense;
@@ -51,6 +55,8 @@ public class ReportScene {
 
     public void init(ManagerUser managerUser){
         this.managerUser = managerUser;
+        this.user = managerUser.getUser();
+        listCalendarDays = user.getListCalendarDays();
         currentYearMonth = YearMonth.now();
         flagFeature = 1;
         setActiveButton(buttonExpense, buttonIncome);
@@ -70,18 +76,19 @@ public class ReportScene {
         totalIncome = 0;
         totalSum = 0;
 
-        String[] cateExpense = {"Ăn uống", "Quần áo", "Đóng học", "Đi net", "Đá phò"};
-        for (String cate : cateExpense) {
-            long tmp = random.nextLong(10000001);
-            totalExpense += tmp;
-            expenseMap.put(cate, tmp);
-        }
-
-        String[] cateIncome = {"Lương", "Chứng khoán", "BTC", "Ăn xin"};
-        for (String cate : cateIncome) {
-            long tmp = random.nextLong(10000001);
-            totalIncome += tmp;
-            incomeMap.put(cate, tmp);
+        for (CalendarDay calendarDay : listCalendarDays) {
+            if (calendarDay.getDate().substring(0,7).equals(currentYearMonth.toString())) {
+                List<Transaction> listTransactions = calendarDay.getListTransactions();
+                for (Transaction transaction : listTransactions) {
+                    if (transaction.getTypeTransaction() == TypeTransaction.EXPENSE) {
+                        expenseMap.put(transaction.getCategory(), expenseMap.getOrDefault(transaction.getCategory(), 0L) + transaction.getAmount());
+                        totalExpense += transaction.getAmount();
+                    } else if (transaction.getTypeTransaction() == TypeTransaction.INCOME) {
+                        incomeMap.put(transaction.getCategory(), incomeMap.getOrDefault(transaction.getCategory(), 0L) + transaction.getAmount());
+                        totalIncome += transaction.getAmount();
+                    }
+                }
+            }
         }
 
         totalSum = totalIncome - totalExpense;
@@ -214,24 +221,4 @@ public class ReportScene {
     private void onActionCancelButton() {
         selectTimeOverlay.setVisible(false);
     }
-
-//    public void initialize() throws IOException {
-//        currentYearMonth = YearMonth.now();
-//
-//        flagFeature = 1;
-//
-//        setActiveButton(buttonExpense, buttonIncome);
-//
-//        loadDataCurrentYearMonth();
-//
-//        updateNaviTimeLabel();
-//
-//        updateReportLabel();
-//
-//        updatePieChart(expenseMap);
-//
-//        updateDetailScrollPane(expenseMap);
-//
-//        setupTimeSelector();
-//    }
 }
