@@ -19,7 +19,9 @@ module org.example.projectassignment {
     requires gax;
     requires google.cloud.core;
     requires google.cloud.firestore;
+    requires java.mail;
 
+    exports org.example.projectassignment.model.category;
     opens org.example.projectassignment to javafx.fxml;
     opens org.example.projectassignment.view to javafx.fxml;
     opens org.example.projectassignment.controller to javafx.fxml;
@@ -33,6 +35,8 @@ module org.example.projectassignment {
     opens org.example.projectassignment.view.feature.other.annualreport to javafx.fxml;
     opens org.example.projectassignment.view.feature.report to javafx.fxml;
 
+    exports org.example.projectassignment.view.auth.forgotpassword to javafx.fxml;
+    opens org.example.projectassignment.view.auth.forgotpassword to javafx.fxml;
     exports org.example.projectassignment;
     exports org.example.projectassignment.controller;
     exports org.example.projectassignment.model;
@@ -53,7 +57,6 @@ module org.example.projectassignment {
     opens org.example.projectassignment.view.feature.input to javafx.fxml;
     exports org.example.projectassignment.view.feature.other.informationuser;
     opens org.example.projectassignment.view.feature.other.informationuser to javafx.fxml;
-    exports org.example.projectassignment.model.category;
     opens org.example.projectassignment.model.category to firebase.admin;
     exports org.example.projectassignment.model.user;
     opens org.example.projectassignment.model.user to firebase.admin;

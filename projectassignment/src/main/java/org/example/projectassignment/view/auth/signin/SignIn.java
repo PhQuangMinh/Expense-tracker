@@ -11,6 +11,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import org.example.projectassignment.controller.category.ManagerCategory;
 import org.example.projectassignment.model.user.ManagerUser;
+import org.example.projectassignment.view.auth.forgotpassword.ForgotPassword;
 import org.example.projectassignment.view.feature.FeatureSelection;
 import org.example.projectassignment.model.user.informationuser.User;
 import org.example.projectassignment.view.auth.signup.SignUp;
@@ -38,17 +39,18 @@ public class SignIn {
     @FXML
     private Label signUp;
 
+    @FXML
+    private Label forgotPassword;
+
     List<User> listUsers;
 
-    private ManagerCategory managerCategory;
 
-    public void init(List<User> listUsers, ManagerCategory managerCategory){
-        this.managerCategory = managerCategory;
+    public void init(List<User> listUsers, ManagerCategory managerCategory) throws IOException {
         this.listUsers = listUsers;
         inform.setVisible(false);
         signIn.setOnAction(event -> {
             try {
-                signInAction();
+                signInAction(managerCategory);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -56,14 +58,22 @@ public class SignIn {
         inform.setVisible(false) ;
         signUp.setOnMouseClicked(event -> {
             try {
-                signUpAction();
+                signUpAction(managerCategory);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+
+        forgotPassword.setOnMouseClicked(event -> {
+            try {
+                forgotPasswordAction(managerCategory);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         });
     }
 
-    private void signUpAction() throws IOException {
+    private void signUpAction(ManagerCategory managerCategory) throws IOException {
         FXMLLoader loader = new FXMLLoader(SignUp.class.getResource("signup.fxml"));
         Parent root = loader.load();
         pane.getChildren().clear();
@@ -72,13 +82,13 @@ public class SignIn {
         signUpController.init(listUsers, managerCategory);
     }
 
-    private void signInAction() throws IOException {
+    private void signInAction(ManagerCategory managerCategory) throws IOException {
         for (User user : listUsers){
             if(user.getEmail().equals(email.getText()) && user.getPassword().equals(password.getText())){
                 if (user.getListCalendarDays() == null){
                     user.setListCalendarDays(new ArrayList<>());
                 }
-                homePage(user);
+                homePage(user, managerCategory);
                 return;
             }
         }
@@ -87,7 +97,16 @@ public class SignIn {
         inform.setText("Email or password is incorrect");
     }
 
-    private void homePage(User user) throws IOException {
+    private void forgotPasswordAction(ManagerCategory managerCategory) throws IOException {
+        FXMLLoader loader = new FXMLLoader(ForgotPassword.class.getResource("ForgotPassword.fxml"));
+        Parent root = loader.load();
+        pane.getChildren().removeAll();
+        pane.getChildren().setAll(root);
+        ForgotPassword forgotPassword = loader.getController();
+        forgotPassword.init(listUsers, managerCategory);
+    }
+
+    private void homePage(User user, ManagerCategory managerCategory) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/projectassignment/view/feature/FeatureSelection.fxml"));
         Parent root = loader.load();
         pane.getChildren().clear();

@@ -52,25 +52,22 @@ public class SignUp {
 
     private FirebaseUser firebaseUser;
 
-    private ManagerCategory managerCategory;
-
     public void init(List<User> listUsers, ManagerCategory managerCategory){
-        this.managerCategory = managerCategory;
         inform.setVisible(false);
         this.listUsers = listUsers;
         managerSignUp = new ManagerSignUp();
         firebaseUser = new FirebaseUser();
-        signUp.setOnAction(event -> signUpAction());
+        signUp.setOnAction(event -> signUpAction(managerCategory));
         signIn.setOnMouseClicked(event -> {
             try {
-                signInAction();
+                signInAction(managerCategory);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         });
     }
 
-    private void signInAction() throws IOException {
+    private void signInAction(ManagerCategory managerCategory) throws IOException {
         FXMLLoader loader = new FXMLLoader(SignIn.class.getResource("SignIn.fxml"));
         Parent root = loader.load();
         SignIn signIn = loader.getController();
@@ -80,7 +77,7 @@ public class SignUp {
     }
 
 
-    private void signUpAction(){
+    private void signUpAction(ManagerCategory managerCategory){
         int checkValid = managerSignUp.checkValid(listUsers, firstName, lastName, email, password, confirmPassword);
         if (checkValid == 0){
             User user = new User(String.valueOf(listUsers.size()), firstName.getText(), lastName.getText(), email.getText(),

@@ -20,9 +20,16 @@
         <google-cloud-storage.version>2.36.1</google-cloud-storage.version>
         <google-cloud-firestore.version>3.20.0</google-cloud-firestore.version>
         <firebase-admin.version>9.2.0</firebase-admin.version>
+        <javax.mail.version>1.6.2</javax.mail.version>
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>com.sun.mail</groupId>
+            <artifactId>javax.mail</artifactId>
+            <version>${javax.mail.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>com.google.cloud</groupId>
             <artifactId>google-cloud-storage</artifactId>
