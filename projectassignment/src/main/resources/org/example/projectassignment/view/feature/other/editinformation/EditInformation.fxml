@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -8,59 +14,86 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.projectassignment.view.EditInformation">
+<Pane stylesheets="@EditInformation.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.projectassignment.view.EditInformation">
    <children>
-      <HBox prefHeight="30.0" prefWidth="600.0">
-         <children>
-            <Button mnemonicParsing="false" onAction="#goBack" prefHeight="30.0" prefWidth="50.0">
+      <BorderPane id="header__borderpane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="600.0">
+         <center>
+            <Label id="header__label" alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="340.0" text="Thông tin tài khoản" BorderPane.alignment="CENTER" />
+         </center>
+         <right>
+            <Pane prefHeight="50.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
+         </right>
+         <left>
+            <Button id="header__back-button" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#goBack" prefHeight="50.0" prefWidth="100.0" styleClass="header__back-button" BorderPane.alignment="CENTER">
                <graphic>
-                  <ImageView fitHeight="20.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../Image/png-clipart-computer-icons-button-arrow-left-arrow-angle-hand.png" />
-                     </image>
-                  </ImageView>
+                  <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="35.0" prefWidth="100.0">
+                     <children>
+                        <ImageView fitHeight="35.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Image/icons8-less-than-orange-100.png" />
+                           </image>
+                        </ImageView>
+                        <Label id="header__back-label" prefHeight="35.0" prefWidth="40.0" text="Khác" />
+                     </children>
+                  </HBox>
                </graphic>
             </Button>
-            <Label prefHeight="30.0" prefWidth="500.0" text="                                                          Thông tin tài khoản " />
-            <Button mnemonicParsing="false" onAction="#saveUserInformation" prefHeight="30.0" prefWidth="50.0">
-               <graphic>
-                  <ImageView fitHeight="20.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../Image/pngtree-pencil-icon-png-image_1753753.jpg" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-         </children>
-      </HBox>
-      <VBox prefHeight="720.0" prefWidth="600.0">
+         </left>
+      </BorderPane>
+      <VBox alignment="TOP_CENTER" layoutY="50.0" prefHeight="700.0" prefWidth="600.0" spacing="5.0">
          <children>
-            <AnchorPane prefHeight="200.0" prefWidth="600.0">
+            <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="550.0">
                <children>
-                  <Label layoutX="10.0" layoutY="36.0" prefHeight="36.0" prefWidth="100.0" text="ID" />
-                  <TextField fx:id="id" layoutX="90.0" layoutY="36.0" prefHeight="36.0" prefWidth="500.0" />
+                  <Label minWidth="-Infinity" prefHeight="36.0" prefWidth="110.0" styleClass="infor__label" text="ID">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Region prefHeight="200.0" prefWidth="200.0" />
+                  <TextField fx:id="id" minWidth="-Infinity" prefHeight="36.0" prefWidth="420.0" />
                </children>
-            </AnchorPane>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+               <VBox.margin>
+                  <Insets top="50.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="550.0">
                <children>
-                  <Label layoutX="10.0" layoutY="36.0" prefHeight="36.0" prefWidth="100.0" text="Email" />
-                  <TextField fx:id="email" layoutX="90.0" layoutY="36.0" prefHeight="36.0" prefWidth="500.0" />
+                  <Label minWidth="-Infinity" prefHeight="36.0" prefWidth="110.0" styleClass="infor__label" text="Email">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Region prefHeight="200.0" prefWidth="200.0" />
+                  <TextField fx:id="email" minWidth="-Infinity" prefHeight="36.0" prefWidth="420.0" />
                </children>
-            </AnchorPane>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+            </HBox>
+            <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="550.0">
                <children>
-                  <Label layoutX="10.0" layoutY="36.0" prefHeight="36.0" prefWidth="100.0" text="First Name" />
-                  <TextField fx:id="firstName" layoutX="90.0" layoutY="36.0" prefHeight="36.0" prefWidth="500.0" />
+                  <Label minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="110.0" styleClass="infor__label" text="First Name">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Region prefHeight="200.0" prefWidth="200.0" />
+                  <TextField fx:id="firstName" minWidth="-Infinity" prefHeight="36.0" prefWidth="420.0" />
                </children>
-            </AnchorPane>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+            </HBox>
+            <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="550.0">
                <children>
-                  <Label layoutX="10.0" layoutY="36.0" prefHeight="36.0" prefWidth="100.0" text="Last Name" />
-                  <TextField fx:id="lastName" layoutX="90.0" layoutY="36.0" prefHeight="36.0" prefWidth="500.0" />
+                  <Label minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="110.0" styleClass="infor__label" text="Last Name">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Region prefHeight="200.0" prefWidth="200.0" />
+                  <TextField fx:id="lastName" minWidth="-Infinity" prefHeight="36.0" prefWidth="420.0" />
                </children>
-            </AnchorPane>
+            </HBox>
+            <Button mnemonicParsing="false" onAction="#saveUserInformation" prefWidth="300.0" styleClass="confirm__button" text="Lưu thay đổi" />
          </children>
       </VBox>
    </children>
-</VBox>
+</Pane>
