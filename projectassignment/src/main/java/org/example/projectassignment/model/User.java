@@ -13,17 +13,19 @@ public class User {
     private String email;
     private String password;
     private List<CalendarDay> listCalendarDays;
+    private List<CategoryUser> listCategoryUsers;
 
     public User(){
     }
 
-    public User(String id, String firstName, String lastName, String email, String password) {
+    public User(String id, String firstName, String lastName, String email, String password, List<CategoryUser> listCategoryUsers) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
         this.listCalendarDays = new ArrayList<>();
+        this.listCategoryUsers = listCategoryUsers;
     }
 
     public String getId() {
@@ -72,6 +74,14 @@ public class User {
 
     public void setListCalendarDays(List<CalendarDay> listCalendarDays) {
         this.listCalendarDays = listCalendarDays;
+    }
+
+    public List<CategoryUser> getListCategoryUsers() {
+        return listCategoryUsers;
+    }
+
+    public void setListCategoryUsers(List<CategoryUser> listCategoryUsers) {
+        this.listCategoryUsers = listCategoryUsers;
     }
 
     @Override

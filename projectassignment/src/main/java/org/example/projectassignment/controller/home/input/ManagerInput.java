@@ -25,7 +25,7 @@ public class ManagerInput {
         LocalDate date = datePicker.getValue();
         String note = noteField.getText();
         String amount = amountField.getText();
-        Transaction transaction = new Transaction(note, Long.parseLong(amount), category, typeTransaction);
+        Transaction transaction = new Transaction(note, Long.parseLong(amount), category, typeTransaction, "0");
         CalendarDay foundDay = getCalendarInList(user.getListCalendarDays(), date);
         if (foundDay == null){
             List<Transaction> listTransaction = new ArrayList<>();

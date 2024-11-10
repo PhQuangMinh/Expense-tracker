@@ -10,7 +10,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import org.example.projectassignment.controller.auth.ManagerSignUp;
+import org.example.projectassignment.controller.category.ManagerCategory;
 import org.example.projectassignment.controller.firebase.FirebaseUser;
+import org.example.projectassignment.model.CategoryUser;
 import org.example.projectassignment.model.User;
 import org.example.projectassignment.view.auth.signin.SignIn;
 
@@ -51,33 +53,39 @@ public class SignUp {
 
     private FirebaseUser firebaseUser;
 
-    public void init(List<User> listUsers){
+    private ManagerCategory managerCategory;
+
+    public void init(List<User> listUsers, ManagerCategory managerCategory){
+        this.managerCategory = managerCategory;
         inform.setVisible(false);
         this.listUsers = listUsers;
         managerSignUp = new ManagerSignUp();
         firebaseUser = new FirebaseUser();
         signUp.setOnAction(event -> signUpAction());
-        signIn.setOnMouseClicked(event -> signInAction());
+        signIn.setOnMouseClicked(event -> {
+            try {
+                signInAction();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
 
-    private void signInAction() {
+    private void signInAction() throws IOException {
         FXMLLoader loader = new FXMLLoader(SignIn.class.getResource("SignIn.fxml"));
-        try {
-            Parent root = loader.load();
-            SignIn signIn = loader.getController();
-            pane.getChildren().removeAll();
-            pane.getChildren().setAll(root);
-            signIn.init(listUsers);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        Parent root = loader.load();
+        SignIn signIn = loader.getController();
+        pane.getChildren().removeAll();
+        pane.getChildren().setAll(root);
+        signIn.init(listUsers, managerCategory);
     }
 
 
     private void signUpAction(){
         int checkValid = managerSignUp.checkValid(listUsers, firstName, lastName, email, password, confirmPassword);
         if (checkValid == 0){
-            User user = new User(String.valueOf(listUsers.size()), firstName.getText(), lastName.getText(), email.getText(), password.getText());
+            User user = new User(String.valueOf(listUsers.size()), firstName.getText(), lastName.getText(), email.getText(),
+                    password.getText(), managerCategory.initListUserSignUp());
             listUsers.add(user);
             firebaseUser.saveUser(listUsers);
             inform.setTextFill(Color.GREEN);

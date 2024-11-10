@@ -2,11 +2,19 @@ package org.example.projectassignment.controller.auth;
 
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import org.example.projectassignment.controller.firebase.FirebaseCategory;
+import org.example.projectassignment.model.CategoryUser;
 import org.example.projectassignment.model.User;
 
 import java.util.List;
 
 public class ManagerSignUp {
+    private FirebaseCategory firebaseCategory;
+
+    public ManagerSignUp(){
+        firebaseCategory = new FirebaseCategory();
+    }
+
     private boolean checkText(TextField firstName, TextField lastName, TextField email, PasswordField password, PasswordField confirmPassword){
         return firstName.getText().isEmpty() || lastName.getText().isEmpty() || email.getText().isEmpty()
                 || password.getText().isEmpty() || confirmPassword.getText().isEmpty();

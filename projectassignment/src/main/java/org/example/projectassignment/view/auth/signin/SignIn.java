@@ -9,11 +9,13 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
+import org.example.projectassignment.controller.category.ManagerCategory;
 import org.example.projectassignment.view.feature.FeatureSelection;
 import org.example.projectassignment.model.User;
 import org.example.projectassignment.view.auth.signup.SignUp;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -37,7 +39,10 @@ public class SignIn {
 
     List<User> listUsers;
 
-    public void init(List<User> listUsers){
+    private ManagerCategory managerCategory;
+
+    public void init(List<User> listUsers, ManagerCategory managerCategory){
+        this.managerCategory = managerCategory;
         this.listUsers = listUsers;
         inform.setVisible(false);
         signIn.setOnAction(event -> {
@@ -47,26 +52,31 @@ public class SignIn {
                 throw new RuntimeException(e);
             }
         });
-        signUp.setOnMouseClicked(event -> signUpAction());
         inform.setVisible(false) ;
+        signUp.setOnMouseClicked(event -> {
+            try {
+                signUpAction();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
 
-    private void signUpAction(){
+    private void signUpAction() throws IOException {
         FXMLLoader loader = new FXMLLoader(SignUp.class.getResource("signup.fxml"));
-        try {
-            Parent root = loader.load();
-            pane.getChildren().clear();
-            pane.getChildren().add(root);
-            SignUp signUpController = loader.getController();
-            signUpController.init(listUsers);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        Parent root = loader.load();
+        pane.getChildren().clear();
+        pane.getChildren().add(root);
+        SignUp signUpController = loader.getController();
+        signUpController.init(listUsers, managerCategory);
     }
 
     private void signInAction() throws IOException {
         for (User user : listUsers){
             if(user.getEmail().equals(email.getText()) && user.getPassword().equals(password.getText())){
+                if (user.getListCalendarDays() == null){
+                    user.setListCalendarDays(new ArrayList<>());
+                }
                 homePage(user);
                 return;
             }
