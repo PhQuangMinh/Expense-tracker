@@ -1,7 +1,7 @@
 .parent{
     -fx-background-color: black;
 }
-.button{
+.sign__button{
     -fx-font-weight: bold;
     -fx-background-radius: 10px;
     -fx-background-color: black;
@@ -15,7 +15,7 @@
      -fx-text-fill: #fff;
       -fx-style: border;
 }
-.button:hover{
+.sign__button:hover{
     -fx-background-color: transparent;
     -fx-background-radius: 3px;
     -fx-text-fill: #000;

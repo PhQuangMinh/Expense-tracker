@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -8,49 +13,51 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="pane" prefHeight="750.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.projectassignment.view.auth.signup.SignUp">
-   <TextField fx:id="firstName" layoutX="75.0" layoutY="258.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="200.0" promptText="First name">
-      <font>
-         <Font size="20.0" />
-      </font>
-   </TextField>
-   <TextField fx:id="lastName" layoutX="325.0" layoutY="258.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="200.0" promptText="Last name">
-      <font>
-         <Font size="20.0" />
-      </font>
-   </TextField>
-   <TextField fx:id="email" layoutX="75.0" layoutY="323.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="449.0" promptText="example@gmail.com">
-      <font>
-         <Font size="20.0" />
-      </font>
-   </TextField>
-   <PasswordField fx:id="password" layoutX="75.0" layoutY="388.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="450.0" promptText="Password">
-      <font>
-         <Font size="20.0" />
-      </font>
-   </PasswordField>
-   <PasswordField fx:id="confirmPassword" layoutX="75.0" layoutY="453.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="450.0" promptText="Confirm password">
-      <font>
-         <Font size="20.0" />
-      </font>
-   </PasswordField>
-   <Label layoutX="170.0" layoutY="693.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.82" prefHeight="25.0" prefWidth="153.0" text="Have an account?">
-      <font>
-         <Font name="Arial" size="18.0" />
-      </font>
-   </Label>
-   <Label fx:id="signIn" layoutX="324.0" layoutY="694.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="label-button" text="Sign in">
-      <font>
-         <Font name="Ebrima Bold" size="18.0" />
-      </font>
-      <cursor>
-         <Cursor fx:constant="HAND" />
-      </cursor>
-   </Label>
-   <Button fx:id="signUp" cache="true" layoutX="236.0" layoutY="550.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="128.0" text="Sign Up" textFill="WHITE">
-      <font>
-         <Font name="Arial Bold" size="20.0" />
-      </font>
-   </Button>
-   <Label fx:id="inform" layoutX="75.0" layoutY="500.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="200.0" />
+<AnchorPane fx:id="pane" prefHeight="750.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.projectassignment.view.auth.signup.SignUp">
+   <children>
+      <TextField fx:id="firstName" layoutX="75.0" layoutY="258.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="200.0" promptText="First name">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="lastName" layoutX="325.0" layoutY="258.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="200.0" promptText="Last name">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="email" layoutX="75.0" layoutY="323.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="449.0" promptText="example@gmail.com">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </TextField>
+      <PasswordField fx:id="password" layoutX="75.0" layoutY="388.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="450.0" promptText="Password">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </PasswordField>
+      <PasswordField fx:id="confirmPassword" layoutX="75.0" layoutY="453.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="450.0" promptText="Confirm password">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </PasswordField>
+      <Label layoutX="170.0" layoutY="693.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.82" prefHeight="25.0" prefWidth="153.0" text="Have an account?">
+         <font>
+            <Font name="Arial" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="signIn" layoutX="324.0" layoutY="694.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="label-button" text="Sign in">
+         <font>
+            <Font name="Ebrima Bold" size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Label>
+      <Button fx:id="signUp" cache="true" layoutX="236.0" layoutY="550.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="128.0" styleClass="sign__button" text="Sign Up" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="20.0" />
+         </font>
+      </Button>
+      <Label fx:id="inform" layoutX="75.0" layoutY="500.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="200.0" />
+   </children>
 </AnchorPane>
