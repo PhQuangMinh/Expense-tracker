@@ -1,4 +1,4 @@
-package org.example.projectassignment.controller ;
+package org.example.projectassignment.view.feature.input.income;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -6,9 +6,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import org.example.projectassignment.common.TypeTransaction;
+import org.example.projectassignment.model.user.ManagerUser;
 import org.example.projectassignment.view.feature.FeatureSelection;
 import org.example.projectassignment.controller.home.input.ManagerInput;
-import org.example.projectassignment.model.User;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -35,12 +35,12 @@ public class Income {
 
     private FeatureSelection featureSelection;
 
-    private User user;
+    private ManagerUser managerUser;
 
     private ManagerInput managerInput;
 
-    public void init(FeatureSelection featureSelection, User user) {
-        this.user = user;
+    public void init(ManagerUser managerUser, FeatureSelection featureSelection) {
+        this.managerUser = managerUser;
         managerInput = new ManagerInput();
         this.featureSelection = featureSelection;
     }
@@ -49,6 +49,7 @@ public class Income {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/projectassignment/view/EditCategoryRevenue.fxml"));
         Parent root = loader.load();
         EditCategoryIncome controller = loader.getController();
+        controller.init(managerUser);
         controller.updateCategory(incomeCategories);
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
@@ -63,7 +64,7 @@ public class Income {
 
     @FXML
     private void handleSubmit(){
-        managerInput.addTransaction(datePicker, noteField, amountField, selectedCategory, user, TypeTransaction.INCOME);
+        managerInput.addTransaction(datePicker, noteField, amountField, selectedCategory, managerUser.getUser(), TypeTransaction.INCOME);
     }
     @FXML
     private void submitAction(){

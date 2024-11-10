@@ -11,20 +11,18 @@ import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 import org.example.projectassignment.InitApp;
 import org.example.projectassignment.Main;
-import org.example.projectassignment.model.User;
-import org.example.projectassignment.view.EditInformation;
-import org.example.projectassignment.view.EditPassword;
+import org.example.projectassignment.model.user.ManagerUser;
+import org.example.projectassignment.view.feature.other.informationuser.EditInformation;
+import org.example.projectassignment.view.feature.other.informationuser.EditPassword;
 import org.example.projectassignment.view.feature.other.annualreport.AnnualReportScene;
 
 import java.io.IOException;
 import java.util.Optional;
 
 public class OtherScene {
-    private Stage stage ;
-
-    private User user ;
-    public void init(User user){
-        this.user = user ;
+    private ManagerUser managerUser;
+    public void init(ManagerUser managerUser){
+        this.managerUser = managerUser;
     }
 
     @FXML
@@ -32,7 +30,7 @@ public class OtherScene {
         FXMLLoader loader = new FXMLLoader(Main.class.getResource("view/feature/other/annualreport/AnnualReportScene.fxml"));
         Parent root = loader.load();
         AnnualReportScene annualReportScene = loader.getController();
-        annualReportScene.init(user);
+        annualReportScene.init(managerUser);
         Scene scene = new Scene(root);
         Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         currentStage.setScene(scene);
@@ -42,7 +40,7 @@ public class OtherScene {
         FXMLLoader loader = new FXMLLoader(Main.class.getResource("view/feature/other/editinformation/EditInformation.fxml"));
         Parent root = loader.load();
         EditInformation editInformation = loader.getController();
-        editInformation.init(user) ;
+        editInformation.init(managerUser) ;
         Scene scene = new Scene(root);
         Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         currentStage.setScene(scene);
@@ -52,7 +50,7 @@ public class OtherScene {
         FXMLLoader loader = new FXMLLoader(Main.class.getResource("view/feature/other/editpassword/EditPassword.fxml"));
         Parent root = loader.load();
         EditPassword editPassword = loader.getController();
-        editPassword.init(user) ;
+        editPassword.init(managerUser) ;
         Scene scene = new Scene(root);
         Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         currentStage.setScene(scene);
@@ -65,7 +63,7 @@ public class OtherScene {
         alert.setContentText("Bạn có chắc chắn đăng xuất không ?");
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK) {
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             InitApp initApp = new InitApp();
             initApp.init(stage);
         }

@@ -1,9 +1,8 @@
-package org.example.projectassignment.model;
+package org.example.projectassignment.model.user.informationuser;
 
 import org.example.projectassignment.common.TypeTransaction;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 
 public class Transaction implements Serializable {
     private String note;
