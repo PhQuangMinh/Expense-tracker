@@ -5,7 +5,7 @@ import com.google.auth.oauth2.GoogleCredentials;
 import com.google.cloud.storage.Blob;
 import com.google.cloud.storage.Storage;
 import com.google.cloud.storage.StorageOptions;
-import org.example.projectassignment.model.CategoryModel;
+import org.example.projectassignment.model.category.CategoryModel;
 
 import javafx.scene.image.Image;
 import java.io.FileInputStream;

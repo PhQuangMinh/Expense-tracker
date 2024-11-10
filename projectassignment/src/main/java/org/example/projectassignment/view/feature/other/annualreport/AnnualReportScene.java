@@ -16,7 +16,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import org.example.projectassignment.Main;
-import org.example.projectassignment.model.User;
+import org.example.projectassignment.model.user.ManagerUser;
 import org.example.projectassignment.view.feature.FeatureSelection;
 
 import java.io.IOException;
@@ -44,15 +44,15 @@ public class AnnualReportScene {
     @FXML
     private Label detailAvgAmount;
 
-    private User user ;
+    private ManagerUser managerUser;
     private YearMonth currentYearMonth;
     private LinkedHashMap<String, Long> expenseMap;
     private LinkedHashMap<String, Long> incomeMap;
     private LinkedHashMap<String, Long> sumMap;
     private int flagFeature;
 
-    public void init(User user){
-        this.user = user ;
+    public void init(ManagerUser managerUser){
+        this.managerUser = managerUser;
     }
     private void loadDataCurrentYear() {
         Random random = new Random();
@@ -109,12 +109,12 @@ public class AnnualReportScene {
     private void onActionButtonBackToOtherScene(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(Main.class.getResource("view/feature/FeatureSelection.fxml"));
         Parent root = loader.load();
-        FeatureSelection featureSelectionController = loader.getController();
-        featureSelectionController.init(user);
+        FeatureSelection featureSelection = loader.getController();
+        featureSelection.init(managerUser);
         Scene scene = new Scene(root, 600.0, 750.0);
         Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         currentStage.setScene(scene);
-        featureSelectionController.switchOtherTab();
+        featureSelection.switchOtherTab();
     }
 
     private void setupMonthYearSelector() {

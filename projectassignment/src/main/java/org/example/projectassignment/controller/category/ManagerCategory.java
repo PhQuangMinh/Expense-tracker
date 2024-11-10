@@ -2,8 +2,8 @@ package org.example.projectassignment.controller.category;
 
 import javafx.scene.image.Image;
 import org.example.projectassignment.controller.firebase.FirebaseCategory;
-import org.example.projectassignment.model.CategoryModel;
-import org.example.projectassignment.model.CategoryUser;
+import org.example.projectassignment.model.category.CategoryModel;
+import org.example.projectassignment.model.category.CategoryUser;
 
 import java.io.IOException;
 import java.util.ArrayList;

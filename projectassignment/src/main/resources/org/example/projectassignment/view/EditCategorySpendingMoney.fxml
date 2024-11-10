@@ -11,11 +11,11 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.projectassignment.controller.EditCategoryExpense">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.projectassignment.view.feature.input.expense.EditCategoryExpense">
    <children>
       <AnchorPane prefHeight="30.0" prefWidth="600.0">
          <children>
-            <Button fx:id="backButton" layoutY="-1.0" mnemonicParsing="false" onAction="#onActionSwitchSpendingMoney" prefHeight="30.0" prefWidth="50.0">
+            <Button fx:id="backButton" layoutY="-1.0" mnemonicParsing="false" onAction="#onActionSwitchExpense" prefHeight="30.0" prefWidth="50.0">
                <graphic>
                   <ImageView fitHeight="73.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
                      <image>

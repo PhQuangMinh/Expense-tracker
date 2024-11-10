@@ -1,4 +1,4 @@
-package org.example.projectassignment.view;
+package org.example.projectassignment.view.feature.calendar;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -8,7 +8,7 @@ import javafx.util.StringConverter;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public class ChooseDateController {
+public class ChooseDate {
     @FXML
     private DatePicker datePicker;
 

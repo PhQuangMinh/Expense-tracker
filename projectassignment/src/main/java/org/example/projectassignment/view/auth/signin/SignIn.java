@@ -10,8 +10,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import org.example.projectassignment.controller.category.ManagerCategory;
+import org.example.projectassignment.model.user.ManagerUser;
 import org.example.projectassignment.view.feature.FeatureSelection;
-import org.example.projectassignment.model.User;
+import org.example.projectassignment.model.user.informationuser.User;
 import org.example.projectassignment.view.auth.signup.SignUp;
 
 import java.io.IOException;
@@ -92,6 +93,7 @@ public class SignIn {
         pane.getChildren().clear();
         pane.getChildren().add(root);
         FeatureSelection featureSelect = loader.getController();
-        featureSelect.init(user);
+        ManagerUser managerUser = new ManagerUser(user, managerCategory);
+        featureSelect.init(managerUser);
     }
 }

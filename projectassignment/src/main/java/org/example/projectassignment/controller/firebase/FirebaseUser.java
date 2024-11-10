@@ -10,7 +10,7 @@ import com.google.auth.oauth2.GoogleCredentials;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import com.google.firebase.database.*;
-import org.example.projectassignment.model.User;
+import org.example.projectassignment.model.user.informationuser.User;
 
 
 public class FirebaseUser {

@@ -16,13 +16,13 @@ import org.example.projectassignment.Main;
 import org.example.projectassignment.common.Constant;
 import org.example.projectassignment.common.TypeTransaction;
 import org.example.projectassignment.controller.SelectorMonthYear;
-import org.example.projectassignment.model.CalendarDay;
+import org.example.projectassignment.model.user.informationuser.CalendarDay;
 import javafx.scene.control.Label;
 
 
 import javafx.geometry.Insets;
-import org.example.projectassignment.model.Transaction;
-import org.example.projectassignment.model.User;
+import org.example.projectassignment.model.user.ManagerUser;
+import org.example.projectassignment.model.user.informationuser.Transaction;
 
 import java.io.*;
 import java.time.LocalDate;
@@ -52,23 +52,18 @@ public class Calendar extends Pane {
 
     private YearMonth currentYearMonth = YearMonth.now();
 
-    private User user;
+    private ManagerUser managerUser;
 
     public Calendar(){
     }
 
-    public void init(User user){
-        this.user = user;
+    public void init(ManagerUser managerUser){
+        this.managerUser = managerUser;
         expenseHistory.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         flowPane.setVgap(0.5);
         updateLabelShowMonthYear();
         createWeekdaysHeader();
         updateCalendar();
-        for (CalendarDay day:user.getListCalendarDays()){
-            for(Transaction transaction:day.getListTransactions()){
-                System.out.println(transaction);
-            }
-        }
     }
 
     private StackPane setDay(String day){
@@ -159,7 +154,7 @@ public class Calendar extends Pane {
             for (int col = (row == 1) ? startDayOfWeek : 0; col < 7 && dayCounter <= daysInMonth; col++) {
                 LocalDate currentLocalDate = currentYearMonth.atDay(dayCounter);
                 String currentDate = String.format("%04d-%02d-%02d", currentLocalDate.getYear(), currentLocalDate.getMonthValue(), currentLocalDate.getDayOfMonth());
-                CalendarDay foundDay = user.getListCalendarDays().stream()
+                CalendarDay foundDay = managerUser.getUser().getListCalendarDays().stream()
                         .filter(cd -> cd.getDate().equals(currentDate))
                         .findFirst()
                         .orElse(null);
@@ -186,7 +181,7 @@ public class Calendar extends Pane {
         income.setText(String.valueOf(totalIncomeMonth));
         expense.setText(String.valueOf(totalExpenseMonth));
         total.setText(String.valueOf(totalIncomeMonth - totalExpenseMonth));
-        if (user.getListCalendarDays().isEmpty()){
+        if (managerUser.getUser().getListCalendarDays().isEmpty()){
             expenseHistory.setVisible(false);
         }
     }

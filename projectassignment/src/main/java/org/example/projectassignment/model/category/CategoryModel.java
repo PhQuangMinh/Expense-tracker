@@ -1,4 +1,4 @@
-package org.example.projectassignment.model;
+package org.example.projectassignment.model.category;
 
 import javafx.scene.image.Image;
 import org.jetbrains.annotations.NotNull;

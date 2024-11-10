@@ -3,8 +3,7 @@ package org.example.projectassignment.controller.auth;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import org.example.projectassignment.controller.firebase.FirebaseCategory;
-import org.example.projectassignment.model.CategoryUser;
-import org.example.projectassignment.model.User;
+import org.example.projectassignment.model.user.informationuser.User;
 
 import java.util.List;
 

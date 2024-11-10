@@ -1,4 +1,4 @@
-package org.example.projectassignment.controller;
+package org.example.projectassignment.view.feature.input.expense;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -6,9 +6,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import org.example.projectassignment.common.TypeTransaction;
+import org.example.projectassignment.model.user.ManagerUser;
 import org.example.projectassignment.view.feature.FeatureSelection;
 import org.example.projectassignment.controller.home.input.ManagerInput;
-import org.example.projectassignment.model.User;
 
 
 import javafx.fxml.FXMLLoader;
@@ -34,15 +34,15 @@ public class Expense {
 
     private FeatureSelection featureSelection;
 
-    private User user;
+    private ManagerUser managerUser;
 
     private ManagerInput managerInput;
 
     public static List<CustomButton> expenseCategories = new ArrayList<>();
 
-    public void init(User user, FeatureSelection featureSelection) {
+    public void init(ManagerUser managerUser, FeatureSelection featureSelection) {
         this.featureSelection = featureSelection;
-        this.user = user;
+        this.managerUser = managerUser;
         managerInput = new ManagerInput();
     }
 
@@ -51,6 +51,7 @@ public class Expense {
         FXMLLoader loader  = new  FXMLLoader(getClass().getResource("/org/example/projectassignment/view/EditCategorySpendingMoney.fxml"));
         Parent root = loader.load();
         EditCategoryExpense controller = loader.getController();
+        controller.init(managerUser);
         controller.updateCategorySpendingMoney(expenseCategories);
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow() ;
         Scene scene = new Scene(root) ;
@@ -65,7 +66,7 @@ public class Expense {
 
     @FXML
     private void handleSubmit(){
-        managerInput.addTransaction(datePicker, noteField, amountField, selectedCategory, user, TypeTransaction.EXPENSE);
+        managerInput.addTransaction(datePicker, noteField, amountField, selectedCategory, managerUser.getUser(), TypeTransaction.EXPENSE);
     }
     @FXML
     private void submitAction(){
