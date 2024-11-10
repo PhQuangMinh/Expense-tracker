@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.example.projectassignment.controller.category.ManagerCategory;
 import org.example.projectassignment.controller.firebase.FirebaseUser;
 import org.example.projectassignment.model.User;
 import org.example.projectassignment.view.auth.signin.SignIn;
@@ -25,10 +26,11 @@ public class InitApp {
             Platform.runLater(() -> {
                 FXMLLoader loader = new FXMLLoader(SignIn.class.getResource("signin.fxml"));
                 try {
+                    ManagerCategory managerCategory = new ManagerCategory();
                     Parent root = loader.load();
                     SignIn signIn = loader.getController();
-                    signIn.init(users);
-                    Scene scene = new Scene(root ,  600, 750);
+                    signIn.init(users, managerCategory);
+                    Scene scene = new Scene(root, 600, 750);
                     stage.setTitle("Sổ thu chi");
                     stage.setScene(scene);
                     stage.show();

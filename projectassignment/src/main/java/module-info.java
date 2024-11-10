@@ -15,6 +15,10 @@ module org.example.projectassignment {
     requires com.google.auth.oauth2;
     requires firebase.admin;
     requires com.google.auth;
+    requires google.cloud.storage;
+    requires gax;
+    requires google.cloud.core;
+    requires google.cloud.firestore;
 
     opens org.example.projectassignment to javafx.fxml;
     opens org.example.projectassignment.view to javafx.fxml;
@@ -22,6 +26,12 @@ module org.example.projectassignment {
     opens org.example.projectassignment.view.auth.signin to javafx.fxml;
     opens org.example.projectassignment.view.auth.signup to javafx.fxml;
     opens org.example.projectassignment.model to firebase.admin;
+    opens org.example.projectassignment.controller.auth to javafx.fxml;
+    opens org.example.projectassignment.view.feature.calendar to javafx.fxml;
+    opens org.example.projectassignment.view.feature to javafx.fxml;
+    opens org.example.projectassignment.view.feature.other to javafx.fxml;
+    opens org.example.projectassignment.view.feature.other.annualreport to javafx.fxml;
+    opens org.example.projectassignment.view.feature.report to javafx.fxml;
 
     exports org.example.projectassignment;
     exports org.example.projectassignment.view;
@@ -31,16 +41,9 @@ module org.example.projectassignment {
     exports org.example.projectassignment.view.auth.signup;
     exports org.example.projectassignment.controller.auth;
     exports org.example.projectassignment.common;
-    opens org.example.projectassignment.controller.auth to javafx.fxml;
     exports org.example.projectassignment.view.feature.calendar;
-    opens org.example.projectassignment.view.feature.calendar to javafx.fxml;
-
-    opens org.example.projectassignment.view.feature to javafx.fxml;
     exports org.example.projectassignment.view.feature;
-    opens org.example.projectassignment.view.feature.other to javafx.fxml;
     exports org.example.projectassignment.view.feature.other to javafx.fxml;
-    opens org.example.projectassignment.view.feature.other.annualreport to javafx.fxml;
     exports org.example.projectassignment.view.feature.other.annualreport to javafx.fxml;
-    opens org.example.projectassignment.view.feature.report to javafx.fxml;
     exports org.example.projectassignment.view.feature.report to javafx.fxml;
 }
