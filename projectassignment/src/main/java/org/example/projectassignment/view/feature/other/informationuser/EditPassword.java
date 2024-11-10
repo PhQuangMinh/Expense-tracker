@@ -1,4 +1,4 @@
-package org.example.projectassignment.view;
+package org.example.projectassignment.view.feature.other.informationuser;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,21 +10,30 @@ import javafx.scene.control.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import org.example.projectassignment.Main;
+import org.example.projectassignment.model.user.ManagerUser;
 import org.example.projectassignment.view.feature.FeatureSelection;
-import org.example.projectassignment.model.User;
 
 import java.io.IOException;
 
 public class EditPassword {
-    @FXML PasswordField currentPassword ;
-    @FXML TextField newPassword ;
-    @FXML TextField repeatPassword ;
-    @FXML Label labelCurrentPassword ;
-    @FXML Label labelNewPassword ;
-    @FXML Label labelRepeatPassword ;
-    private User user ;
-    public void init(User user){
-        this.user = user ;
+    @FXML
+    private PasswordField currentPassword ;
+
+    @FXML
+    private TextField newPassword ;
+
+    @FXML
+    private TextField repeatPassword ;
+    @FXML
+    private Label labelCurrentPassword ;
+    @FXML
+    private Label labelNewPassword ;
+    @FXML
+    private Label labelRepeatPassword ;
+
+    private ManagerUser managerUser;
+    public void init(ManagerUser managerUser){
+        this.managerUser = managerUser;
     }
 
     @FXML
@@ -32,7 +41,7 @@ public class EditPassword {
         FXMLLoader loader = new FXMLLoader(Main.class.getResource("view/feature/FeatureSelection.fxml")) ;
         Parent root = loader.load() ;
         FeatureSelection featureSelection = loader.getController() ;
-        featureSelection.init(user);
+        featureSelection.init(managerUser);
         Scene scene = new Scene(root , 600 , 750 ) ;
         Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow() ;
         currentStage.setScene(scene);
@@ -42,7 +51,7 @@ public class EditPassword {
     @FXML
     private void savePassword(ActionEvent event) throws IOException {
         clearAllErrors();
-        if(currentPassword.getText().isEmpty() || !user.getPassword().equals(currentPassword.getText())){
+        if(currentPassword.getText().isEmpty() || !managerUser.getUser().getPassword().equals(currentPassword.getText())){
             setInform(labelCurrentPassword , "Mật khẩu hiện tại không chính xác")  ;
             return ;
 
@@ -56,7 +65,7 @@ public class EditPassword {
             setInform(labelNewPassword , "Mật khẩu của bạn phải dài từ 8 đến 16 ký tự, \nphải chứa ít nhất 1 ký tự viết hoa, 1 ký tự viết \nthường, 1 ký tự số và 1 ký tự đặc biệt") ;
             return ;
         }
-        this.user.setPassword(newPassword.getText());
+        this.managerUser.getUser().setPassword(newPassword.getText());
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setHeaderText("Thay đổi mật khẩu thành công!");
         if(alert.showAndWait().get()  == ButtonType.OK){

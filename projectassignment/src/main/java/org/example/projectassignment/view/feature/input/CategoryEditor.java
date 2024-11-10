@@ -1,4 +1,4 @@
-package org.example.projectassignment.controller;
+package org.example.projectassignment.view.feature.input;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -16,17 +16,21 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import org.example.projectassignment.model.CustomButton;
+import org.example.projectassignment.model.user.ManagerUser;
+import org.example.projectassignment.view.feature.input.expense.EditCategoryExpense;
+import org.example.projectassignment.view.feature.input.income.EditCategoryIncome;
+
 import java.io.IOException;
 import static org.example.projectassignment.common.Constant.SIZE_BUTTON;
-import static org.example.projectassignment.controller.EditCategoryExpense.addSpendingMoney;
-import static org.example.projectassignment.controller.EditCategoryExpense.editSpendingMoney;
-import static org.example.projectassignment.controller.Income.incomeCategories;
-import static org.example.projectassignment.controller.Expense.expenseCategories ;
-import static org.example.projectassignment.controller.EditCategoryIncome.addRevenue;
-import static org.example.projectassignment.controller.EditCategoryIncome.editRevenue;
+import static org.example.projectassignment.view.feature.input.expense.EditCategoryExpense.addSpendingMoney;
+import static org.example.projectassignment.view.feature.input.expense.EditCategoryExpense.editSpendingMoney;
+import static org.example.projectassignment.view.feature.input.income.Income.incomeCategories;
+import static org.example.projectassignment.view.feature.input.expense.Expense.expenseCategories ;
+import static org.example.projectassignment.view.feature.input.income.EditCategoryIncome.addRevenue;
+import static org.example.projectassignment.view.feature.input.income.EditCategoryIncome.editRevenue;
 
 
-public class EditButton {
+public class CategoryEditor {
     @FXML
     private TextField nameButton ;
     @FXML
@@ -35,6 +39,12 @@ public class EditButton {
     private CustomButton customButton;
     private Image image ;
     private Stage stage ;
+
+    private ManagerUser managerUser;
+
+    public void init(ManagerUser managerUser) {
+        this.managerUser = managerUser;
+    }
 
     @FXML
     private void deleteButton(ActionEvent event) throws IOException {
@@ -121,6 +131,7 @@ public class EditButton {
         Parent root = loader.load();
         EditCategoryIncome controller = loader.getController();
         controller.updateCategory(incomeCategories);
+        controller.init(managerUser);
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
@@ -133,6 +144,7 @@ public class EditButton {
         Parent root = loader.load();
         EditCategoryExpense controller = loader.getController();
         controller.updateCategorySpendingMoney(expenseCategories);
+        controller.init(managerUser);
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);

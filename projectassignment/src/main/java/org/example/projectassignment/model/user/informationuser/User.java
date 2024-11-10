@@ -1,8 +1,7 @@
-package org.example.projectassignment.model;
+package org.example.projectassignment.model.user.informationuser;
 
-import org.example.projectassignment.common.TypeTransaction;
+import org.example.projectassignment.model.category.CategoryUser;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 

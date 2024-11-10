@@ -1,6 +1,5 @@
-package org.example.projectassignment.model;
+package org.example.projectassignment.model.user.informationuser;
 
-import java.time.LocalDate;
 import java.util.List;
 
 public class CalendarDay {

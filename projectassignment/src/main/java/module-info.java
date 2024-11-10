@@ -34,7 +34,6 @@ module org.example.projectassignment {
     opens org.example.projectassignment.view.feature.report to javafx.fxml;
 
     exports org.example.projectassignment;
-    exports org.example.projectassignment.view;
     exports org.example.projectassignment.controller;
     exports org.example.projectassignment.model;
     exports org.example.projectassignment.view.auth.signin;
@@ -46,4 +45,18 @@ module org.example.projectassignment {
     exports org.example.projectassignment.view.feature.other to javafx.fxml;
     exports org.example.projectassignment.view.feature.other.annualreport to javafx.fxml;
     exports org.example.projectassignment.view.feature.report to javafx.fxml;
+    exports org.example.projectassignment.view.feature.input.income;
+    opens org.example.projectassignment.view.feature.input.income to javafx.fxml;
+    exports org.example.projectassignment.view.feature.input.expense;
+    opens org.example.projectassignment.view.feature.input.expense to javafx.fxml;
+    exports org.example.projectassignment.view.feature.input;
+    opens org.example.projectassignment.view.feature.input to javafx.fxml;
+    exports org.example.projectassignment.view.feature.other.informationuser;
+    opens org.example.projectassignment.view.feature.other.informationuser to javafx.fxml;
+    exports org.example.projectassignment.model.category;
+    opens org.example.projectassignment.model.category to firebase.admin;
+    exports org.example.projectassignment.model.user;
+    opens org.example.projectassignment.model.user to firebase.admin;
+    exports org.example.projectassignment.model.user.informationuser;
+    opens org.example.projectassignment.model.user.informationuser to firebase.admin;
 }

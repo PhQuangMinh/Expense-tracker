@@ -1,6 +1,4 @@
-package org.example.projectassignment.model;
-
-import javafx.scene.image.Image;
+package org.example.projectassignment.model.category;
 
 public class CategoryUser{
     private String idCategoryUser;

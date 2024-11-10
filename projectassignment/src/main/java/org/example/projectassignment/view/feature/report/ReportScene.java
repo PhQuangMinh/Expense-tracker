@@ -8,7 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
-import org.example.projectassignment.model.User;
+import org.example.projectassignment.model.user.ManagerUser;
 
 import java.time.YearMonth;
 import java.util.LinkedHashMap;
@@ -40,7 +40,7 @@ public class ReportScene {
     @FXML
     private VBox detailVBox;
 
-    private User user;
+    private ManagerUser managerUser;
     private YearMonth currentYearMonth;
     private LinkedHashMap<String, Long> expenseMap;
     private LinkedHashMap<String, Long> incomeMap;
@@ -49,9 +49,8 @@ public class ReportScene {
     private long totalSum;
     private int flagFeature;
 
-    public void init(User user){
-        this.user = user;
-        System.out.println(user);
+    public void init(ManagerUser managerUser){
+        this.managerUser = managerUser;
         currentYearMonth = YearMonth.now();
         flagFeature = 1;
         setActiveButton(buttonExpense, buttonIncome);

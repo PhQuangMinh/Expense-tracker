@@ -1,12 +1,11 @@
 package org.example.projectassignment.controller.home.input;
 
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
 import org.example.projectassignment.common.TypeTransaction;
-import org.example.projectassignment.model.CalendarDay;
-import org.example.projectassignment.model.Transaction;
-import org.example.projectassignment.model.User;
+import org.example.projectassignment.model.user.informationuser.CalendarDay;
+import org.example.projectassignment.model.user.informationuser.Transaction;
+import org.example.projectassignment.model.user.informationuser.User;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

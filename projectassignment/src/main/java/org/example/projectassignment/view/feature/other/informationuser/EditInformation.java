@@ -1,4 +1,4 @@
-package org.example.projectassignment.view;
+package org.example.projectassignment.view.feature.other.informationuser;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,23 +9,28 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.example.projectassignment.Main;
+import org.example.projectassignment.model.user.ManagerUser;
 import org.example.projectassignment.view.feature.FeatureSelection;
-import org.example.projectassignment.model.User ;
 
 import java.io.IOException;
 
 public class EditInformation {
-    private User user ;
-    @FXML TextField firstName ;
-    @FXML TextField lastName ;
-    @FXML TextField email ;
-    @FXML TextField id ;
-    public void init(User user ){
-        this.user = user ;
-        firstName.setText(user.getFirstName());
-        lastName.setText(user.getLastName());
-        email.setText(user.getEmail());
-        id.setText(user.getId());
+    private ManagerUser managerUser;
+
+    @FXML
+    private TextField firstName ;
+    @FXML
+    private TextField lastName ;
+    @FXML
+    private TextField email ;
+    @FXML
+    private TextField id ;
+    public void init(ManagerUser managerUser){
+        this.managerUser = managerUser;
+        firstName.setText(managerUser.getUser().getFirstName());
+        lastName.setText(managerUser.getUser().getLastName());
+        email.setText(managerUser.getUser().getEmail());
+        id.setText(managerUser.getUser().getId());
         id.setEditable(false);
         email.setEditable(false);
     }
@@ -40,8 +45,8 @@ public class EditInformation {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setHeaderText("Chỉnh sửa thành công!");
         alert.showAndWait();
-        user.setFirstName(firstName.getText());
-        user.setLastName(lastName.getText());
+        managerUser.getUser().setFirstName(firstName.getText());
+        managerUser.getUser().setLastName(lastName.getText());
         goBack(event);
     }
     @FXML
@@ -49,7 +54,7 @@ public class EditInformation {
         FXMLLoader loader = new FXMLLoader(Main.class.getResource("view/feature/FeatureSelection.fxml")) ;
         Parent root = loader.load() ;
         FeatureSelection featureSelection = loader.getController() ;
-        featureSelection.init(user);
+        featureSelection.init(managerUser);
         Scene scene = new Scene(root , 600 , 750 ) ;
         Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow() ;
         currentStage.setScene(scene);
