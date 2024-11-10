@@ -26,9 +26,9 @@ public class InitApp {
             Platform.runLater(() -> {
                 FXMLLoader loader = new FXMLLoader(SignIn.class.getResource("signin.fxml"));
                 try {
-                    ManagerCategory managerCategory = new ManagerCategory();
                     Parent root = loader.load();
                     SignIn signIn = loader.getController();
+                    ManagerCategory managerCategory = new ManagerCategory();
                     signIn.init(users, managerCategory);
                     Scene scene = new Scene(root, 600, 750);
                     stage.setTitle("Sổ thu chi");
