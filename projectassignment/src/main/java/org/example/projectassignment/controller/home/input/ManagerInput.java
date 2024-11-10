@@ -23,7 +23,7 @@ public class ManagerInput {
     public void addTransaction(DatePicker datePicker, TextField noteField, TextField amountField, String category, User user, TypeTransaction typeTransaction){
         LocalDate date = datePicker.getValue();
         String note = noteField.getText();
-        String amount = amountField.getText();
+        String amount = removeCommas(amountField.getText());
         Transaction transaction = new Transaction(note, Long.parseLong(amount), category, typeTransaction, "0");
         CalendarDay foundDay = getCalendarInList(user.getListCalendarDays(), date);
         if (foundDay == null){
@@ -34,9 +34,11 @@ public class ManagerInput {
             System.out.println(user);
             return;
         }
+        System.out.println("nhap thanh cong");
         foundDay.getListTransactions().add(transaction);
-        noteField.clear();
-        amountField.clear();
-        datePicker.setValue(null);
+
+    }
+    private String removeCommas(String input){
+        return input.replace("," , "") ;
     }
 }
