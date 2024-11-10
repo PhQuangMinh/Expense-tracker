@@ -16,12 +16,17 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import org.example.projectassignment.Main;
+import org.example.projectassignment.common.TypeTransaction;
 import org.example.projectassignment.model.user.ManagerUser;
+import org.example.projectassignment.model.user.informationuser.CalendarDay;
+import org.example.projectassignment.model.user.informationuser.Transaction;
+import org.example.projectassignment.model.user.informationuser.User;
 import org.example.projectassignment.view.feature.FeatureSelection;
 
 import java.io.IOException;
 import java.time.YearMonth;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.stream.IntStream;
@@ -45,7 +50,9 @@ public class AnnualReportScene {
     private Label detailAvgAmount;
 
     private ManagerUser managerUser;
+    private User user ;
     private YearMonth currentYearMonth;
+    private List<CalendarDay> listCalendarDays;
     private LinkedHashMap<String, Long> expenseMap;
     private LinkedHashMap<String, Long> incomeMap;
     private LinkedHashMap<String, Long> sumMap;
@@ -53,21 +60,43 @@ public class AnnualReportScene {
 
     public void init(ManagerUser managerUser){
         this.managerUser = managerUser;
+        this.user = managerUser.getUser();
+        listCalendarDays = user.getListCalendarDays();
+        currentYearMonth = YearMonth.now();
+        flagFeature = 1;
+        setActiveButton(button1, button2, button3);
+        updateNaviYearLabel();
+        setupMonthYearSelector();
+        loadDataCurrentYear();
+        updateBarChart(expenseMap);
+        updateDetailInforScrollpane(expenseMap);
     }
+
     private void loadDataCurrentYear() {
         Random random = new Random();
         expenseMap = new LinkedHashMap<>();
         incomeMap = new LinkedHashMap<>();
         sumMap = new LinkedHashMap<>();
+        for (int i = 1; i <= 12; i++) {
+            expenseMap.put(String.format("T%02d", i), 0L);
+            incomeMap.put(String.format("T%02d", i), 0L);
+            sumMap.put(String.format("T%02d", i), 0L);
+        }
 
-        for (int i = 1; i <= 12; i++) {
-            expenseMap.put("T" + i, (long) (random.nextInt(10000001)));
-        }
-        for (int i = 1; i <= 12; i++) {
-            incomeMap.put("T" + i, (long) (random.nextInt(10000001)));
-        }
-        for (int i = 1; i <= 12; i++) {
-            sumMap.put("T" + i, (long) (random.nextInt(20000001) - 10000000));
+        for (CalendarDay calendarDay : listCalendarDays) {
+            if (calendarDay.getDate().substring(0,4).equals(String.valueOf(currentYearMonth.getYear()))) {
+                String month = "T" + calendarDay.getDate().substring(5,7);
+                List<Transaction> listTransactions = calendarDay.getListTransactions();
+                for (Transaction transaction : listTransactions) {
+                    if (transaction.getTypeTransaction() == TypeTransaction.EXPENSE) {
+                        expenseMap.put(month, expenseMap.get(month) + transaction.getAmount());
+                        sumMap.put(month, sumMap.get(month) - transaction.getAmount());
+                    } else if (transaction.getTypeTransaction() == TypeTransaction.INCOME) {
+                        incomeMap.put(month, incomeMap.get(month) + transaction.getAmount());
+                        sumMap.put(month, sumMap.get(month) + transaction.getAmount());
+                    }
+                }
+            }
         }
     }
 
@@ -235,20 +264,6 @@ public class AnnualReportScene {
     }
 
     public void initialize() {
-        currentYearMonth = YearMonth.now();
 
-        flagFeature = 1;
-
-        setActiveButton(button1, button2, button3);
-
-        updateNaviYearLabel();
-
-        setupMonthYearSelector();
-
-        loadDataCurrentYear();
-
-        updateBarChart(expenseMap);
-
-        updateDetailInforScrollpane(expenseMap);
     }
 }
