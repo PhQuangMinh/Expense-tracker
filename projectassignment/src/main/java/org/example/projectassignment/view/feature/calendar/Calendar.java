@@ -1,233 +1,362 @@
 package org.example.projectassignment.view.feature.calendar;
 
 
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
-import org.example.projectassignment.Main;
-import org.example.projectassignment.common.Constant;
-import org.example.projectassignment.common.TypeTransaction;
-import org.example.projectassignment.controller.SelectorMonthYear;
-import org.example.projectassignment.model.user.informationuser.CalendarDay;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
-
-
-import javafx.geometry.Insets;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.*;
+import org.example.projectassignment.common.TypeTransaction;
+import org.example.projectassignment.controller.home.input.ManagerInput;
 import org.example.projectassignment.model.user.ManagerUser;
+import org.example.projectassignment.model.user.informationuser.CalendarDay;
 import org.example.projectassignment.model.user.informationuser.Transaction;
+import org.example.projectassignment.model.user.informationuser.User;
 
-import java.io.*;
 import java.time.LocalDate;
 import java.time.YearMonth;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.IntStream;
 
 public class Calendar extends Pane {
     @FXML
-    private GridPane gridPaneCalendar;
-
+    private Label naviTimeLabel;
     @FXML
-    private ScrollPane expenseHistory;
-
+    private ComboBox<Integer> monthComboBox;
     @FXML
-    private FlowPane flowPane;
-
+    private ComboBox<Integer> yearComboBox;
     @FXML
-    private Label income;
-
+    private Pane selectTimeOverlay;
     @FXML
-    private Label expense;
-
+    private GridPane calendarGridPane;
     @FXML
-    private Label total;
-
+    private VBox detailVBox;
     @FXML
-    private Label labelShowYearMonth;
+    private Pane modifyOverlay;
+    @FXML
+    private DatePicker modifyDatePicker;
+    @FXML
+    private TextField modifyNote;
+    @FXML
+    private TextField modifyAmount;
+    @FXML
+    private Label detailHeaderIncome;
+    @FXML
+    private Label detailHeaderExpense;
+    @FXML
+    private Label detailHeaderSum;
 
-    private YearMonth currentYearMonth = YearMonth.now();
 
     private ManagerUser managerUser;
+    private User user;
+    private List<CalendarDay> listCalendarDays;
+    private List<CalendarDay> listCalendarDaysCurrentMonth;
+    private YearMonth currentYearMonth;
+    private long totalExpense;
+    private long totalIncome;
+    private long totalSum;
+    private String idTransactionModifying;
+    private String dateTransactionModifying;
+    private String categoryModifying;
+    private TypeTransaction typeTransactionModifying;
+    private String idCategoryModifying;
+    ManagerInput managerInput;
 
-    public Calendar(){
-    }
 
     public void init(ManagerUser managerUser){
         this.managerUser = managerUser;
-        expenseHistory.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
-        flowPane.setVgap(0.5);
-        updateLabelShowMonthYear();
-        createWeekdaysHeader();
+        this.user = managerUser.getUser();
+        managerInput = new ManagerInput();
+        listCalendarDays = user.getListCalendarDays();
+        currentYearMonth = YearMonth.now();
+        loadDataCurrentMonth();
+        updateNaviTimeLabel();
         updateCalendar();
+        updateDetail();
+        setupTimeSelector();
     }
 
-    private StackPane setDay(String day){
-        StackPane cell = new StackPane();
-        Label dayLabel = new Label();
-        if (Integer.parseInt(day)==8){
-            dayLabel.setText("CN");
+    private void loadDataCurrentMonth() {
+        listCalendarDaysCurrentMonth = new ArrayList<>();
+        for (CalendarDay calendarDay : listCalendarDays) {
+            if (calendarDay.getDate().substring(0,7).equals(currentYearMonth.toString())) {
+                listCalendarDaysCurrentMonth.add(calendarDay);
+            }
         }
-        else dayLabel.setText("T" + day);
-        cell.setPadding(new Insets(5));
-        cell.getChildren().add(dayLabel);
-        StackPane.setAlignment(dayLabel, Pos.CENTER);
-        cell.setStyle("-fx-border-color: black; -fx-border-width: 1; -fx-border-style: solid;");
-        return cell;
     }
 
-    private StackPane setCalendarDay(LocalDate localDate, long incomeDay, long expenseDay){
-        StackPane cell = new StackPane();
-        cell.setPadding(new Insets(5));
+    private void updateWhenHasTimeChanged() {
+        loadDataCurrentMonth();
+        updateNaviTimeLabel();
+        updateCalendar();
+        updateDetail();
+    }
 
-        Label dayLabel = new Label(String.valueOf(localDate.getDayOfMonth()));
+    private void updateDetail() {
+        detailVBox.getChildren().clear();
+        totalExpense = 0;
+        totalIncome = 0;
+        totalSum = 0;
+        for (CalendarDay calendarDay : listCalendarDaysCurrentMonth) {
+            if (!calendarDay.getDate().substring(0,7).equals(currentYearMonth.toString())) continue;
+            HBox hBoxTitle = new HBox();
+            hBoxTitle.setMinSize(600, 20);
+            hBoxTitle.setMaxSize(600, 20);
+            hBoxTitle.setAlignment(Pos.CENTER);
+
+            DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            LocalDate date = LocalDate.parse(calendarDay.getDate(), inputFormatter);
+            Label dateLabel = new Label(String.format("%s (%s)",date.format(outputFormatter), date.getDayOfWeek().toString()));
+            dateLabel.setStyle("-fx-font-size: 16px; -fx-padding: 0 0 0 10px");
+
+            Region spacerMid = new Region();
+            HBox.setHgrow(spacerMid, Priority.ALWAYS);
+
+            long totalDay = 0;
+            for (Transaction transaction : calendarDay.getListTransactions()) {
+                if (transaction.getTypeTransaction() == TypeTransaction.EXPENSE) totalDay -= transaction.getAmount();
+                else totalDay += transaction.getAmount();
+            }
+            Label totalAmountLabel = new Label(String.format("%,dđ", totalDay));
+            totalAmountLabel.setStyle("-fx-font-size: 16px; -fx-padding: 0 10px 0 0");
+
+            hBoxTitle.getChildren().addAll(dateLabel, spacerMid, totalAmountLabel);
+            hBoxTitle.setStyle("-fx-border-width: 0 0 1px 0; -fx-border-color: darkgrey; -fx-border-style: solid;");
+            detailVBox.getChildren().add(hBoxTitle);
+
+            for (Transaction transaction : calendarDay.getListTransactions()) {
+                HBox hBox = new HBox();
+                hBox.setMinSize(600, 50);
+                hBox.setMaxSize(600, 50);
+                hBox.setAlignment(Pos.CENTER);
+
+                Label cateLabel = new Label(transaction.getCategory());
+                cateLabel.setStyle("-fx-font-size: 20px; -fx-padding: 0 0 0 10px");
+
+                Region spacerMid1 = new Region();
+                HBox.setHgrow(spacerMid1, Priority.ALWAYS);
+
+                Label amountLabel = new Label(String.format("%,dđ", transaction.getAmount()));
+                if (transaction.getTypeTransaction() == TypeTransaction.EXPENSE) {
+                    amountLabel.setStyle("-fx-font-size: 20px; -fx-text-fill: #fe5d02");
+                    totalExpense += transaction.getAmount();
+                }
+                else {
+                    amountLabel.setStyle("-fx-font-size: 20px; -fx-text-fill: #0592d3");
+                    totalIncome += transaction.getAmount();
+                }
+
+                Label greatThanLabel = new Label(">");
+                greatThanLabel.setStyle("-fx-font-size: 20px; -fx-padding: 0 10px 0 10px");
+
+                hBox.getChildren().addAll(cateLabel, spacerMid1, amountLabel, greatThanLabel);
+                hBox.setStyle("-fx-border-width: 0 0 1px 0; -fx-border-color: darkgrey; -fx-border-style: solid; -fx-background-color: white");
+                detailVBox.getChildren().add(hBox);
+
+                hBox.setOnMouseClicked(event -> {
+                    modifyOverlay.setVisible(true);
+                    modifyDatePicker.setValue(date);
+                    modifyNote.setText(transaction.getNote());
+                    modifyAmount.setText(String.valueOf(transaction.getAmount()));
+                    idTransactionModifying = transaction.getIdTransaction();
+                    categoryModifying = transaction.getCategory();
+                    idCategoryModifying = transaction.getIdCategory();
+                    typeTransactionModifying = transaction.getTypeTransaction();
+                    dateTransactionModifying = calendarDay.getDate();
+                });
+            }
+        }
+        totalSum = totalIncome - totalExpense;
+        detailHeaderExpense.setText(String.format("%,d", totalExpense));
+        detailHeaderIncome.setText(String.format("%,d", totalIncome));
+        detailHeaderSum.setText(String.format("%,d", totalSum));
+        if (totalSum < 0) {
+            detailHeaderSum.setStyle("-fx-text-fill: #fe5d02; -fx-font-size: 20px;");
+        } else {
+            detailHeaderSum.setStyle("-fx-text-fill: #0592d3; -fx-font-size: 20px;");
+        }
+    }
+
+    private StackPane setCalendarCell(int day, long incomeDay, long expenseDay){
+        StackPane cell = new StackPane();
+        cell.setMaxSize(80, 50);
+        cell.setMinSize(80, 50);
+
+        Label dayLabel = new Label(String.valueOf(day));
         dayLabel.setStyle("-fx-font-size: 14;");
         dayLabel.setAlignment(Pos.TOP_LEFT);
         cell.getChildren().add(dayLabel);
         StackPane.setAlignment(dayLabel, Pos.TOP_LEFT);
 
         if (incomeDay>0){
-            Label incomeLabel = new Label(String.valueOf(incomeDay));
-            incomeLabel.setStyle("-fx-font-size: 12; -fx-text-fill: green;-fx-font-weight: bold");
+            Label incomeLabel = new Label(String.format("%,d", incomeDay));
+            incomeLabel.setStyle("-fx-font-size: 12; -fx-text-fill: #0592d3;-fx-font-weight: bold");
             incomeLabel.setAlignment(Pos.CENTER_RIGHT);
             cell.getChildren().add(incomeLabel);
             StackPane.setAlignment(incomeLabel, Pos.CENTER_RIGHT);
         }
 
         if (expenseDay>0){
-            Label expenseLabel = new Label(String.valueOf(expenseDay));
-            expenseLabel.setStyle("-fx-font-size: 12; -fx-text-fill: red;-fx-font-weight: bold");
+            Label expenseLabel = new Label(String.format("%,d", expenseDay));
+            expenseLabel.setStyle("-fx-font-size: 12; -fx-text-fill: #fe5d02;-fx-font-weight: bold");
             expenseLabel.setAlignment(Pos.BOTTOM_RIGHT);
             cell.getChildren().add(expenseLabel);
             StackPane.setAlignment(expenseLabel, Pos.BOTTOM_RIGHT);
         }
-        cell.setStyle("-fx-border-color: black; -fx-border-width: 1; -fx-border-style: solid;");
-
         return cell;
     }
 
-    private String setTextDetailTransaction(Transaction transactionHistory){
-        return transactionHistory.getCategory() + " ".repeat(Math.max(0, 80)) +
-                transactionHistory.getAmount() + "đ";
-    }
-
-    private void setDateInHistory(LocalDate dateHistory){
-        Label dateHistoryLabel = new Label(String.valueOf(dateHistory));
-        dateHistoryLabel.setPrefSize(Constant.LABEL_CALENDAR_HISTORY_WIDTH, 20);
-        dateHistoryLabel.setStyle("-fx-font-size: 12px; -fx-font-weight: bold;-fx-background-color: #EEECEC;");
-        dateHistoryLabel.setStyle("-fx-border-color: black; " + "-fx-border-width: 2; " + "-fx-padding: 3; ");
-        flowPane.getChildren().add(dateHistoryLabel);
-    }
-
-    private void setTransactionInHistory(Transaction transactionHistory){
-        Label transactionHistoryLabel = new Label(setTextDetailTransaction(transactionHistory));
-//        expenseHistory.setPrefSize(Constant.LABEL_CALENDAR_HISTORY_WIDTH, 30);
-        expenseHistory.setStyle("-fx-font-size: 18px; -fx-font-weight: bold;");
-        flowPane.getChildren().addAll(transactionHistoryLabel);
-    }
-
-    private void createWeekdaysHeader() {
-        // Thêm các tên ngày vào hàng 0
-        for (int col = 0; col < 7; col++) {
-            gridPaneCalendar.add(setDay(String.valueOf(col+2)), col, 0); // Thêm vào hàng 0
-        }
-    }
 
     private void updateCalendar() {
-        long totalIncomeMonth = 0, totalExpenseMonth = 0;
-
-        // Xóa các ô cũ trong lịch
-        gridPaneCalendar.getChildren().removeIf(node -> GridPane.getRowIndex(node) > 0);
+        //xoa cell neu hang > 0
+        calendarGridPane.getChildren().removeIf(node -> {
+            Integer rowIndex = GridPane.getRowIndex(node);
+            return rowIndex != null && rowIndex > 0;
+        });
 
         // Lấy ngày đầu tiên của tháng và tính vị trí bắt đầu
         LocalDate firstDayOfMonth = currentYearMonth.atDay(1);
         int daysInMonth = currentYearMonth.lengthOfMonth();
-        int startDayOfWeek = firstDayOfMonth.getDayOfWeek().getValue() - 1; // Chuyển thành 0 cho thứ Hai
+        int startDayOfWeek = firstDayOfMonth.getDayOfWeek().getValue() - 1;
 
         // Điền các ngày vào bảng
         int dayCounter = 1;
         for (int row = 1; dayCounter <= daysInMonth; row++) {
             for (int col = (row == 1) ? startDayOfWeek : 0; col < 7 && dayCounter <= daysInMonth; col++) {
-                LocalDate currentLocalDate = currentYearMonth.atDay(dayCounter);
-                String currentDate = String.format("%04d-%02d-%02d", currentLocalDate.getYear(), currentLocalDate.getMonthValue(), currentLocalDate.getDayOfMonth());
-                CalendarDay foundDay = managerUser.getUser().getListCalendarDays().stream()
-                        .filter(cd -> cd.getDate().equals(currentDate))
+                LocalDate currentLocalDateCalendar = currentYearMonth.atDay(dayCounter);
+                String currentDateCalendar = currentLocalDateCalendar.toString();
+                CalendarDay foundDay = listCalendarDaysCurrentMonth.stream()
+                        .filter(cd -> cd.getDate().equals(currentDateCalendar))
                         .findFirst()
                         .orElse(null);
                 if (foundDay != null) {
-                    setDateInHistory(currentLocalDate);
-                    long totalIncomeDay = 0, totalExpenseDay = 0;
-                    for (Transaction transaction:foundDay.getListTransactions()){
-                        setTransactionInHistory(transaction);
-                        if (transaction.getTypeTransaction()== TypeTransaction.EXPENSE){
+                    long totalExpenseDay = 0;
+                    long totalIncomeDay = 0;
+                    for (Transaction transaction : foundDay.getListTransactions()){
+                        if (transaction.getTypeTransaction() == TypeTransaction.EXPENSE){
                             totalExpenseDay += transaction.getAmount();
+                        } else if (transaction.getTypeTransaction() == TypeTransaction.INCOME) {
+                            totalIncomeDay += transaction.getAmount();
                         }
-                        else totalIncomeDay += transaction.getAmount();
                     }
-                    gridPaneCalendar.add(setCalendarDay(currentLocalDate, totalIncomeDay, totalExpenseDay), col, row);
-                    totalIncomeMonth += totalIncomeDay;
-                    totalExpenseMonth += totalExpenseDay;
+                    calendarGridPane.add(setCalendarCell(dayCounter, totalIncomeDay, totalExpenseDay), col, row);
                 } else {
-                    gridPaneCalendar.add(setCalendarDay(currentLocalDate, 0, 0), col, row);
+                    calendarGridPane.add(setCalendarCell(dayCounter, 0, 0), col, row);
                 }
                 dayCounter++;
             }
         }
-
-        income.setText(String.valueOf(totalIncomeMonth));
-        expense.setText(String.valueOf(totalExpenseMonth));
-        total.setText(String.valueOf(totalIncomeMonth - totalExpenseMonth));
-        if (managerUser.getUser().getListCalendarDays().isEmpty()){
-            expenseHistory.setVisible(false);
-        }
     }
 
-    private void updateLabelShowMonthYear() {
+    private void updateNaviTimeLabel() {
         int month = currentYearMonth.getMonthValue();
         int year = currentYearMonth.getYear();
         int daysInMonth = currentYearMonth.lengthOfMonth();
-        labelShowYearMonth.setText(String.format("%d/%d (1/%d - %d/%d)", month, year, month, daysInMonth, month));
+        naviTimeLabel.setText(String.format("%d/%d (1/%d - %d/%d)", month, year, month, daysInMonth, month));
+    }
+
+    private void setupTimeSelector() {
+        monthComboBox.setItems(FXCollections.observableArrayList(IntStream.rangeClosed(1, 12).boxed().toList()));
+        yearComboBox.setItems(FXCollections.observableArrayList(IntStream.rangeClosed(2000, 2100).boxed().toList()));
+        monthComboBox.setValue(currentYearMonth.getMonthValue());
+        yearComboBox.setValue(currentYearMonth.getYear());
+
+        selectTimeOverlay.setVisible(false);
     }
 
     @FXML
     private void onActionButtonDecreaseMonth() {
         currentYearMonth = currentYearMonth.minusMonths(1);
-        updateLabelShowMonthYear();
-        updateCalendar();
+        updateWhenHasTimeChanged();
     }
 
     @FXML
     private void onActionButtonIncreaseMonth() {
         currentYearMonth = currentYearMonth.plusMonths(1);
-        updateLabelShowMonthYear();
-        updateCalendar();
+        updateWhenHasTimeChanged();
     }
 
     @FXML
-    private void onMouseClickedLabelShowYearMonth() throws IOException {
-        FXMLLoader loader = new FXMLLoader(Main.class.getResource("view/SelectorYearMonth.fxml"));
-        Scene scene = new Scene(loader.load());
-
-        SelectorMonthYear popUpController = loader.getController();
-
-        Stage selectorYearMonthStage = new Stage();
-        selectorYearMonthStage.initModality(Modality.APPLICATION_MODAL);
-        selectorYearMonthStage.setTitle("Chọn Tháng/Năm");
-        selectorYearMonthStage.setScene(scene);
-        selectorYearMonthStage.showAndWait();
-
-        // Lấy YearMonth đã chọn từ controller
-        YearMonth selectedYearMonth = popUpController.getSelectedYearMonth();
-        if (selectedYearMonth != null) {
-            currentYearMonth = selectedYearMonth;
-            updateLabelShowMonthYear();
-            updateCalendar();
-        }
+    private void onMouseClickedNaviMonthYearLabel() {
+        selectTimeOverlay.setVisible(true);
     }
 
+    @FXML
+    private void onActionConfirmButton() {
+        currentYearMonth = YearMonth.of(yearComboBox.getValue(), monthComboBox.getValue());
+        updateWhenHasTimeChanged();
 
+        selectTimeOverlay.setVisible(false);
+    }
+
+    @FXML
+    private void onActionCancelButton() {
+        selectTimeOverlay.setVisible(false);
+    }
+
+    @FXML
+    private void onActionButtonBackToCalendar() {
+        modifyOverlay.setVisible(false);
+    }
+
+    @FXML
+    private void onActionButtonModifyConfirm() {
+        String date = modifyDatePicker.getValue().toString();
+        String note = modifyNote.getText().toString();
+        long amount = Long.parseLong(modifyAmount.getText().toString());
+        Transaction newTransaction = new Transaction(note, amount, categoryModifying, typeTransactionModifying, idCategoryModifying);
+        newTransaction.setIdTransaction(idTransactionModifying);
+
+        if (date.equals(dateTransactionModifying)) {
+            for (CalendarDay calendarDay : listCalendarDays) {
+                if (!calendarDay.getDate().equals(dateTransactionModifying)) continue;
+                for (int i = 0; i < calendarDay.getListTransactions().size(); i++) {
+                    Transaction transaction = calendarDay.getListTransactions().get(i);
+                    if (transaction.getIdTransaction().equals(idTransactionModifying)) {
+                        calendarDay.getListTransactions().set(i, newTransaction);
+                        break;
+                    }
+                }
+            }
+        } else {
+            for (CalendarDay calendarDay : listCalendarDays) {
+                if (!calendarDay.getDate().equals(dateTransactionModifying)) continue;
+                calendarDay.getListTransactions().removeIf(transaction -> transaction.getIdTransaction().equals(idTransactionModifying));
+            }
+            managerInput.addTransaction(modifyDatePicker, modifyNote, modifyAmount, categoryModifying, user, typeTransactionModifying);
+            for (int i = 0; i < listCalendarDays.size(); i++) {
+                if (listCalendarDays.get(i).getDate().equals(dateTransactionModifying)) {
+                    if (listCalendarDays.get(i).getListTransactions().size() == 0) listCalendarDays.remove(i);
+                }
+            }
+        }
+
+        modifyOverlay.setVisible(false);
+        loadDataCurrentMonth();
+        updateCalendar();
+        updateDetail();
+    }
+
+    @FXML
+    private void onActionButtonModifyDelete() {
+        for (CalendarDay calendarDay : listCalendarDays) {
+            if (!calendarDay.getDate().equals(dateTransactionModifying)) continue;
+            calendarDay.getListTransactions().removeIf(transaction -> transaction.getIdTransaction().equals(idTransactionModifying));
+        }
+        for (int i = 0; i < listCalendarDays.size(); i++) {
+            if (listCalendarDays.get(i).getDate().equals(dateTransactionModifying)) {
+                if (listCalendarDays.get(i).getListTransactions().size() == 0) listCalendarDays.remove(i);
+            }
+        }
+        modifyOverlay.setVisible(false);
+        loadDataCurrentMonth();
+        updateCalendar();
+        updateDetail();
+    }
 }
