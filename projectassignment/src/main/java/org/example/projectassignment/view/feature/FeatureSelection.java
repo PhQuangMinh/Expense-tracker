@@ -5,11 +5,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.layout.Pane;
 import org.example.projectassignment.Main;
+import org.example.projectassignment.view.feature.calendar.Calendar;
 import org.example.projectassignment.view.feature.input.expense.Expense;
 import org.example.projectassignment.view.feature.input.income.Income;
 import org.example.projectassignment.model.user.ManagerUser;
 import org.example.projectassignment.model.user.informationuser.User;
-import org.example.projectassignment.view.feature.calendar.Calendar;
 import org.example.projectassignment.view.feature.other.OtherScene;
 import org.example.projectassignment.view.feature.report.ReportScene;
 
@@ -58,7 +58,7 @@ public class FeatureSelection {
     }
     @FXML
     private void onActionButtonCalendar() throws IOException {
-        loadScreen("view/Calendar.fxml");
+        loadScreen("view/feature/calendar/Calendar.fxml");
         Calendar calendar = loader.getController();
         calendar.init(managerUser);
     }

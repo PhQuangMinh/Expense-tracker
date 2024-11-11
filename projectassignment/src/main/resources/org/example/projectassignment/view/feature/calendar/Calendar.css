@@ -1,0 +1,127 @@
+.container__stackpane {
+    -fx-background-color: white;
+}
+
+.header__hbox {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-background-color: #f1f0f0;
+    -fx-border-style: solid;
+    -fx-border-width: 0 0 1px 0;
+    -fx-border-color: darkgrey;
+}
+
+.navi-time__button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.navi-time__label {
+    -fx-background-color: #f1f0f0;
+    -fx-font-weight: bold;
+    -fx-font-family: "Arial";
+    -fx-font-size: 20px;
+    -fx-background-radius: 5px;
+}
+
+.navi-time__button:hover {
+    -fx-background-color: #f1f0f0;
+}
+
+.select-time__overlay {
+    -fx-background-color: rgba(0, 0, 0, 0.5);
+}
+
+.select-time__main {
+    -fx-background-color: white;
+}
+
+.select-year__header {
+    -fx-background-color: #f1f0f0;
+}
+
+.select-time__button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #fe5d02;
+    -fx-font-size: 20px;
+}
+
+.select-time__button:hover {
+    -fx-background-color: #DDDDDD;
+}
+
+.calendar__gridpane {
+    -fx-background-color: white;
+}
+
+.calendar__title-label {
+    /*-fx-background-color: #BBBBBB;*/
+    -fx-background-color: #fe5d02;
+    -fx-text-fill: white;
+    -fx-font-size: 15px;
+}
+
+.detail__scrollpane:focused {
+
+}
+
+.detail-header__hbox {
+    -fx-background-color: white;
+    -fx-border-style: solid;
+    -fx-border-width: 0 0 1px 0;
+    -fx-border-color: black;
+
+}
+
+.detail-header__label {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+
+.detail-header__expense {
+    -fx-text-fill: #fe5d02;
+    -fx-font-size: 20px;
+}
+
+.detail-header__income {
+    -fx-text-fill: #0592d3;
+    -fx-font-size: 20px;
+}
+
+.modify__header-borderpane {
+    -fx-border-width: 0 0 1px 0; /* Top, Right, Bottom, Left */
+    -fx-border-color: darkgrey; /* Đặt màu cho cạnh dưới */
+    -fx-border-style: solid; /* Kiểu viền là solid */
+    -fx-background-color: #f1f0f0;
+}
+
+.modify-header__label {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+
+.modify-header__back-label {
+    -fx-font-size: 16px;
+    -fx-text-fill: #fe5d02;
+}
+
+.modify-header__back-button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.modify-header__back-button:hover {
+    -fx-background-color: #DDDDDD;
+}
+
+.modify__button {
+    -fx-background-color: #fe5d02;
+    -fx-background-radius: 10px;
+    -fx-text-fill: white;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+
+.modify__overlay {
+    -fx-background-color: white;
+}
