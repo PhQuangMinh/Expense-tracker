@@ -10,6 +10,7 @@ import org.example.projectassignment.model.user.informationuser.User;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ManagerInput {
     public CalendarDay getCalendarInList(List<CalendarDay> listCalendars, LocalDate currentDate) {
@@ -28,6 +29,7 @@ public class ManagerInput {
         CalendarDay foundDay = getCalendarInList(user.getListCalendarDays(), date);
         if (foundDay == null){
             List<Transaction> listTransaction = new ArrayList<>();
+            transaction.setIdTransaction("0");
             listTransaction.add(transaction);
             CalendarDay calendarDay = new CalendarDay(String.valueOf(datePicker.getValue()), listTransaction);
             user.getListCalendarDays().add(calendarDay);
@@ -35,6 +37,7 @@ public class ManagerInput {
             return;
         }
         System.out.println("nhap thanh cong");
+        transaction.setIdTransaction(String.valueOf(Integer.parseInt(foundDay.getListTransactions().getLast().getIdTransaction())+1));
         foundDay.getListTransactions().add(transaction);
 
     }
