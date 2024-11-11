@@ -1,6 +1,8 @@
 package org.example.projectassignment;
 import javafx.application.Application;
 import javafx.stage.Stage;
+import org.example.projectassignment.view.utils.WaitStage;
+
 import java.io.IOException;
 public class Main extends Application {
     @Override

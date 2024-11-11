@@ -5,6 +5,7 @@ import org.example.projectassignment.common.TypeTransaction;
 import java.io.Serializable;
 
 public class Transaction implements Serializable {
+    private String idTransaction;
     private String note;
     private long amount;
     private String category;
@@ -60,6 +61,14 @@ public class Transaction implements Serializable {
 
     public void setIdCategory(String idCategory) {
         this.idCategory = idCategory;
+    }
+
+    public String getIdTransaction() {
+        return idTransaction;
+    }
+
+    public void setIdTransaction(String idTransaction) {
+        this.idTransaction = idTransaction;
     }
 
     @Override
