@@ -17,11 +17,11 @@
    <children>
       <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="700.0" prefWidth="600.0" styleClass="container-vbox">
          <children>
-            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="600.0" styleClass="header__hbox">
+            <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="600.0" styleClass="header__hbox">
                <children>
-                  <Label alignment="CENTER" prefHeight="35.0" prefWidth="200.0" text="Báo cáo" textAlignment="CENTER">
+                  <Label alignment="CENTER" prefHeight="35.0" prefWidth="200.0" styleClass="header__label" text="Báo cáo" textAlignment="CENTER">
                      <font>
-                        <Font size="20.0" />
+                        <Font name="System Bold" size="20.0" />
                      </font>
                   </Label>
                </children>

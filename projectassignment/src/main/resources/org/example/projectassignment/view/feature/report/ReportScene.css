@@ -9,6 +9,11 @@
     -fx-background-color: #f1f0f0;
 }
 
+.header__label {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+
 .navi-time__button {
     -fx-background-color: transparent;
     -fx-border-color: transparent;

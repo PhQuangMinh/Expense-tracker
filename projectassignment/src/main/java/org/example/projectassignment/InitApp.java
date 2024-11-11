@@ -39,9 +39,9 @@ public class InitApp {
                 }
                 stage.setOnCloseRequest(event -> {
                     firebaseUser.saveUser(users);
-                    for (User user : users) {
-                        System.out.println(user);
-                    }
+//                    for (User user : users) {
+//                        System.out.println(user);
+//                    }
                 });
             });
         });
