@@ -43,12 +43,14 @@ public class FeatureSelection {
         loadScreen("view/SpendingMoney.fxml");
         Expense expense = loader.getController();
         expense.init(managerUser, this);
+        expense.updateCategoryExpense();
     }
 
     public void switchIncomeTab() throws IOException {
         loadScreen("view/Revenue.fxml");
         Income income = loader.getController();
         income.init(managerUser, this);
+        income.updateCategoryIncome();
     }
 
     public void switchOtherTab() throws IOException {

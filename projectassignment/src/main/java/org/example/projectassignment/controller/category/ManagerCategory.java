@@ -35,4 +35,7 @@ public class ManagerCategory {
         }
         return listCategoryUsers;
     }
+    public List<CategoryModel> getListCategoryModels (){
+        return listCategoryModels;
+    }
 }

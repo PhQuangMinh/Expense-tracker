@@ -9,11 +9,11 @@
     -fx-style: border;
 }
 .button1{
-     -fx-font-weight: bold;
-     -fx-background-radius: 40px;
-     -fx-background-color: black;
-     -fx-text-fill: #fff;
-      -fx-style: border;
+    -fx-font-weight: bold;
+    -fx-background-radius: 40px;
+    -fx-background-color: black;
+    -fx-text-fill: #fff;
+    -fx-style: border;
 }
 .sign__button:hover{
     -fx-background-color: transparent;

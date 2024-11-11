@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -36,13 +33,13 @@
          </children></AnchorPane>
       <AnchorPane prefHeight="69.0" prefWidth="600.0">
          <children>
-            <Label layoutY="14.0" prefHeight="39.0" prefWidth="64.0" text="Tiền chi" />
+            <Label layoutY="14.0" prefHeight="39.0" prefWidth="64.0" text="Tiền thu" />
             <TextField fx:id="amountField" layoutX="64.0" layoutY="15.0" prefHeight="40.0" prefWidth="500.0" />
             <Label layoutY="65.0" text="Danh mục" />
          </children></AnchorPane>
       <ScrollPane prefHeight="600.0" prefWidth="600.0">
          <content>
-            <GridPane fx:id="GridPane" prefHeight="750.0" prefWidth="585.0">
+            <GridPane fx:id="incomeGridPane" prefHeight="750.0" prefWidth="585.0">
               <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -55,63 +52,6 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
-               <children>
-                  <Button fx:id="entertainmentButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleCategorySelection" prefHeight="100.0" prefWidth="100.0" text="Tiền lương">
-                     <graphic>
-                        <ImageView fitHeight="60.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@Image/pngtree-income-line-icon-vector-png-image_1769349.jpg" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button fx:id="shoppingButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleCategorySelection" prefHeight="100.0" prefWidth="100.0" text="Đầu tư " GridPane.columnIndex="1">
-                     <graphic>
-                        <ImageView fitHeight="60.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@Image/coinsfinancecapitalgoldincome-glyph-icon--vector-isolate-png_310129.jpg" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button fx:id="communicationFeeButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleCategorySelection" prefHeight="100.0" prefWidth="100.0" text="Thu nhập phụ" GridPane.columnIndex="2">
-                     <graphic>
-                        <ImageView fitHeight="60.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@Image/pngtree-income-line-icon-vector-png-image_1769349.jpg" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button fx:id="educationButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleCategorySelection" prefHeight="100.0" prefWidth="100.0" text="Tiền thưởng" GridPane.columnIndex="3">
-                     <graphic>
-                        <ImageView fitHeight="60.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@Image/images.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button fx:id="rentButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleCategorySelection" prefHeight="100.0" prefWidth="100.0" text="Thu nhập tạm thời" GridPane.rowIndex="1">
-                     <graphic>
-                        <ImageView fitHeight="60.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@Image/pngtree-income-icon-commerce-png-image_10803908.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button fx:id="cosmeticsButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleCategorySelection" prefHeight="100.0" prefWidth="100.0" text="Tiền phụ cấp" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                     <graphic>
-                        <ImageView fitHeight="60.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@Image/pngtree-piggy-bank-icon-image_1144350.jpg" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button fx:id="categoryEditor" contentDisplay="TOP" mnemonicParsing="false" onAction="#switchToEditCategoryIncome" prefHeight="100.0" prefWidth="100.0" text="Chỉnh sửa" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-               </children>
             </GridPane>
          </content>
       </ScrollPane>

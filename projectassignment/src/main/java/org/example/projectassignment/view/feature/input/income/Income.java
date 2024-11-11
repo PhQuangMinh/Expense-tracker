@@ -7,12 +7,17 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import org.example.projectassignment.common.TypeTransaction;
+import org.example.projectassignment.model.category.CategoryModel;
+import org.example.projectassignment.model.category.CategoryUser;
 import org.example.projectassignment.model.user.ManagerUser;
+import org.example.projectassignment.model.user.informationuser.User;
 import org.example.projectassignment.view.feature.FeatureSelection;
 import org.example.projectassignment.controller.home.input.ManagerInput;
 
@@ -22,6 +27,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.example.projectassignment.model.CustomButton;
+import org.example.projectassignment.view.feature.input.expense.Expense;
+
 import java.io.IOException;
 import java.net.URL;
 import java.text.NumberFormat;
@@ -50,6 +57,12 @@ public class Income implements Initializable {
 
     private ManagerInput managerInput;
 
+    @FXML
+    private GridPane incomeGridPane ;
+
+    private User user ;
+
+    private List <CustomButton> incomeCategory ;
     public void init(ManagerUser managerUser, FeatureSelection featureSelection) {
         this.managerUser = managerUser;
         managerInput = new ManagerInput();
@@ -87,7 +100,7 @@ public class Income implements Initializable {
             alert.showAndWait();
             return;
         }
-        managerInput.addTransaction(datePicker, noteField, amountField, selectedCategory, managerUser.getUser(), TypeTransaction.INCOME);
+        managerInput.addTransaction(datePicker, noteField, amountField, selectedCategory, managerUser.getUser(), TypeTransaction.   INCOME);
         noteField.clear();
         amountField.clear();
         datePicker.setValue(null);
@@ -150,5 +163,37 @@ public class Income implements Initializable {
         Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), e -> notificationStage.close()));
         timeline.setCycleCount(1);
         timeline.play();
+    }
+
+    public void updateCategoryIncome(){
+        CustomButton editButton = new CustomButton("Chỉnh sửa" ,null)  ;
+        editButton.setButton() ;
+        editButton.setAlignment(Pos.CENTER);
+        editButton.setContentDisplay(ContentDisplay.CENTER);
+        editButton.setOnAction(event ->{
+                    try{
+                        switchToEditCategoryIncome(event);
+                    }catch(IOException e){
+                        e.printStackTrace();}
+                }
+        );
+        FXMLLoader loader = new FXMLLoader(Expense.class.getResource("SpendingMoney.fxml"));
+        GridPane root = loader.getRoot();
+        incomeGridPane.getChildren().clear();
+        int row = 0, col = 0;
+        int limitColumn = 4 ;
+        for (CustomButton button : managerUser.getExpenseCategory()) {
+            button.setButton();
+            button.setOnAction(event -> {
+                handleCategorySelection(event);
+            });
+            incomeGridPane.add(button, col, row);
+            col++;
+            if (col == limitColumn) {
+                col = 0;
+                row++;
+            }
+        }
+        incomeGridPane.add(editButton, col, row);
     }
 }
