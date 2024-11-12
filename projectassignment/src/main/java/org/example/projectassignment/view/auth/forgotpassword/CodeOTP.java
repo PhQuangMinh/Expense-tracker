@@ -1,5 +1,6 @@
 package org.example.projectassignment.view.auth.forgotpassword;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,6 +18,7 @@ import org.example.projectassignment.model.user.informationuser.User;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 public class CodeOTP {
     @FXML
@@ -33,10 +35,20 @@ public class CodeOTP {
 
     private String codeOTPInput;
 
+    private final MailSender mailSender = new MailSender();
+
+    public void sendEmailAsync(String emailUser) {
+        CompletableFuture.supplyAsync(() -> mailSender.sendMail(emailUser)).thenAccept(codeOTPInput -> {
+        }).exceptionally(e -> {
+            Platform.runLater(e::printStackTrace);
+            return null;
+        }).thenRun(() -> {});
+    }
+
+
     public void init(String emailUser, List<User> listUsers, ManagerCategory managerCategory){
+        sendEmailAsync(emailUser);
         confirm.setVisible(false);
-        MailSender mailSender = new MailSender();
-        codeOTPInput = mailSender.sendMail(emailUser);
         submit.setOnAction(event -> {
             try {
                 verifyCodeOTP(event, emailUser, listUsers, managerCategory);

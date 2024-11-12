@@ -1,7 +1,6 @@
 package org.example.projectassignment.controller.category;
 
 import javafx.scene.image.Image;
-import org.example.projectassignment.controller.firebase.FirebaseCategory;
 import org.example.projectassignment.model.category.CategoryModel;
 import org.example.projectassignment.model.category.CategoryUser;
 
@@ -10,17 +9,19 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
 
 public class ManagerCategory {
     private final List<CategoryModel> listCategoryModels;
+
     private final Map<String, Image> mapCategory;
 
-    public ManagerCategory() throws IOException {
-        FirebaseCategory firebaseCategory = new FirebaseCategory();
+    public ManagerCategory() throws IOException, ExecutionException, InterruptedException {
+        CategoryLoader categoryLoader = new CategoryLoader();
         mapCategory = new HashMap<>();
-        listCategoryModels = firebaseCategory.getListCategory("category");
+        listCategoryModels = categoryLoader.getListCategoryModels();
+        System.out.println(listCategoryModels.size());
         for (CategoryModel categoryModel:listCategoryModels){
-            mapCategory.put(categoryModel.getIdCategory(), categoryModel.getImage());
             System.out.println(categoryModel);
         }
     }

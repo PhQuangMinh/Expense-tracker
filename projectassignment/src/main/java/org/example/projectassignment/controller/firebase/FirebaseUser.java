@@ -28,15 +28,16 @@ public class FirebaseUser {
 
     }
 
-    public CompletableFuture<ArrayList<User>> getUsers(){
-        CompletableFuture<ArrayList<User>> future = new CompletableFuture<>();
+
+    public CompletableFuture<List<User>> getUsers(){
+        CompletableFuture<List<User>> future = new CompletableFuture<>();
         try {
             initFirebase();
             DatabaseReference dataRef = FirebaseDatabase.getInstance().getReference("users");
             dataRef.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                    ArrayList<User> users = new ArrayList<>();
+                    List<User> users = new ArrayList<>();
                     for (DataSnapshot data : dataSnapshot.getChildren()) {
                         users.add(data.getValue(User.class));
                     }
