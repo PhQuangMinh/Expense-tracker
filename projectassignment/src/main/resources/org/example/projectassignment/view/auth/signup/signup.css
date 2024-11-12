@@ -2,6 +2,7 @@
 .parent {
     -fx-background-color: #ffffff; /* Nền trắng */
     -fx-padding: 20px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 5);
 }
 
 /* Tiêu đề */
@@ -34,12 +35,12 @@
 
 /* Khi TextField và PasswordField được focus */
 .text-field:focused, .password-field:focused {
-    -fx-border-color: #fe5d02; /* Cam đậm khi focus */
+    -fx-border-color: #d04a00; /* Cam rất đậm khi focus */
     -fx-border-width: 2px;
     -fx-effect: dropshadow(three-pass-box, rgba(254, 93, 2, 0.3), 0, 0, 0, 2);
 }
 
-/* Nút đăng nhập */
+/* Nút Sign Up */
 .sign__button {
     -fx-background-color: #fe5d02; /* Cam đậm */
     -fx-background-radius: 25px;
@@ -71,23 +72,16 @@
     -fx-translateY: 20;
 }
 
-/* Label quên mật khẩu */
-.forgot-password {
-    -fx-font-size: 14px;
-    -fx-text-fill: #fe5d02; /* Cam đậm */
-    -fx-cursor: hand;
-    -fx-transition: all 0.3s ease-in-out;
-    -fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.05), 1, 0, 0, 1);
+/* Label "Have an account?" */
+.label-info {
+    -fx-text-fill: #555555;
+    -fx-font-size: 18px;
     -fx-opacity: 0;
     -fx-translateY: 20;
+    -fx-transition: opacity 0.6s ease-out, translateY 0.6s ease-out;
 }
 
-.forgot-password:hover {
-    -fx-underline: true;
-    -fx-text-fill: #d04a00; /* Cam rất đậm khi hover */
-}
-
-/* Label đăng ký */
+/* Label "Sign in" */
 .label-button {
     -fx-font-size: 18px;
     -fx-text-fill: #fe5d02; /* Cam đậm */
@@ -111,7 +105,8 @@
 .parent .sign__button,
 .parent .forgot-password,
 .parent .label-button,
-.parent .inform-label {
+.parent .inform-label,
+.parent .label-info {
     -fx-opacity: 1;
     -fx-translateY: 0;
 }
@@ -128,7 +123,7 @@
     }
 }
 
-.label-header, .text-field, .password-field, .sign__button, .forgot-password, .label-button, .inform-label {
+.label-header, .text-field, .password-field, .sign__button, .forgot-password, .label-button, .inform-label, .label-info {
     -fx-opacity: 0;
     -fx-translateY: 20;
     -fx-transition: opacity 0.6s ease-out, translateY 0.6s ease-out;
@@ -146,7 +141,7 @@
     -fx-delay: 0.6s;
 }
 
-.forgot-password, .label-button {
+.label-info, .label-button {
     -fx-delay: 0.8s;
 }
 
@@ -161,7 +156,8 @@
 .parent .sign__button,
 .parent .forgot-password,
 .parent .label-button,
-.parent .inform-label {
+.parent .inform-label,
+.parent .label-info {
     -fx-opacity: 1;
     -fx-translateY: 0;
 }

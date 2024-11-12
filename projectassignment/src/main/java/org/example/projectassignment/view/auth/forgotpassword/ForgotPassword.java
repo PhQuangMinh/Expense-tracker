@@ -15,6 +15,7 @@ import org.example.projectassignment.controller.category.ManagerCategory;
 import org.example.projectassignment.model.user.informationuser.User;
 import org.example.projectassignment.view.auth.signin.SignIn;
 
+import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.util.List;
 
@@ -26,7 +27,7 @@ public class ForgotPassword {
     private Button sendCode;
 
     @FXML
-    private Button back;
+    private Label back;
 
     @FXML
     private Label confirm;
@@ -40,7 +41,7 @@ public class ForgotPassword {
                 throw new RuntimeException(e);
             }
         });
-        back.setOnAction(event -> {
+        back.setOnMouseClicked(event -> {
             try {
                 backToSignIn(listUsers, event, managerCategory);
             } catch (IOException e) {
@@ -76,7 +77,7 @@ public class ForgotPassword {
         }
     }
 
-    private void backToSignIn(List<User> listUsers, ActionEvent event, ManagerCategory managerCategory) throws IOException {
+    private void backToSignIn(List<User> listUsers, javafx.scene.input.MouseEvent event , ManagerCategory managerCategory) throws IOException {
         FXMLLoader loader = new FXMLLoader(SignIn.class.getResource("signin.fxml"));
         Parent root = loader.load();
         SignIn signIn = loader.getController();
@@ -85,5 +86,6 @@ public class ForgotPassword {
         currentStage.setScene(scene);
         signIn.init(listUsers, managerCategory);
     }
+
 
 }

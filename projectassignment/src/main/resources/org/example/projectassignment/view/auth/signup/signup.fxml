@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -13,39 +8,69 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="pane" prefHeight="750.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.projectassignment.view.auth.signup.SignUp">
+<AnchorPane fx:id="pane" prefHeight="750.0" prefWidth="600.0" styleClass="parent" stylesheets="@signup.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.projectassignment.view.auth.signup.SignUp">
    <children>
-      <TextField fx:id="firstName" layoutX="75.0" layoutY="258.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="200.0" promptText="First name">
+      <!-- Tiêu đề -->
+      <Label layoutX="245.0" layoutY="100.0" styleClass="label-header" text="Đăng Ký">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Label>
+
+      <!-- TextField Tên -->
+      <TextField fx:id="firstName" layoutX="75.0" layoutY="200.0" prefHeight="40.0" prefWidth="200.0" promptText="Tên" styleClass="text-field">
          <font>
             <Font size="20.0" />
          </font>
       </TextField>
-      <TextField fx:id="lastName" layoutX="325.0" layoutY="258.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="200.0" promptText="Last name">
+
+      <!-- TextField Họ -->
+      <TextField fx:id="lastName" layoutX="325.0" layoutY="200.0" prefHeight="40.0" prefWidth="200.0" promptText="Họ" styleClass="text-field">
          <font>
             <Font size="20.0" />
          </font>
       </TextField>
-      <TextField fx:id="email" layoutX="75.0" layoutY="323.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="449.0" promptText="example@gmail.com">
+
+      <!-- TextField Email -->
+      <TextField fx:id="email" layoutX="75.0" layoutY="270.0" prefHeight="40.0" prefWidth="450.0" promptText="example@gmail.com" styleClass="text-field">
          <font>
             <Font size="20.0" />
          </font>
       </TextField>
-      <PasswordField fx:id="password" layoutX="75.0" layoutY="388.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="450.0" promptText="Password">
+
+      <!-- PasswordField Mật khẩu -->
+      <PasswordField fx:id="password" layoutX="75.0" layoutY="340.0" prefHeight="40.0" prefWidth="450.0" promptText="Mật khẩu" styleClass="password-field">
          <font>
             <Font size="20.0" />
          </font>
       </PasswordField>
-      <PasswordField fx:id="confirmPassword" layoutX="75.0" layoutY="453.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="450.0" promptText="Confirm password">
+
+      <!-- PasswordField Xác nhận mật khẩu -->
+      <PasswordField fx:id="confirmPassword" layoutX="75.0" layoutY="410.0" prefHeight="40.0" prefWidth="450.0" promptText="Xác nhận mật khẩu" styleClass="password-field">
          <font>
             <Font size="20.0" />
          </font>
       </PasswordField>
-      <Label layoutX="170.0" layoutY="693.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.82" prefHeight="25.0" prefWidth="153.0" text="Have an account?">
+
+      <!-- Label thông báo lỗi -->
+      <Label fx:id="inform" layoutX="75.0" layoutY="470.0" prefHeight="20.0" prefWidth="450.0" styleClass="inform-label" text="" />
+
+      <!-- Nút Đăng Ký -->
+      <Button fx:id="signUp" layoutX="190.0" layoutY="520.0" prefHeight="50.0" prefWidth="220.0" styleClass="sign__button" text="Đăng Ký">
+         <font>
+            <Font name="Arial Bold" size="20.0" />
+         </font>
+      </Button>
+
+      <!-- Label "Bạn đã có tài khoản?" -->
+      <Label layoutX="150.0" layoutY="690.0" styleClass="label-info" text="Bạn đã có tài khoản?">
          <font>
             <Font name="Arial" size="18.0" />
          </font>
       </Label>
-      <Label fx:id="signIn" layoutX="324.0" layoutY="694.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="label-button" text="Sign in">
+
+      <!-- Label "Đăng nhập" -->
+      <Label fx:id="signIn" layoutX="320.0" layoutY="690.0" styleClass="label-button" text="Đăng nhập">
          <font>
             <Font name="Ebrima Bold" size="18.0" />
          </font>
@@ -53,11 +78,5 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Label>
-      <Button fx:id="signUp" cache="true" layoutX="236.0" layoutY="550.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="128.0" styleClass="sign__button" text="Sign Up" textFill="WHITE">
-         <font>
-            <Font name="Arial Bold" size="20.0" />
-         </font>
-      </Button>
-      <Label fx:id="inform" layoutX="75.0" layoutY="500.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="200.0" />
    </children>
 </AnchorPane>
