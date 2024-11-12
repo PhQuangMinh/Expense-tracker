@@ -4,6 +4,8 @@ import javafx.scene.control.ContentDisplay;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+import static org.example.projectassignment.common.Constant.SIZE_BUTTON;
+
 public class CustomButton extends Button {
     private String name ;
     private Image image ;
@@ -20,6 +22,8 @@ public class CustomButton extends Button {
         setText(this.name);
         setGraphic(graphic);
         setContentDisplay(ContentDisplay.TOP);
+        this.setPrefHeight(SIZE_BUTTON);
+        this.setPrefWidth(SIZE_BUTTON);
     }
     public String getName() {
         return name;

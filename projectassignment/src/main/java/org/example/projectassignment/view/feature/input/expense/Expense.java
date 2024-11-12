@@ -8,13 +8,20 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.StageStyle;
 import javafx.util.Callback;
 import javafx.util.Duration;
 import org.example.projectassignment.common.TypeTransaction;
+import org.example.projectassignment.controller.category.ManagerCategory;
+import org.example.projectassignment.model.category.CategoryModel;
+import org.example.projectassignment.model.category.CategoryUser;
 import org.example.projectassignment.model.user.ManagerUser;
+import org.example.projectassignment.model.user.informationuser.User;
 import org.example.projectassignment.view.feature.FeatureSelection;
 import org.example.projectassignment.controller.home.input.ManagerInput;
 
@@ -31,6 +38,8 @@ import java.text.NumberFormat;
 import java.time.LocalDate;
 import java.util.*;
 
+import static javafx.scene.control.ContentDisplay.CENTER;
+import static javafx.scene.control.ContentDisplay.TOP;
 
 
 public class Expense implements Initializable {
@@ -49,8 +58,13 @@ public class Expense implements Initializable {
 
     private ManagerInput managerInput;
 
-    public static List<CustomButton> expenseCategories = new ArrayList<>();
+    private User user ;
 
+    @FXML
+    private GridPane expenseGridPane ;
+
+    private List <CustomButton> expenseCategory ;
+    public static List<CustomButton> expenseCategories = new ArrayList<>();
     public void init(ManagerUser managerUser, FeatureSelection featureSelection) {
         this.featureSelection = featureSelection;
         this.managerUser = managerUser;
@@ -153,4 +167,37 @@ public class Expense implements Initializable {
         timeline.setCycleCount(1);
         timeline.play();
     }
+
+    public void updateCategoryExpense() throws IOException {
+        CustomButton editButton = new CustomButton("Chỉnh sửa" ,null)  ;
+        editButton.setButton() ;
+        editButton.setAlignment(Pos.CENTER);
+        editButton.setContentDisplay(ContentDisplay.CENTER);
+        editButton.setOnAction(event ->{
+            try{
+            switchToEditCategorySpendingMoney(event);
+            }catch(IOException e){
+            e.printStackTrace();}
+                }
+            );
+        FXMLLoader loader = new FXMLLoader(Expense.class.getResource("SpendingMoney.fxml"));
+        GridPane root = loader.getRoot();
+        expenseGridPane.getChildren().clear();
+        int row = 0, col = 0;
+        int limitColumn = 4 ;
+        for (CustomButton button : managerUser.getExpenseCategory()) {
+            button.setButton();
+            button.setOnAction(event -> {
+                    handleCategorySelection(event);
+            });
+            expenseGridPane.add(button, col, row);
+            col++;
+            if (col == limitColumn) {
+                col = 0;
+                row++;
+            }
+        }
+        expenseGridPane.add(editButton, col, row);
+    }
+
 }
