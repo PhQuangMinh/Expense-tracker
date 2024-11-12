@@ -150,7 +150,7 @@
        </Pane>
       <Pane fx:id="modifyOverlay" prefHeight="700.0" prefWidth="600.0" styleClass="modify__overlay" visible="false">
          <children>
-            <VBox spacing="10.0">
+            <VBox>
                <children>
                   <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="600.0" styleClass="modify__header-borderpane">
                      <center>
@@ -176,9 +176,9 @@
                         <Pane prefHeight="50.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
                      </right>
                   </BorderPane>
-                  <HBox alignment="CENTER" layoutY="121.0" prefHeight="50.0" prefWidth="600.0">
+                  <HBox alignment="CENTER" layoutY="121.0" prefHeight="50.0" prefWidth="600.0" styleClass="modify__hbox">
                      <children>
-                        <Label minHeight="-Infinity" minWidth="-Infinity" prefWidth="100.0" text="Ngày">
+                        <Label minHeight="-Infinity" minWidth="-Infinity" prefWidth="80.0" text="Ngày">
                            <font>
                               <Font name="System Bold" size="22.0" />
                            </font>
@@ -187,16 +187,19 @@
                            </HBox.margin>
                         </Label>
                         <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-                        <DatePicker fx:id="modifyDatePicker" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="400.0">
+                        <DatePicker fx:id="modifyDatePicker" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="440.0" styleClass="modify__textfield">
                            <HBox.margin>
                               <Insets right="20.0" />
                            </HBox.margin>
                         </DatePicker>
                      </children>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
                   </HBox>
-                  <HBox alignment="CENTER" layoutX="10.0" layoutY="60.0" prefHeight="50.0" prefWidth="600.0">
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="60.0" prefHeight="50.0" prefWidth="600.0" styleClass="modify__hbox">
                      <children>
-                        <Label minHeight="-Infinity" minWidth="-Infinity" prefWidth="100.0" text="Ghi chú">
+                        <Label minHeight="-Infinity" minWidth="-Infinity" prefWidth="80.0" text="Ghi chú">
                            <font>
                               <Font name="System Bold" size="22.0" />
                            </font>
@@ -205,16 +208,16 @@
                            </HBox.margin>
                         </Label>
                         <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-                        <TextField fx:id="modifyNote" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="400.0">
+                        <TextField fx:id="modifyNote" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="440.0" styleClass="modify__textfield">
                            <HBox.margin>
                               <Insets right="20.0" />
                            </HBox.margin>
                         </TextField>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" layoutX="10.0" layoutY="110.0" prefHeight="50.0" prefWidth="600.0">
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="110.0" prefHeight="50.0" prefWidth="600.0" styleClass="modify__hbox">
                      <children>
-                        <Label minHeight="-Infinity" minWidth="-Infinity" prefWidth="100.0" text="Số tiền">
+                        <Label minHeight="-Infinity" minWidth="-Infinity" prefWidth="80.0" text="Số tiền">
                            <font>
                               <Font name="System Bold" size="22.0" />
                            </font>
@@ -223,7 +226,7 @@
                            </HBox.margin>
                         </Label>
                         <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-                        <TextField fx:id="modifyAmount" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="400.0">
+                        <TextField fx:id="modifyAmount" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="440.0" styleClass="modify__textfield">
                            <HBox.margin>
                               <Insets right="20.0" />
                            </HBox.margin>
@@ -232,8 +235,8 @@
                   </HBox>
                </children>
             </VBox>
-            <Button layoutX="150.0" layoutY="331.0" mnemonicParsing="false" onAction="#onActionButtonModifyConfirm" prefWidth="300.0" styleClass="modify__button" text="Chỉnh sửa" />
-            <Button layoutX="150.0" layoutY="414.0" mnemonicParsing="false" onAction="#onActionButtonModifyDelete" prefWidth="300.0" styleClass="modify__button" text="Xoá bản ghi" />
+            <Button layoutX="150.0" layoutY="272.0" mnemonicParsing="false" onAction="#onActionButtonModifyConfirm" prefWidth="300.0" styleClass="modify__button" text="Chỉnh sửa" />
+            <Button layoutX="401.0" layoutY="629.0" mnemonicParsing="false" onAction="#onActionButtonModifyDelete" prefHeight="44.0" prefWidth="177.0" styleClass="modify__button" text="Xoá bản ghi" />
          </children>
       </Pane>
    </children>

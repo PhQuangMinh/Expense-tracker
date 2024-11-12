@@ -122,6 +122,20 @@
     -fx-font-weight: bold;
 }
 
+.modify__button:hover {
+    -fx-background-color: #fe9402;
+}
+
 .modify__overlay {
     -fx-background-color: white;
+}
+
+.modify__textfield {
+    -fx-font-size: 20px;
+}
+
+.modify__hbox {
+    -fx-border-width: 0 0 1px 0; /* Top, Right, Bottom, Left */
+    -fx-border-color: darkgrey; /* Đặt màu cho cạnh dưới */
+    -fx-border-style: solid; /* Kiểu viền là solid */
 }
