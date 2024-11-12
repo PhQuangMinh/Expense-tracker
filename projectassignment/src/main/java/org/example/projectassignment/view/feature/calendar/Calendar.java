@@ -1,6 +1,8 @@
 package org.example.projectassignment.view.feature.calendar;
 
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
@@ -13,12 +15,14 @@ import org.example.projectassignment.model.user.informationuser.CalendarDay;
 import org.example.projectassignment.model.user.informationuser.Transaction;
 import org.example.projectassignment.model.user.informationuser.User;
 
+import java.text.NumberFormat;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.stream.IntStream;
 
 public class Calendar extends Pane {
@@ -77,6 +81,7 @@ public class Calendar extends Pane {
         updateCalendar();
         updateDetail();
         setupTimeSelector();
+        setupAmountField();
     }
 
     private void loadDataCurrentMonth() {
@@ -320,18 +325,7 @@ public class Calendar extends Pane {
         }
         String date = modifyDatePicker.getValue().toString();
         String note = modifyNote.getText().toString();
-        long amount;
-        try {
-            amount = Long.parseLong(modifyAmount.getText().toString());
-        } catch (NumberFormatException e) {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Cảnh báo");
-            alert.setHeaderText(null);
-            alert.setContentText("Số tiền không hợp lệ!");
-            alert.showAndWait();
-            return;
-        }
-        amount = Long.parseLong(modifyAmount.getText().toString());
+        long amount = Long.parseLong(removeCommas(modifyAmount.getText()));
         Transaction newTransaction = new Transaction(note, amount, categoryModifying, typeTransactionModifying, idCategoryModifying);
         newTransaction.setIdTransaction(idTransactionModifying);
 
@@ -380,5 +374,40 @@ public class Calendar extends Pane {
         loadDataCurrentMonth();
         updateCalendar();
         updateDetail();
+    }
+
+    private void setupAmountField() {
+        modifyAmount.textProperty().addListener(new ChangeListener<String>() {
+            private boolean changing = false;
+
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (changing) {
+                    return;
+                }
+                changing = true;
+                try{
+                    if(newValue == null || newValue.isEmpty()){
+                        modifyAmount.setText("") ;
+                    }
+                    else{
+                        String cleanString = removeCommas(newValue);
+                        double parsed = Double.parseDouble(cleanString) ;
+                        NumberFormat formatter = NumberFormat.getInstance(Locale.US);
+                        formatter.setGroupingUsed(true);
+                        String formattedString = formatter.format(parsed);
+                        modifyAmount.setText(formattedString);
+                    }
+                }
+                catch(NumberFormatException e){
+                    modifyAmount.setText(oldValue);
+                }
+                changing = false;
+            }
+        });
+    }
+
+    private String removeCommas(String input){
+        return input.replace("," , "") ;
     }
 }
