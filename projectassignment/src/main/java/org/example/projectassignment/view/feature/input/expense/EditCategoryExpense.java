@@ -72,7 +72,10 @@ public class EditCategoryExpense {
     }
     @FXML
     public void switchToAddButtonCategory(ActionEvent event) throws IOException{
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/org/example/projectassignment/view/AddButtonCategory.fxml")));
+        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/org/example/projectassignment/view/AddButtonCategory.fxml")));
+        Parent root = loader.load();
+        CategoryEditor categoryEditor = loader.getController();
+        categoryEditor.init(managerUser);
         stage = (Stage)((Node)event.getSource()).getScene().getWindow() ;
         Scene scene = new Scene(root) ;
         addSpendingMoney = true;
