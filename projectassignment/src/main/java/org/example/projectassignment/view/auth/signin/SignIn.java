@@ -10,7 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import org.example.projectassignment.controller.category.ManagerCategory;
-import org.example.projectassignment.model.user.ManagerUser;
+import org.example.projectassignment.controller.ManagerUser;
 import org.example.projectassignment.view.auth.forgotpassword.ForgotPassword;
 import org.example.projectassignment.view.feature.FeatureSelection;
 import org.example.projectassignment.model.user.informationuser.User;

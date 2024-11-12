@@ -6,13 +6,14 @@ import javafx.scene.image.ImageView;
 
 import static org.example.projectassignment.common.Constant.SIZE_BUTTON;
 
-public class CustomButton extends Button {
+public class CategoryImage extends Button {
     private String name ;
     private Image image ;
 
-    public CustomButton(String name , Image image) {
+    public CategoryImage(String name , Image image) {
         this.name = name ;
         this.image = image ;
+        setButton();
     }
 
     public void setButton(){
