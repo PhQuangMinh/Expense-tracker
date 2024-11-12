@@ -1,6 +1,6 @@
 package org.example.projectassignment.model.user.informationuser;
 
-import org.example.projectassignment.common.TypeTransaction;
+import org.example.projectassignment.common.TypeCategory;
 
 import java.io.Serializable;
 
@@ -9,13 +9,13 @@ public class Transaction implements Serializable {
     private String note;
     private long amount;
     private String category;
-    private TypeTransaction typeTransaction;
+    private TypeCategory typeTransaction;
     private String idCategory;
 
     public Transaction(){
     }
 
-    public Transaction(String note , long amount , String category, TypeTransaction typeTransaction, String idCategory) {
+    public Transaction(String note , long amount , String category, TypeCategory typeTransaction, String idCategory) {
         this.note = note;
         this.amount = amount;
         this.category = category;
@@ -47,11 +47,11 @@ public class Transaction implements Serializable {
         this.category = category;
     }
 
-    public TypeTransaction getTypeTransaction() {
+    public TypeCategory getTypeTransaction() {
         return typeTransaction;
     }
 
-    public void setTypeTransaction(TypeTransaction typeTransaction) {
+    public void setTypeTransaction(TypeCategory typeTransaction) {
         this.typeTransaction = typeTransaction;
     }
 

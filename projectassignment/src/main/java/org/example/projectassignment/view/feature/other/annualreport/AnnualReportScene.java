@@ -16,8 +16,8 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import org.example.projectassignment.Main;
-import org.example.projectassignment.common.TypeTransaction;
-import org.example.projectassignment.model.user.ManagerUser;
+import org.example.projectassignment.common.TypeCategory;
+import org.example.projectassignment.controller.ManagerUser;
 import org.example.projectassignment.model.user.informationuser.CalendarDay;
 import org.example.projectassignment.model.user.informationuser.Transaction;
 import org.example.projectassignment.model.user.informationuser.User;
@@ -88,10 +88,10 @@ public class AnnualReportScene {
                 String month = "T" + calendarDay.getDate().substring(5,7);
                 List<Transaction> listTransactions = calendarDay.getListTransactions();
                 for (Transaction transaction : listTransactions) {
-                    if (transaction.getTypeTransaction() == TypeTransaction.EXPENSE) {
+                    if (transaction.getTypeTransaction() == TypeCategory.EXPENSE) {
                         expenseMap.put(month, expenseMap.get(month) + transaction.getAmount());
                         sumMap.put(month, sumMap.get(month) - transaction.getAmount());
-                    } else if (transaction.getTypeTransaction() == TypeTransaction.INCOME) {
+                    } else if (transaction.getTypeTransaction() == TypeCategory.INCOME) {
                         incomeMap.put(month, incomeMap.get(month) + transaction.getAmount());
                         sumMap.put(month, sumMap.get(month) + transaction.getAmount());
                     }

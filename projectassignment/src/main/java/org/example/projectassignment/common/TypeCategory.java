@@ -1,6 +1,6 @@
 package org.example.projectassignment.common;
 
-public enum TypeTransaction {
+public enum TypeCategory {
     INCOME, EXPENSE
 }
 

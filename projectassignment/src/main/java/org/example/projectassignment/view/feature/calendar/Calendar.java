@@ -8,9 +8,9 @@ import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
-import org.example.projectassignment.common.TypeTransaction;
-import org.example.projectassignment.controller.home.input.ManagerInput;
-import org.example.projectassignment.model.user.ManagerUser;
+import org.example.projectassignment.common.TypeCategory;
+import org.example.projectassignment.controller.feature.input.ManagerInput;
+import org.example.projectassignment.controller.ManagerUser;
 import org.example.projectassignment.model.user.informationuser.CalendarDay;
 import org.example.projectassignment.model.user.informationuser.Transaction;
 import org.example.projectassignment.model.user.informationuser.User;
@@ -53,7 +53,6 @@ public class Calendar extends Pane {
     @FXML
     private Label detailHeaderSum;
 
-
     private ManagerUser managerUser;
     private User user;
     private List<CalendarDay> listCalendarDays;
@@ -65,7 +64,7 @@ public class Calendar extends Pane {
     private String idTransactionModifying;
     private String dateTransactionModifying;
     private String categoryModifying;
-    private TypeTransaction typeTransactionModifying;
+    private TypeCategory typeTransactionModifying;
     private String idCategoryModifying;
     ManagerInput managerInput;
 
@@ -123,7 +122,7 @@ public class Calendar extends Pane {
 
             long totalDay = 0;
             for (Transaction transaction : calendarDay.getListTransactions()) {
-                if (transaction.getTypeTransaction() == TypeTransaction.EXPENSE) totalDay -= transaction.getAmount();
+                if (transaction.getTypeTransaction() == TypeCategory.EXPENSE) totalDay -= transaction.getAmount();
                 else totalDay += transaction.getAmount();
             }
             Label totalAmountLabel = new Label(String.format("%,dđ", totalDay));
@@ -146,7 +145,7 @@ public class Calendar extends Pane {
                 HBox.setHgrow(spacerMid1, Priority.ALWAYS);
 
                 Label amountLabel = new Label(String.format("%,dđ", transaction.getAmount()));
-                if (transaction.getTypeTransaction() == TypeTransaction.EXPENSE) {
+                if (transaction.getTypeTransaction() == TypeCategory.EXPENSE) {
                     amountLabel.setStyle("-fx-font-size: 20px; -fx-text-fill: #fe5d02");
                     totalExpense += transaction.getAmount();
                 }
@@ -247,9 +246,9 @@ public class Calendar extends Pane {
                     long totalExpenseDay = 0;
                     long totalIncomeDay = 0;
                     for (Transaction transaction : foundDay.getListTransactions()){
-                        if (transaction.getTypeTransaction() == TypeTransaction.EXPENSE){
+                        if (transaction.getTypeTransaction() == TypeCategory.EXPENSE){
                             totalExpenseDay += transaction.getAmount();
-                        } else if (transaction.getTypeTransaction() == TypeTransaction.INCOME) {
+                        } else if (transaction.getTypeTransaction() == TypeCategory.INCOME) {
                             totalIncomeDay += transaction.getAmount();
                         }
                     }
@@ -348,7 +347,7 @@ public class Calendar extends Pane {
             managerInput.addTransaction(modifyDatePicker, modifyNote, modifyAmount, categoryModifying, user, typeTransactionModifying);
             for (int i = 0; i < listCalendarDays.size(); i++) {
                 if (listCalendarDays.get(i).getDate().equals(dateTransactionModifying)) {
-                    if (listCalendarDays.get(i).getListTransactions().size() == 0) listCalendarDays.remove(i);
+                    if (listCalendarDays.get(i).getListTransactions().isEmpty()) listCalendarDays.remove(i);
                 }
             }
         }
@@ -367,7 +366,7 @@ public class Calendar extends Pane {
         }
         for (int i = 0; i < listCalendarDays.size(); i++) {
             if (listCalendarDays.get(i).getDate().equals(dateTransactionModifying)) {
-                if (listCalendarDays.get(i).getListTransactions().size() == 0) listCalendarDays.remove(i);
+                if (listCalendarDays.get(i).getListTransactions().isEmpty()) listCalendarDays.remove(i);
             }
         }
         modifyOverlay.setVisible(false);
