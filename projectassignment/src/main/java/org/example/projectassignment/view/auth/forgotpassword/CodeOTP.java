@@ -14,7 +14,9 @@ import javafx.stage.Stage;
 import org.example.projectassignment.controller.auth.forgotpassword.MailSender;
 import org.example.projectassignment.controller.category.ManagerCategory;
 import org.example.projectassignment.model.user.informationuser.User;
+import org.example.projectassignment.view.auth.signin.SignIn;
 
+import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.util.List;
 
@@ -30,6 +32,9 @@ public class CodeOTP {
 
     @FXML
     private Label confirm;
+
+    @FXML
+    private Label backSignin ;
 
     private String codeOTPInput;
 
@@ -49,6 +54,13 @@ public class CodeOTP {
             try {
                 backToForgotPassword(event, listUsers, managerCategory);
             } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+        backSignin.setOnMouseClicked(event -> {
+            try{
+                backToSignIn(listUsers , event , managerCategory);
+            }catch(IOException e){
                 throw new RuntimeException(e);
             }
         });
@@ -83,6 +95,15 @@ public class CodeOTP {
         Stage stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         stage.setScene(scene);
         forgotPassword.init(listUsers, managerCategory);
+    }
+    private void backToSignIn(List<User> listUsers, javafx.scene.input.MouseEvent event , ManagerCategory managerCategory) throws IOException {
+        FXMLLoader loader = new FXMLLoader(SignIn.class.getResource("signin.fxml"));
+        Parent root = loader.load();
+        SignIn signIn = loader.getController();
+        Scene scene = new Scene(root, 600, 750);
+        Stage currentStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        currentStage.setScene(scene);
+        signIn.init(listUsers, managerCategory);
     }
 
 

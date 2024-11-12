@@ -30,6 +30,8 @@ public class NewPassword {
     private Label confirmPasswordLabel;
 
     @FXML
+    private Label back ;
+    @FXML
     private Button submitButton;
 
     private String emailUser;
@@ -39,6 +41,13 @@ public class NewPassword {
         submitButton.setOnAction(event -> {
             try {
                 submitEvent(event, listUsers, managerCategory);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+        back.setOnMouseClicked(event -> {
+            try {
+                backToSignIn(listUsers, event, managerCategory);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -75,6 +84,16 @@ public class NewPassword {
             return;
         }
         updateUser(listUsers);
+        FXMLLoader loader = new FXMLLoader(SignIn.class.getResource("signin.fxml"));
+        Parent root = loader.load();
+        SignIn signIn = loader.getController();
+        Scene scene = new Scene(root, 600, 750);
+        Stage currentStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        currentStage.setScene(scene);
+        signIn.init(listUsers, managerCategory);
+    }
+
+    private void backToSignIn(List<User> listUsers, javafx.scene.input.MouseEvent event , ManagerCategory managerCategory) throws IOException {
         FXMLLoader loader = new FXMLLoader(SignIn.class.getResource("signin.fxml"));
         Parent root = loader.load();
         SignIn signIn = loader.getController();

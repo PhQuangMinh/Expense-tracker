@@ -1,23 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="750.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.projectassignment.view.auth.forgotpassword.CodeOTP">
+<AnchorPane prefHeight="750.0" prefWidth="600.0" styleClass="parent" stylesheets="@codeotp.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.projectassignment.view.auth.forgotpassword.CodeOTP">
    <children>
-      <Label layoutX="113.0" layoutY="160.0" text="Xác thực OTP">
+      <!-- Nút Quay lại -->
+      <Button fx:id="back" layoutX="375.0" layoutY="320.0" prefHeight="50.0" prefWidth="150.0" styleClass="submit__button" text="Quay lại">
          <font>
-            <Font name="System Bold" size="18.0" />
+            <Font name="Arial Bold" size="16.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+
+      <!-- Nút Xác thực -->
+      <Button fx:id="submit" layoutX="75.0" layoutY="320.0" prefHeight="50.0" prefWidth="150.0" styleClass="submit__button" text="Xác thực">
+         <font>
+            <Font name="Arial Bold" size="16.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+
+      <!-- Tiêu đề -->
+      <Label layoutX="230.0" layoutY="100.0" styleClass="label-header" text="Xác thực OTP">
+         <font>
+            <Font size="24.0" />
          </font>
       </Label>
-      <Label layoutX="113.0" layoutY="201.0" text="Hãy nhập mã xác thực được gửi vào địa chỉ email của bạn" />
-      <TextField fx:id="codeOTP" layoutX="113.0" layoutY="252.0" prefHeight="26.0" prefWidth="186.0" promptText="OTP" />
-      <Button fx:id="submit" layoutX="110.0" layoutY="317.0" mnemonicParsing="false" text="Xác thực" />
-      <Button fx:id="back" layoutX="215.0" layoutY="317.0" mnemonicParsing="false" text="Quay lại" />
-      <Label fx:id="confirm" layoutX="113.0" layoutY="287.0" text="Mã OTP không chính xác" visible="false" />
+
+      <!-- Label Hướng dẫn -->
+      <Label layoutX="113.0" layoutY="150.0" prefWidth="374.0" styleClass="label-instruction" text="Hãy nhập mã xác thực được gửi vào địa chỉ email của bạn" wrapText="true" />
+
+      <!-- TextField OTP -->
+      <TextField fx:id="codeOTP" layoutX="113.0" layoutY="200.0" prefHeight="40.0" prefWidth="374.0" promptText="OTP" styleClass="text-field">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+
+      <!-- Label thông báo lỗi -->
+      <Label fx:id="confirm" layoutX="113.0" layoutY="260.0" prefHeight="20.0" prefWidth="374.0" styleClass="inform-label" text="Mã OTP không chính xác" visible="false" />
+
+      <!-- Label "Đã có tài khoản?" -->
+      <Label layoutX="175.0" layoutY="400.0" styleClass="label-info" text="Đã có tài khoản?">
+         <font>
+            <Font name="Arial" size="18.0" />
+         </font>
+      </Label>
+
+      <!-- Label "Đăng nhập" -->
+      <Label fx:id="backSignin" layoutX="350.0" layoutY="400.0" styleClass="label-button" text="Đăng nhập">
+         <font>
+            <Font name="Ebrima Bold" size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Label>
    </children>
 </AnchorPane>
