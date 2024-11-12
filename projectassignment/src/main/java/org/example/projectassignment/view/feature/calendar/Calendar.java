@@ -4,10 +4,7 @@ package org.example.projectassignment.view.feature.calendar;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import org.example.projectassignment.common.TypeTransaction;
 import org.example.projectassignment.controller.home.input.ManagerInput;
@@ -16,6 +13,7 @@ import org.example.projectassignment.model.user.informationuser.CalendarDay;
 import org.example.projectassignment.model.user.informationuser.Transaction;
 import org.example.projectassignment.model.user.informationuser.User;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
@@ -189,7 +187,12 @@ public class Calendar extends Pane {
         cell.setMinSize(80, 50);
 
         Label dayLabel = new Label(String.valueOf(day));
-        dayLabel.setStyle("-fx-font-size: 14;");
+        LocalDate currentDate = currentYearMonth.atDay(day);
+        if (currentDate.getDayOfWeek().equals(DayOfWeek.SATURDAY)) {
+            dayLabel.setStyle("-fx-font-size: 14; -fx-text-fill: #0592d3;");
+        } else if (currentDate.getDayOfWeek().equals(DayOfWeek.SUNDAY)) {
+            dayLabel.setStyle("-fx-font-size: 14; -fx-text-fill: #fe5d02;");
+        } else dayLabel.setStyle("-fx-font-size: 14;");
         dayLabel.setAlignment(Pos.TOP_LEFT);
         cell.getChildren().add(dayLabel);
         StackPane.setAlignment(dayLabel, Pos.TOP_LEFT);
@@ -307,9 +310,28 @@ public class Calendar extends Pane {
 
     @FXML
     private void onActionButtonModifyConfirm() {
+        if (modifyNote.getText().isEmpty() || modifyAmount.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Cảnh báo");
+            alert.setHeaderText(null);
+            alert.setContentText("Không được để trống!");
+            alert.showAndWait();
+            return;
+        }
         String date = modifyDatePicker.getValue().toString();
         String note = modifyNote.getText().toString();
-        long amount = Long.parseLong(modifyAmount.getText().toString());
+        long amount;
+        try {
+            amount = Long.parseLong(modifyAmount.getText().toString());
+        } catch (NumberFormatException e) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Cảnh báo");
+            alert.setHeaderText(null);
+            alert.setContentText("Số tiền không hợp lệ!");
+            alert.showAndWait();
+            return;
+        }
+        amount = Long.parseLong(modifyAmount.getText().toString());
         Transaction newTransaction = new Transaction(note, amount, categoryModifying, typeTransactionModifying, idCategoryModifying);
         newTransaction.setIdTransaction(idTransactionModifying);
 
