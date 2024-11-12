@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane prefHeight="750.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.projectassignment.view.auth.forgotpassword.CodeOTP">
+<AnchorPane prefHeight="750.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.projectassignment.view.auth.forgotpassword.CodeOTP">
    <children>
       <Label layoutX="113.0" layoutY="160.0" text="Xác thực OTP">
          <font>
