@@ -23,15 +23,11 @@ public class EditInformation {
     private TextField lastName ;
     @FXML
     private TextField email ;
-    @FXML
-    private TextField id ;
     public void init(ManagerUser managerUser){
         this.managerUser = managerUser;
         firstName.setText(managerUser.getUser().getFirstName());
         lastName.setText(managerUser.getUser().getLastName());
         email.setText(managerUser.getUser().getEmail());
-        id.setText(managerUser.getUser().getId());
-        id.setEditable(false);
         email.setEditable(false);
     }
     @FXML

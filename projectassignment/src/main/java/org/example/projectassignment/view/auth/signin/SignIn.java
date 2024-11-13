@@ -95,7 +95,7 @@ public class SignIn {
         }
         inform.setVisible(true);
         inform.setTextFill(Color.RED);
-        inform.setText("Email or password is incorrect");
+        inform.setText("Email hoặc mật khẩu không chính xác");
     }
 
     private void forgotPasswordAction(ManagerCategory managerCategory) throws IOException {

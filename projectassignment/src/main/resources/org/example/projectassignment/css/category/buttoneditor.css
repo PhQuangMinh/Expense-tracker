@@ -1,0 +1,18 @@
+.category{
+    -fx-border-color: black; /* Thêm viền đen */
+    -fx-border-width: 1px; /* Đặt độ dày của viền */
+    -fx-border-radius: 1px; /* Optional: làm tròn góc viền */
+}
+
+.submit-button {
+    -fx-font-size: 20 px;
+    -fx-text-fill: black;
+    -fx-background-color:#fe5d02;
+    -fx-border-color: transparent;
+    -fx-font-weight: bold;
+}
+
+.submit-button:hover {
+    -fx-background-color: white;
+    -fx-text-fill: black;
+}

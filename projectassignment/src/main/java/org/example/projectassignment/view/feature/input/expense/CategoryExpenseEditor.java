@@ -3,9 +3,12 @@ package org.example.projectassignment.view.feature.input.expense;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader ;
+import javafx.geometry.HPos;
+import javafx.geometry.VPos;
 import javafx.scene.Scene ;
 import javafx.scene.Node ;
 import javafx.scene.Parent ;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage ;
 import org.example.projectassignment.controller.feature.input.category.ManagerCategoryEditor;
@@ -24,6 +27,9 @@ public class CategoryExpenseEditor extends ManagerCategoryEditor {
     @FXML
     private GridPane expenseGridPane;
 
+    @FXML
+    private ScrollPane scrollPane;
+
     private Stage stage ;
 
     public static boolean addExpense = false ;
@@ -35,6 +41,8 @@ public class CategoryExpenseEditor extends ManagerCategoryEditor {
     public void init(ManagerUser managerUser){
         this.managerUser = managerUser;
         updateCategoryExpense(managerUser.getExpenseCategory());
+        scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
     }
     @FXML
     public void onActionSwitchExpense (ActionEvent event) throws IOException {
@@ -100,6 +108,7 @@ public class CategoryExpenseEditor extends ManagerCategoryEditor {
                 }
             });
             expenseGridPane.add(button, col, row);
+            setCategoryImage(button);
             col++;
             if (col == limitColumn) {
                 col = 0;

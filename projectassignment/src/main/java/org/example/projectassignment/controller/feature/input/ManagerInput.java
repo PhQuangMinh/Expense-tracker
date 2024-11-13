@@ -3,9 +3,12 @@ package org.example.projectassignment.controller.feature.input;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
+import javafx.geometry.HPos;
 import javafx.geometry.Pos;
+import javafx.geometry.VPos;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
+import org.example.projectassignment.common.Constant;
 import org.example.projectassignment.common.TypeCategory;
 import org.example.projectassignment.controller.Helper;
 import org.example.projectassignment.controller.ManagerUser;
@@ -30,11 +33,14 @@ public class ManagerInput {
 
     protected Helper helper = new Helper();
 
+    protected CategoryImage categoryImageChooser = null;
+
 
 
     protected void setEditButton(CategoryImage editButton){
         editButton.setAlignment(Pos.CENTER);
         editButton.setContentDisplay(ContentDisplay.CENTER);
+        editButton.setPrefSize(85, Constant.SIZE_BUTTON);
     }
 
     public CalendarDay getCalendarInList(List<CalendarDay> listCalendars, LocalDate currentDate) {
@@ -75,7 +81,15 @@ public class ManagerInput {
 
 
     private void handleCategorySelection(ActionEvent event){
-        Button button = (Button) event.getSource() ;
+        CategoryImage button = (CategoryImage) event.getSource() ;
+        if (categoryImageChooser != null) {
+            categoryImageChooser.setStyle("-fx-font-weight: bold; -fx-border-color: transparent; -fx-background-color: #ddd;");
+        }
+
+        categoryImageChooser = button;
+        button.setStyle("-fx-font-weight: bold; -fx-border-color: black; -fx-border-width: 2px; -fx-background-color: #ddd; -fx-text-fill: black;-fx-border-color: black;" +
+                "    -fx-border-width: 2px;" +
+                "    -fx-border-radius: 2px;");
         selectedCategory = button.getText();
         if (selectedCategory == null){
             selectedCategory = "";
@@ -88,15 +102,21 @@ public class ManagerInput {
         int row = 0, col = 0;
         int limitColumn = 5;
         for (CategoryImage button : categoryImageList) {
+            button.setStyle("-fx-font-weight: bold; -fx-border-color: transparent; -fx-background-color: #ddd;");
             button.setOnAction(this::handleCategorySelection);
             gridPane.add(button, col, row);
+            GridPane.setHalignment(button, HPos.CENTER);
+            GridPane.setValignment(button, VPos.CENTER);
             col++;
             if (col == limitColumn) {
                 col = 0;
                 row++;
             }
         }
+        editButton.setStyle("-fx-font-weight: bold; -fx-border-color: transparent; -fx-background-color: #ddd;");
         gridPane.add(editButton, col, row);
+        GridPane.setHalignment(editButton, HPos.CENTER);
+        GridPane.setValignment(editButton, VPos.CENTER);
     }
 
     protected void handleSubmit(TextField amountField, DatePicker datePicker, TextField noteField, ManagerUser managerUser, TypeCategory typeCategory){

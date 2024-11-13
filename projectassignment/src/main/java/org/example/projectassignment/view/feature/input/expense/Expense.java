@@ -35,6 +35,9 @@ public class Expense extends ManagerInput {
     @FXML
     private GridPane expenseGridPane ;
 
+    @FXML
+    private ScrollPane scrollPane;
+
     private FeatureSelection featureSelection;
 
     private ManagerUser managerUser;
@@ -45,6 +48,8 @@ public class Expense extends ManagerInput {
         this.managerUser = managerUser;
         setDatePicker(datePicker);
         helper.setAmountField(amountField);
+        scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         submitButton.setOnAction(event -> handleSubmit(amountField, datePicker, noteField, managerUser, TypeCategory.EXPENSE));
     }
 

@@ -1,0 +1,53 @@
+
+.submit-button {
+    -fx-font-size: 16px;
+    -fx-text-fill: black;
+    -fx-background-color:#fe5d02;
+    -fx-border-color: transparent;
+
+}
+
+
+.submit-button:hover {
+    -fx-background-color: white;
+    -fx-text-fill: black;
+}
+
+.expense_header {
+    -fx-font-size: 16px;
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+    -fx-background-color: #fe5d02;
+    -fx-border-color: transparent;
+    -fx-border-color: black; /* Thêm viền đen */
+    -fx-border-width: 1px; /* Đặt độ dày của viền */
+    -fx-border-radius: 1px; /* Optional: làm tròn góc viền */
+}
+
+
+.expense_header:hover {
+    -fx-background-color: white;
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+    -fx-border-color: black; /* Thêm viền đen */
+    -fx-border-width: 1px; /* Đặt độ dày của viền */
+    -fx-border-radius: 1px; /* Optional: làm tròn góc viền */
+}
+
+.income_header {
+    -fx-font-size: 16px;
+    -fx-text-fill: black;
+    -fx-background-color: white;
+    -fx-font-weight: bold;
+    -fx-border-color: transparent;
+    -fx-border-color: black; /* Thêm viền đen */
+    -fx-border-width: 1px; /* Đặt độ dày của viền */
+    -fx-border-radius: 1px; /* Optional: làm tròn góc viền */
+}
+
+.category{
+    -fx-border-color: black; /* Thêm viền đen */
+    -fx-border-width: 1px; /* Đặt độ dày của viền */
+    -fx-border-radius: 1px; /* Optional: làm tròn góc viền */
+}
+.

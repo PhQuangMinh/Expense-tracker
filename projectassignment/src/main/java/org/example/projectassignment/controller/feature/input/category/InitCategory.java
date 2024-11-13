@@ -47,6 +47,7 @@ public class InitCategory {
         int row = 0, col = 0;
         int limitColumn = 5;
         for (CategoryImage button : listCategoryImages) {
+            button.setStyle("-fx-font-weight: bold; -fx-border-color: transparent; -fx-background-color: #ddd;-fx-text-fill: transparent;");
             gridPane.add(button, col, row);
             col++;
             if (col == limitColumn) {
