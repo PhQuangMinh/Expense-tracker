@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -8,7 +13,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="600.0" styleClass="parent" stylesheets="@signin.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.projectassignment.view.auth.signin.SignIn">
+<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="600.0" styleClass="parent" stylesheets="@signin.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.projectassignment.view.auth.signin.SignIn">
    <children>
       <!-- Tiêu đề -->
       <Label layoutX="225.0" layoutY="150.0" styleClass="label-header" text="Đăng Nhập">
@@ -18,14 +23,14 @@
       </Label>
 
       <!-- TextField Email -->
-      <TextField fx:id="email" layoutX="112.0" layoutY="250.0" prefHeight="40.0" prefWidth="376.0" promptText="Email" styleClass="text-field">
+      <TextField fx:id="email" layoutX="112.0" layoutY="250.0" prefHeight="40.0" prefWidth="376.0" promptText="Email" styleClass="sign-in__text-field">
          <font>
             <Font size="16.0" />
          </font>
       </TextField>
 
       <!-- PasswordField Mật khẩu -->
-      <PasswordField fx:id="password" layoutX="112.0" layoutY="310.0" prefHeight="40.0" prefWidth="376.0" promptText="Mật khẩu" styleClass="password-field">
+      <PasswordField fx:id="password" layoutX="112.0" layoutY="310.0" prefHeight="40.0" prefWidth="376.0" promptText="Mật khẩu" styleClass="sign-in__text-field">
          <font>
             <Font size="16.0" />
          </font>

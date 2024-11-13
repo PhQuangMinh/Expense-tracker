@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
@@ -13,49 +18,57 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.projectassignment.view.feature.input.expense.Expense">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="600.0" stylesheets="@../css/category/expense.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.projectassignment.view.feature.input.expense.Expense">
    <children>
-      <AnchorPane prefHeight="30.0" prefWidth="600.0">
+      <HBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="600.0" styleClass="header__hbox">
          <children>
-            <Button layoutX="300.0" mnemonicParsing="false" onAction="#onActionButtonSwitchIncome" prefHeight="40.0" prefWidth="300.0" styleClass="income_header" stylesheets="@../css/category/expense.css" text="Tiền thu" />
-            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" styleClass="expense_header" stylesheets="@../css/category/expense.css" text="Tiền chi">
+            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" styleClass="expense_header" stylesheets="@../css/category/expense.css" text="Tiền chi">
                <font>
                   <Font name="System Bold" size="18.0" />
-               </font></Button>
+               </font>
+            </Button>
+            <Button layoutX="300.0" mnemonicParsing="false" onAction="#onActionButtonSwitchIncome" prefHeight="40.0" prefWidth="200.0" styleClass="income_header" stylesheets="@../css/category/expense.css" text="Tiền thu" />
          </children>
-      </AnchorPane>
-      <AnchorPane prefHeight="30.0" prefWidth="600.0">
+      </HBox>
+      <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="600.0">
          <children>
-            <Label contentDisplay="CENTER" layoutX="10.0" layoutY="14.0" prefHeight="19.0" prefWidth="55.0" text="Ngày ">
+            <Label contentDisplay="CENTER" layoutX="10.0" layoutY="14.0" prefHeight="35.0" prefWidth="80.0" styleClass="textfield__label-title" text="Ngày " AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="7.5">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font></Label>
-            <DatePicker fx:id="datePicker" layoutX="64.0" layoutY="3.0" prefHeight="40.0" prefWidth="500.0" styleClass="input" stylesheets="@../css/category/expense.css" />
+            <DatePicker fx:id="datePicker" layoutX="154.0" layoutY="3.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="470.0" styleClass="input" stylesheets="@../css/category/expense.css" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="7.5" />
          </children></AnchorPane>
-      <AnchorPane prefHeight="30.0" prefWidth="600.0">
+      <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="600.0">
          <children>
             <Text layoutX="3.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" />
-            <TextField fx:id="noteField" layoutX="64.0" layoutY="12.0" prefHeight="40.0" prefWidth="500.0" styleClass="input" stylesheets="@../css/category/expense.css" />
-            <Label layoutX="10.0" layoutY="23.0" prefHeight="19.0" prefWidth="55.0" text="Ghi chú">
+            <TextField fx:id="noteField" layoutX="64.0" layoutY="12.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="470.0" styleClass="input" stylesheets="@../css/category/expense.css" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="7.5" />
+            <Label layoutX="10.0" layoutY="23.0" prefHeight="35.0" prefWidth="80.0" styleClass="textfield__label-title" text="Ghi chú" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="7.5">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font></Label>
          </children></AnchorPane>
-      <AnchorPane prefHeight="241.0" prefWidth="600.0">
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="600.0">
          <children>
-            <Label layoutX="10.0" layoutY="26.0" prefHeight="19.0" prefWidth="55.0" text="Tiền chi">
+            <Label layoutX="10.0" layoutY="26.0" prefHeight="35.0" prefWidth="80.0" styleClass="textfield__label-title" text="Tiền chi" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="7.5">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font></Label>
-            <TextField fx:id="amountField" layoutX="64.0" layoutY="15.0" prefHeight="40.0" prefWidth="500.0" styleClass="input" stylesheets="@../css/category/expense.css" />
-            <Label layoutY="65.0" text="Danh mục">
+            <TextField fx:id="amountField" layoutX="64.0" layoutY="15.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="470.0" styleClass="input" stylesheets="@../css/category/expense.css" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="7.5" />
+         </children></AnchorPane>
+      <HBox alignment="CENTER_LEFT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="600.0">
+         <children>
+            <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="100.0" styleClass="textfield__label-title" text="Danh mục">
                <font>
                   <Font name="System Bold Italic" size="13.0" />
-               </font></Label>
-         </children></AnchorPane>
-      <ScrollPane fx:id="scrollPane" prefHeight="600.0" prefWidth="600.0">
+               </font>
+               <HBox.margin>
+                  <Insets left="20.0" />
+               </HBox.margin></Label>
+         </children>
+      </HBox>
+      <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="600.0" styleClass="category__scrollpane" vbarPolicy="NEVER">
          <content>
-            <GridPane fx:id="expenseGridPane" focusTraversable="true" prefHeight="750.0" prefWidth="598.0" styleClass="input" stylesheets="@../css/category/expense.css">
+            <GridPane fx:id="expenseGridPane" focusTraversable="true" prefHeight="750.0" prefWidth="598.0" stylesheets="@../css/category/expense.css">
               <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -72,10 +85,10 @@
             </GridPane>
          </content>
       </ScrollPane>
-      <AnchorPane prefHeight="172.0" prefWidth="600.0">
-         <children>
-            <Button fx:id="submitButton" layoutX="-1.0" layoutY="-13.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="600.0" styleClass="submit-button" stylesheets="@../css/category/expense.css" text="Nhập khoản Tiền chi" />
-         </children>
-      </AnchorPane>
+      <Button fx:id="submitButton" layoutY="-13.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="300.0" styleClass="submit-button" stylesheets="@../css/category/expense.css" text="Nhập khoản Tiền chi">
+         <VBox.margin>
+            <Insets top="10.0" />
+         </VBox.margin>
+      </Button>
    </children>
 </VBox>

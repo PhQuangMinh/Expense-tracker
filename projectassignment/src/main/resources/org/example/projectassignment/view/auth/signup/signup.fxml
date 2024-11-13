@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -8,7 +13,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="pane" prefHeight="750.0" prefWidth="600.0" styleClass="parent" stylesheets="@signup.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.projectassignment.view.auth.signup.SignUp">
+<AnchorPane fx:id="pane" prefHeight="750.0" prefWidth="600.0" styleClass="parent" stylesheets="@signup.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.projectassignment.view.auth.signup.SignUp">
    <children>
       <!-- Tiêu đề -->
       <Label layoutX="245.0" layoutY="100.0" styleClass="label-header" text="Đăng Ký">
@@ -18,35 +23,35 @@
       </Label>
 
       <!-- TextField Tên -->
-      <TextField fx:id="firstName" layoutX="75.0" layoutY="200.0" prefHeight="40.0" prefWidth="200.0" promptText="Tên" styleClass="text-field">
+      <TextField fx:id="firstName" layoutX="75.0" layoutY="200.0" prefHeight="40.0" prefWidth="200.0" promptText="Tên" styleClass="sign-up__text-field">
          <font>
             <Font size="20.0" />
          </font>
       </TextField>
 
       <!-- TextField Họ -->
-      <TextField fx:id="lastName" layoutX="325.0" layoutY="200.0" prefHeight="40.0" prefWidth="200.0" promptText="Họ" styleClass="text-field">
+      <TextField fx:id="lastName" layoutX="325.0" layoutY="200.0" prefHeight="40.0" prefWidth="200.0" promptText="Họ" styleClass="sign-up__text-field">
          <font>
             <Font size="20.0" />
          </font>
       </TextField>
 
       <!-- TextField Email -->
-      <TextField fx:id="email" layoutX="75.0" layoutY="270.0" prefHeight="40.0" prefWidth="450.0" promptText="example@gmail.com" styleClass="text-field">
+      <TextField fx:id="email" layoutX="75.0" layoutY="270.0" prefHeight="40.0" prefWidth="450.0" promptText="example@gmail.com" styleClass="sign-up__text-field">
          <font>
             <Font size="20.0" />
          </font>
       </TextField>
 
       <!-- PasswordField Mật khẩu -->
-      <PasswordField fx:id="password" layoutX="75.0" layoutY="340.0" prefHeight="40.0" prefWidth="450.0" promptText="Mật khẩu" styleClass="password-field">
+      <PasswordField fx:id="password" layoutX="75.0" layoutY="340.0" prefHeight="40.0" prefWidth="450.0" promptText="Mật khẩu" styleClass="sign-up__text-field">
          <font>
             <Font size="20.0" />
          </font>
       </PasswordField>
 
       <!-- PasswordField Xác nhận mật khẩu -->
-      <PasswordField fx:id="confirmPassword" layoutX="75.0" layoutY="410.0" prefHeight="40.0" prefWidth="450.0" promptText="Xác nhận mật khẩu" styleClass="password-field">
+      <PasswordField fx:id="confirmPassword" layoutX="75.0" layoutY="410.0" prefHeight="40.0" prefWidth="450.0" promptText="Xác nhận mật khẩu" styleClass="sign-up__text-field">
          <font>
             <Font size="20.0" />
          </font>
