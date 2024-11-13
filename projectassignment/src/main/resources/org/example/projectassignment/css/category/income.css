@@ -1,51 +1,64 @@
 
 .submit-button {
-    -fx-font-size: 16px;
-    -fx-text-fill: black;
+    -fx-font-size: 20px;
+    -fx-text-fill: white;
     -fx-background-color:#fe5d02;
+    -fx-background-radius: 10px;
     -fx-border-color: transparent;
-
+    -fx-font-weight: bold;
 }
 
 .submit-button:hover {
-    -fx-background-color: white;
-    -fx-text-fill: black;
+    -fx-background-color: #fe9402;
 }
 
 .income_header {
     -fx-font-size: 16px;
-    -fx-text-fill: black;
+    -fx-text-fill: white;
     -fx-font-weight: bold;
     -fx-background-color: #fe5d02;
     -fx-border-color: transparent;
-    -fx-border-color: black; /* Thêm viền đen */
-    -fx-border-width: 1px; /* Đặt độ dày của viền */
-    -fx-border-radius: 1px; /* Optional: làm tròn góc viền */
-}
-
-
-.income_header:hover {
-    -fx-background-color: white;
-    -fx-text-fill: black;
-    -fx-font-weight: bold;
-    -fx-border-color: black; /* Thêm viền đen */
-    -fx-border-width: 1px; /* Đặt độ dày của viền */
-    -fx-border-radius: 1px; /* Optional: làm tròn góc viền */
+    -fx-background-radius: 10px;
 }
 
 .expense_header {
     -fx-font-size: 16px;
-    -fx-text-fill: black;
-    -fx-background-color: white;
+    -fx-text-fill: #fe5d02;
+    -fx-background-color: #f1f0f0;
     -fx-font-weight: bold;
-    -fx-border-color: transparent;
-    -fx-border-color: black; /* Thêm viền đen */
-    -fx-border-width: 1px; /* Đặt độ dày của viền */
-    -fx-border-radius: 1px; /* Optional: làm tròn góc viền */
+    -fx-border-color: darkgrey;
+    -fx-border-width: 1px;
+    -fx-border-radius: 10px;
+    -fx-border-style: solid;
+    -fx-background-radius: 10px;
 }
 
 .input{
     -fx-border-color: black; /* Thêm viền đen */
     -fx-border-width: 1px; /* Đặt độ dày của viền */
     -fx-border-radius: 1px; /* Optional: làm tròn góc viền */
+    -fx-font-size: 20px;
+}
+
+.header__hbox {
+    -fx-border-color: darkgrey;
+    -fx-border-style: solid;
+    -fx-border-width: 0 0 1px 0;
+}
+
+.textfield__label-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+
+.category__scrollpane {
+    -fx-background-color: white;
+    -fx-border-width: 1px 0 1px 0;
+    -fx-border-color: darkgrey;
+    -fx-border-style: solid;
+}
+
+.category__scrollpane:focused {
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
 }

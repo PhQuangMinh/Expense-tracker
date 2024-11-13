@@ -19,7 +19,7 @@
 }
 
 /* TextField và PasswordField */
-.text-field, .password-field {
+.sign-up__text-field {
     -fx-background-color: #ffffff;
     -fx-border-color: #fe5d02; /* Cam đậm */
     -fx-border-radius: 8px;
@@ -34,7 +34,7 @@
 }
 
 /* Khi TextField và PasswordField được focus */
-.text-field:focused, .password-field:focused {
+.sign-up__text-field:focused {
     -fx-border-color: #d04a00; /* Cam rất đậm khi focus */
     -fx-border-width: 2px;
     -fx-effect: dropshadow(three-pass-box, rgba(254, 93, 2, 0.3), 0, 0, 0, 2);
@@ -100,8 +100,7 @@
 
 /* Hiệu ứng chuyển động cho toàn bộ AnchorPane */
 .parent .label-header,
-.parent .text-field,
-.parent .password-field,
+.parent .sign-up__text-field,
 .parent .sign__button,
 .parent .forgot-password,
 .parent .label-button,
@@ -123,7 +122,7 @@
     }
 }
 
-.label-header, .text-field, .password-field, .sign__button, .forgot-password, .label-button, .inform-label, .label-info {
+.label-header, .sign-up__text-field, .sign__button, .forgot-password, .label-button, .inform-label, .label-info {
     -fx-opacity: 0;
     -fx-translateY: 20;
     -fx-transition: opacity 0.6s ease-out, translateY 0.6s ease-out;
@@ -133,7 +132,7 @@
     -fx-delay: 0.2s;
 }
 
-.text-field, .password-field {
+.sign-up__text-field {
     -fx-delay: 0.4s;
 }
 
@@ -151,8 +150,7 @@
 
 /* Hiển thị các phần tử với animation */
 .parent .label-header,
-.parent .text-field,
-.parent .password-field,
+.parent .sign-up__text-field,
 .parent .sign__button,
 .parent .forgot-password,
 .parent .label-button,
