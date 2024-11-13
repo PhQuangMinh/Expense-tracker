@@ -77,10 +77,6 @@ public class CategoryEditor extends ManagerCategoryEditor {
             editNameButton.setText(button.getName());
             categoryImageChooser = button;
             categoryImageChooser.setName(categoryUserEditor.getIdCategoryModel());
-            System.out.println(categoryImageChooser.getName());
-        }
-        else{
-            System.out.println("Không tìm thấy");
         }
     }
 
@@ -98,8 +94,6 @@ public class CategoryEditor extends ManagerCategoryEditor {
                 return;
             }
         }
-        System.out.println(editNameButton.getText());
-        System.out.println(categoryImageChooser.getName());
         categoryUserEditor.setNameCategory(editNameButton.getText());
         categoryUserEditor.setIdCategoryModel(categoryImageChooser.getName());
         if(editExpense){

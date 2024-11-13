@@ -204,7 +204,7 @@ public class Calendar extends ManagerCalendar {
 
     @FXML
     private void onActionButtonModifyConfirm() {
-        if (modifyNote.getText().isEmpty() || modifyAmount.getText().isEmpty()) {
+        if (modifyAmount.getText().isEmpty()) {
             notification.notification("Không được để trống");
             return;
         }
@@ -242,6 +242,7 @@ public class Calendar extends ManagerCalendar {
         loadDataCurrentMonth();
         updateCalendar();
         updateDetail();
+        managerUser.getFirebaseUser().updateUser(user);
     }
 
     @FXML
@@ -259,6 +260,7 @@ public class Calendar extends ManagerCalendar {
         loadDataCurrentMonth();
         updateCalendar();
         updateDetail();
+        managerUser.getFirebaseUser().updateUser(user);
     }
 
 }

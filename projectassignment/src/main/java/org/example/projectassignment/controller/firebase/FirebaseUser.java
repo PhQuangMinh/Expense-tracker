@@ -63,6 +63,6 @@ public class FirebaseUser {
 
     public void updateUser(User user){
         DatabaseReference dataRef = FirebaseDatabase.getInstance().getReference("users");
-        dataRef.child("user" + user.getId()).setValueAsync(user);
+        dataRef.child(user.getId()).setValueAsync(user);
     }
 }
