@@ -4,6 +4,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import org.example.projectassignment.controller.feature.input.category.ManagerCategory;
 import org.example.projectassignment.controller.firebase.FirebaseUser;
@@ -14,6 +15,7 @@ import org.example.projectassignment.view.utils.WaitStage;
 import java.io.IOException;
 import java.time.Instant;
 import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
@@ -51,12 +53,14 @@ public class InitApp {
                 Platform.runLater(() -> {
                     FXMLLoader loader = new FXMLLoader(SignIn.class.getResource("signin.fxml"));
                     try {
+                        Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream("view/Image/logo.png")));
                         Parent root = loader.load();
                         SignIn signIn = loader.getController();
                         signIn.init(users, managerCategory);
                         Scene scene = new Scene(root, 600, 750);
                         stage.setTitle("Sổ thu chi");
                         stage.setScene(scene);
+                        stage.getIcons().add(image);
                         stage.show();
                         stage.setOnCloseRequest(event -> {
                             firebaseUser.saveUser(users);

@@ -42,8 +42,7 @@ public class CodeOTP {
     private final MailSender mailSender = new MailSender();
 
     public void sendEmailAsync(String emailUser) {
-        CompletableFuture.supplyAsync(() -> mailSender.sendMail(emailUser)).thenAccept(codeOTPInput -> {
-        }).exceptionally(e -> {
+        CompletableFuture.supplyAsync(() -> mailSender.sendMail(emailUser)).thenAccept(codeOTPInput -> this.codeOTPInput = codeOTPInput).exceptionally(e -> {
             Platform.runLater(e::printStackTrace);
             return null;
         }).thenRun(() -> {});

@@ -2,13 +2,19 @@
     -fx-font-size: 16px;
     -fx-text-fill: black;
     -fx-background-color: white; /* Bỏ nền của button nếu cần */
-    -fx-border-color: transparent;
+    -fx-border-color: black; /* Thêm viền đen */
+    -fx-border-width: 2px; /* Đặt độ dày của viền */
+    -fx-border-radius: 5px; /* Optional: làm tròn góc viền */
 }
 
 /* Hiệu ứng khi di chuột qua button */
 .feature__button:hover {
-    -fx-background-color: darkgray;
+    -fx-background-color: #fe5d02;
     -fx-text-fill: white;
+    -fx-border-color: #fe5d02; /* Viền màu cam khi hover */
+    -fx-border-color: black; /* Thêm viền đen */
+    -fx-border-width: 2px; /* Đặt độ dày của viền */
+    -fx-border-radius: 5px; /* Optional: làm tròn góc viền */
 }
 
 #feature__hbox {

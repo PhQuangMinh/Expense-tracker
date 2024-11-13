@@ -85,14 +85,14 @@ public class SignUp {
             listUsers.add(user);
             firebaseUser.saveUser(listUsers);
             inform.setTextFill(Color.GREEN);
-            inform.setText("Sign up successfully!");
+            inform.setText("Đăng kí thành công!");
             inform.setVisible(true);
             return;
         }
-        if (checkValid==1) inform.setText("Please provide complete information.");
+        if (checkValid==1) inform.setText("Hãy cung cấp thêm thông tin.");
         else
-        if (checkValid==2) inform.setText("Invalid password!");
-        else inform.setText("Email already exists!");
+        if (checkValid==2) inform.setText("Mật khẩu không hợp lệ!");
+        else inform.setText("Email đã tồn tại!");
         inform.setVisible(true);
         inform.setTextFill(Color.RED);
     }

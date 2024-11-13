@@ -15,9 +15,14 @@
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.projectassignment.view.feature.input.CategoryEditor">
    <children>
-      <AnchorPane minHeight="50.0" prefWidth="600.0">
+      <AnchorPane prefHeight="50.0" prefWidth="600.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#goBackEdit" prefHeight="50.0" prefWidth="50.0" styleClass="submit-button" stylesheets="@../css/category/back.css">
+            <Label alignment="CENTER" layoutX="50.0" prefHeight="50.0" prefWidth="550.0" text="Thêm danh mục">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Button mnemonicParsing="false" onAction="#goBackAdd" prefHeight="50.0" prefWidth="50.0" styleClass="submit-button" stylesheets="@../css/category/back.css">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -26,32 +31,19 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="86.0" layoutY="10.0" prefHeight="30.0" prefWidth="427.0" text="Chỉnh sửa thông tin danh mục">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Label>
-            <Button layoutX="549.0" mnemonicParsing="false" onAction="#deleteButton" prefHeight="50.0" prefWidth="50.0" styleClass="submit-button" stylesheets="@../css/category/back.css">
-               <graphic>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@Image/trash.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="50.0" prefWidth="600.0">
          <children>
+            <TextField fx:id="editNameButton" layoutX="108.0" layoutY="1.0" prefHeight="40.0" prefWidth="480.0" />
             <Label layoutX="5.0" layoutY="7.0" prefHeight="30.0" prefWidth="101.0" text="Tên danh mục">
                <font>
                   <Font name="System Bold" size="14.0" />
-               </font></Label>
-            <TextField fx:id="editNameButton" layoutX="107.0" layoutY="5.0" prefHeight="40.0" prefWidth="480.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
-      <Label text="Danh mục">
+      <Label text="Biểu tượng">
          <font>
             <Font name="System Bold Italic" size="12.0" />
          </font></Label>
@@ -79,7 +71,7 @@
       </ScrollPane>
       <AnchorPane prefHeight="50.0" prefWidth="600.0">
          <children>
-            <Button layoutY="-1.0" mnemonicParsing="false" onAction="#saveEdit" prefHeight="50.0" prefWidth="600.0" styleClass="submit-button" stylesheets="@../css/category/buttoneditor.css" text="Lưu">
+            <Button mnemonicParsing="false" onAction="#addButton" prefHeight="50.0" prefWidth="600.0" styleClass="submit-button" stylesheets="@../css/category/buttoneditor.css" text="Lưu">
                <font>
                   <Font size="22.0" />
                </font></Button>

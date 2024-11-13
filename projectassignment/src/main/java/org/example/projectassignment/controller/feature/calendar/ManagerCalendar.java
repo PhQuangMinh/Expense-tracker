@@ -2,7 +2,9 @@ package org.example.projectassignment.controller.feature.calendar;
 
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
+import javafx.geometry.HPos;
 import javafx.geometry.Pos;
+import javafx.geometry.VPos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -148,6 +150,12 @@ public class ManagerCalendar extends InitCategory{
         categoryModifying = button.getText() ;
     }
 
+    protected void setCategoryImage(CategoryImage categoryImage){
+        GridPane.setHalignment(categoryImage, HPos.CENTER);
+        GridPane.setValignment(categoryImage, VPos.CENTER);
+        categoryImage.setStyle("-fx-font-weight: bold; -fx-border-color: transparent; -fx-background-color: #ddd;-fx-font-size: 12px;");
+    }
+
     protected void updateCategory(ManagerUser managerUser, GridPane gridPane, List<CategoryImage> categoryImageList){
         managerUser.updateCategory();
         gridPane.getChildren().clear();
@@ -156,6 +164,7 @@ public class ManagerCalendar extends InitCategory{
         System.out.println(categoryImageList.size());
         for (CategoryImage button : categoryImageList) {
             button.setOnAction(this::handleCategorySelection);
+            setCategoryImage(button);
             gridPane.add(button, col, row);
             col++;
             if (col == limitColumn) {
