@@ -8,12 +8,9 @@ import javafx.scene.layout.GridPane;
 import org.example.projectassignment.controller.ManagerUser;
 import org.example.projectassignment.model.CategoryImage;
 import org.example.projectassignment.model.category.CategoryModel;
-import org.example.projectassignment.model.category.CategoryUser;
-import org.example.projectassignment.model.user.informationuser.Transaction;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 public class InitCategory {
 
@@ -29,7 +26,16 @@ public class InitCategory {
     }
 
     private void getImage(ActionEvent event) {
-        categoryImageChooser = (CategoryImage) event.getSource();
+        CategoryImage categoryImage = (CategoryImage) event.getSource();
+        if (categoryImageChooser != null) {
+            categoryImageChooser.setStyle("-fx-font-weight: bold; -fx-border-color: transparent; -fx-background-color: #ddd;-fx-text-fill: transparent;");
+        }
+
+        categoryImageChooser = categoryImage;
+        categoryImage.setStyle("-fx-font-weight: bold; -fx-border-width: 2px; -fx-background-color: #ddd;-fx-border-color: black;-fx-text-fill: transparent;" +
+                "    -fx-border-width: 2px;" +
+                "    -fx-border-radius: 2px;");
+
     }
 
     protected void setActionImageCategory(ManagerUser managerUser, GridPane categoryImagesGrid){

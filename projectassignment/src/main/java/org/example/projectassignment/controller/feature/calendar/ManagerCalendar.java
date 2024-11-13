@@ -55,7 +55,7 @@ public class ManagerCalendar extends InitCategory{
 
     protected Notification notification = new Notification();
 
-    protected String selectedCategory;
+    protected CategoryImage categoryImage;
 
     protected void loadDataCurrentMonth() {
         listCalendarDaysCurrentMonth = new ArrayList<>();
@@ -146,8 +146,16 @@ public class ManagerCalendar extends InitCategory{
     }
 
     private void handleCategorySelection(ActionEvent event){
-        Button button = (Button) event.getSource() ;
-        categoryModifying = button.getText() ;
+        CategoryImage category = (CategoryImage) event.getSource() ;
+        categoryModifying = category.getText();
+        if (categoryImageChooser != null) {
+            categoryImageChooser.setStyle("-fx-font-weight: bold; -fx-border-color: transparent; -fx-background-color: #ddd;");
+        }
+
+        categoryImageChooser = category;
+        category.setStyle("-fx-font-weight: bold; -fx-border-color: black; -fx-border-width: 2px; -fx-background-color: #ddd; -fx-text-fill: black;-fx-border-color: black;" +
+                "    -fx-border-width: 2px;" +
+                "    -fx-border-radius: 2px;");
     }
 
     protected void setCategoryImage(CategoryImage categoryImage){

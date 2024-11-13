@@ -242,6 +242,7 @@ public class Calendar extends ManagerCalendar {
         loadDataCurrentMonth();
         updateCalendar();
         updateDetail();
+        managerUser.getFirebaseUser().updateUser(user);
     }
 
     @FXML
@@ -259,6 +260,7 @@ public class Calendar extends ManagerCalendar {
         loadDataCurrentMonth();
         updateCalendar();
         updateDetail();
+        managerUser.getFirebaseUser().updateUser(user);
     }
 
 }
