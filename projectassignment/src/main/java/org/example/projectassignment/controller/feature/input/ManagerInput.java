@@ -65,7 +65,10 @@ public class ManagerInput {
             user.getListCalendarDays().add(calendarDay);
             return;
         }
-        transaction.setIdTransaction(date + String.valueOf(Integer.parseInt(foundDay.getListTransactions().getLast().getIdTransaction())+1));
+//        transaction.setIdTransaction(date + String.valueOf(Integer.parseInt(foundDay.getListTransactions().getLast().getIdTransaction())+1));
+        String format = "2024-11-14";
+        int index = Integer.parseInt(foundDay.getListTransactions().getLast().getIdTransaction().substring(format.length()));
+        transaction.setIdTransaction(date + String.valueOf(index+1));
         foundDay.getListTransactions().add(transaction);
 
     }
