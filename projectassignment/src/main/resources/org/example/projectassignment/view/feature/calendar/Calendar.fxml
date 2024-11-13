@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
@@ -20,7 +26,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="600.0" styleClass="container__stackpane" stylesheets="@Calendar.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.projectassignment.view.feature.calendar.Calendar">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="600.0" styleClass="container__stackpane" stylesheets="@Calendar.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.projectassignment.view.feature.calendar.Calendar">
    <children>
       <VBox>
          <children>
@@ -123,7 +129,7 @@
             </ScrollPane>
          </children>
       </VBox>
-       <Pane fx:id="selectTimeOverlay" prefHeight="700.0" prefWidth="600.0" styleClass="select-time__overlay">
+       <Pane fx:id="selectTimeOverlay" prefHeight="700.0" prefWidth="600.0" styleClass="select-time__overlay" visible="false">
            <children>
                <Pane fx:id="paneMonthYearSelector" layoutY="400.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="300.0" prefWidth="600.0" styleClass="select-time__main">
                    <children>
@@ -233,9 +239,9 @@
                         </TextField>
                      </children>
                   </HBox>
-                  <ScrollPane fx:id="scrollPane" prefHeight="445.0" prefWidth="600.0">
+                  <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="600.0" styleClass="category__scrollpane" vbarPolicy="NEVER">
                      <content>
-                        <GridPane fx:id="categoryImageGridPane" prefHeight="900.0" prefWidth="598.0" styleClass="modify__textfield" stylesheets="@Calendar.css">
+                        <GridPane fx:id="categoryImageGridPane" prefHeight="900.0" prefWidth="598.0" stylesheets="@Calendar.css">
                           <columnConstraints>
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -254,12 +260,21 @@
                           </rowConstraints>
                         </GridPane>
                      </content>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
                   </ScrollPane>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#onActionButtonModifyConfirm" prefHeight="44.0" prefWidth="300.0" styleClass="modify__button" text="Chỉnh sửa" />
-                        <Button mnemonicParsing="false" onAction="#onActionButtonModifyDelete" prefHeight="44.0" prefWidth="300.0" styleClass="modify__button" text="Xoá bản ghi" />
+                        <Button mnemonicParsing="false" onAction="#onActionButtonModifyConfirm" prefHeight="44.0" prefWidth="200.0" styleClass="modify__button" text="Chỉnh sửa">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin></Button>
+                        <Button mnemonicParsing="false" onAction="#onActionButtonModifyDelete" prefHeight="44.0" prefWidth="200.0" styleClass="modify__button" text="Xoá bản ghi" />
                      </children>
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
                   </HBox>
                </children>
             </VBox>
