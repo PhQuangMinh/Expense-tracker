@@ -8,7 +8,7 @@ import javafx.scene.Node ;
 import javafx.scene.Parent ;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage ;
-import org.example.projectassignment.controller.feature.input.ManagerCategoryEditor;
+import org.example.projectassignment.controller.feature.input.category.ManagerCategoryEditor;
 import org.example.projectassignment.view.feature.input.CategoryEditor;
 import org.example.projectassignment.view.feature.input.income.CategoryIncomeEditor;
 import org.example.projectassignment.controller.ManagerUser;
@@ -18,8 +18,6 @@ import org.example.projectassignment.model.CategoryImage;
 import java.io.IOException ;
 import java.util.List;
 import java.util.Objects;
-
-import static org.example.projectassignment.view.feature.input.income.Income.incomeCategories;
 
 
 public class CategoryExpenseEditor extends ManagerCategoryEditor {

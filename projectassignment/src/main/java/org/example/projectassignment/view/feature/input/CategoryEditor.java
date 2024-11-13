@@ -10,7 +10,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import org.example.projectassignment.common.TypeCategory;
-import org.example.projectassignment.controller.feature.input.ManagerCategoryEditor;
+import org.example.projectassignment.controller.feature.input.category.ManagerCategoryEditor;
 import org.example.projectassignment.model.CategoryImage;
 import org.example.projectassignment.controller.ManagerUser;
 import org.example.projectassignment.model.category.CategoryModel;
@@ -49,18 +49,7 @@ public class CategoryEditor extends ManagerCategoryEditor {
         this.managerUser = managerUser;
         notification = new Notification();
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
-        setActionImageCategory();
-    }
-
-    private void setActionImageCategory(){
-        List<CategoryImage> categoryImageList = new ArrayList<>();
-        for (CategoryModel categoryModel : managerUser.getManagerCategory().getListCategoryModels()){
-            CategoryImage categoryImage = new CategoryImage(categoryModel.getIdCategory(), categoryModel.getImage());
-            setCategoryImage(categoryImage);
-            categoryImage.setOnAction(this::getImage);
-            categoryImageList.add(categoryImage);
-        }
-        addCategoryImage(categoryImagesGrid, categoryImageList);
+        setActionImageCategory(managerUser, categoryImagesGrid);
     }
 
     @FXML
@@ -80,10 +69,6 @@ public class CategoryEditor extends ManagerCategoryEditor {
         }
     }
 
-    @FXML
-    private void getImage(ActionEvent event) {
-        categoryImageChooser = (CategoryImage) event.getSource();
-    }
     public void getButton(CategoryImage button){
         Optional<CategoryUser> findCategoryUser = managerUser.getUser().getListCategoryUsers().stream()
                         .filter(categoryUser -> categoryUser.getNameCategory().equals(button.getName()))

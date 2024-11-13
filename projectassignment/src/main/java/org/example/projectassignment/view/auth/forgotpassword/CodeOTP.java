@@ -13,11 +13,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import org.example.projectassignment.controller.auth.forgotpassword.MailSender;
-import org.example.projectassignment.controller.category.ManagerCategory;
+import org.example.projectassignment.controller.feature.input.category.ManagerCategory;
 import org.example.projectassignment.model.user.informationuser.User;
 import org.example.projectassignment.view.auth.signin.SignIn;
 
-import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;

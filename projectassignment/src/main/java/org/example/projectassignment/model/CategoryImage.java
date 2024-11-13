@@ -10,6 +10,8 @@ public class CategoryImage extends Button {
     private String name ;
     private Image image ;
 
+    public CategoryImage(){}
+
     public CategoryImage(String name , Image image) {
         this.name = name ;
         this.image = image ;

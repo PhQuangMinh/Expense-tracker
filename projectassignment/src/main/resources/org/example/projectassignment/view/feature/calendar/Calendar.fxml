@@ -1,26 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.*?>
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.image.Image?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="600.0" styleClass="container__stackpane" stylesheets="@Calendar.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.projectassignment.view.feature.calendar.Calendar">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="600.0" styleClass="container__stackpane" stylesheets="@Calendar.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.projectassignment.view.feature.calendar.Calendar">
    <children>
       <VBox>
          <children>
@@ -123,7 +124,7 @@
             </ScrollPane>
          </children>
       </VBox>
-       <Pane fx:id="selectTimeOverlay" prefHeight="700.0" prefWidth="600.0" styleClass="select-time__overlay" visible="false">
+       <Pane fx:id="selectTimeOverlay" prefHeight="700.0" prefWidth="600.0" styleClass="select-time__overlay">
            <children>
                <Pane fx:id="paneMonthYearSelector" layoutY="400.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="300.0" prefWidth="600.0" styleClass="select-time__main">
                    <children>
@@ -233,10 +234,39 @@
                         </TextField>
                      </children>
                   </HBox>
+                  <ScrollPane fx:id="scrollPane" prefHeight="445.0" prefWidth="600.0">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="800.0" prefWidth="585.0">
+                           <children>
+                              <GridPane fx:id="categoryImageGridPane" layoutX="10.0" prefHeight="900.0" prefWidth="565.0">
+                                <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                              </GridPane>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </ScrollPane>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#onActionButtonModifyConfirm" prefHeight="44.0" prefWidth="300.0" styleClass="modify__button" text="Chỉnh sửa" />
+                        <Button mnemonicParsing="false" onAction="#onActionButtonModifyDelete" prefHeight="44.0" prefWidth="300.0" styleClass="modify__button" text="Xoá bản ghi" />
+                     </children>
+                  </HBox>
                </children>
             </VBox>
-            <Button layoutX="150.0" layoutY="272.0" mnemonicParsing="false" onAction="#onActionButtonModifyConfirm" prefWidth="300.0" styleClass="modify__button" text="Chỉnh sửa" />
-            <Button layoutX="401.0" layoutY="629.0" mnemonicParsing="false" onAction="#onActionButtonModifyDelete" prefHeight="44.0" prefWidth="177.0" styleClass="modify__button" text="Xoá bản ghi" />
          </children>
       </Pane>
    </children>

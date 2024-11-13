@@ -46,7 +46,7 @@ public class Income extends ManagerInput{
         this.managerUser = managerUser;
         this.featureSelection = featureSelection;
         setDatePicker(datePicker);
-        setAmountField(amountField);
+        helper.setAmountField(amountField);
         submitButton.setOnAction(event -> handleSubmit(amountField, datePicker, noteField, managerUser, TypeCategory.INCOME));
     }
 
