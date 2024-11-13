@@ -13,15 +13,12 @@ import org.example.projectassignment.common.TypeCategory;
 import org.example.projectassignment.controller.feature.input.category.ManagerCategoryEditor;
 import org.example.projectassignment.model.CategoryImage;
 import org.example.projectassignment.controller.ManagerUser;
-import org.example.projectassignment.model.category.CategoryModel;
 import org.example.projectassignment.model.category.CategoryUser;
 import org.example.projectassignment.view.feature.input.expense.CategoryExpenseEditor;
 import org.example.projectassignment.view.feature.input.income.CategoryIncomeEditor;
 import org.example.projectassignment.view.utils.Notification;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -49,6 +46,7 @@ public class CategoryEditor extends ManagerCategoryEditor {
         this.managerUser = managerUser;
         notification = new Notification();
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         setActionImageCategory(managerUser, categoryImagesGrid);
     }
 
@@ -129,7 +127,7 @@ public class CategoryEditor extends ManagerCategoryEditor {
             return;
         }
         if(addExpense){
-            CategoryUser newCategoryUser = new CategoryUser(categoryImageChooser.getId(), editNameButton.getText(), TypeCategory.EXPENSE);
+            CategoryUser newCategoryUser = new CategoryUser(categoryImageChooser.getName(), editNameButton.getText(), TypeCategory.EXPENSE);
             managerUser.getUser().getListCategoryUsers().add(newCategoryUser);
             switchToCategoryExpenseEditor(event);
             addExpense = false;

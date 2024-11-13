@@ -54,6 +54,8 @@ public class Calendar extends ManagerCalendar {
 
     public void init(ManagerUser managerUser){
         this.managerUser = managerUser;
+        scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         this.user = managerUser.getUser();
         managerInput = new ManagerInput();
         listCalendarDays = user.getListCalendarDays();

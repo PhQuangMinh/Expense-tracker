@@ -1,7 +1,11 @@
 package org.example.projectassignment.controller.feature.input.category;
 
+import javafx.geometry.HPos;
+import javafx.geometry.VPos;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
 import org.example.projectassignment.controller.ManagerUser;
+import org.example.projectassignment.model.CategoryImage;
 import org.example.projectassignment.model.category.CategoryUser;
 import org.example.projectassignment.view.utils.Notification;
 
@@ -21,5 +25,11 @@ public class ManagerCategoryEditor extends InitCategory{
             return true;
         }
         return false;
+    }
+
+    protected void setCategoryImage(CategoryImage categoryImage){
+        GridPane.setHalignment(categoryImage, HPos.CENTER);
+        GridPane.setValignment(categoryImage, VPos.CENTER);
+        categoryImage.setStyle("-fx-font-weight: bold; -fx-border-color: transparent; -fx-background-color: #ddd;");
     }
 }

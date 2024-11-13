@@ -10,37 +10,51 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.projectassignment.view.feature.input.income.Income">
    <children>
       <AnchorPane prefHeight="30.0" prefWidth="600.0">
          <children>
-            <Button layoutX="300.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" text="Tiền thu" />
-            <Button mnemonicParsing="false" onAction="#onActionSwitchExpense" prefHeight="40.0" prefWidth="300.0" text="Tiền chi" />
+            <Button layoutX="300.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" styleClass="income_header" stylesheets="@../css/category/income.css" text="Tiền thu" />
+            <Button mnemonicParsing="false" onAction="#onActionSwitchExpense" prefHeight="40.0" prefWidth="300.0" styleClass="expense_header" stylesheets="@../css/category/income.css" text="Tiền chi" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="30.0" prefWidth="600.0">
          <children>
-            <Label layoutY="7.0" prefHeight="39.0" prefWidth="64.0" text="Ngày " />
-            <DatePicker fx:id="datePicker" layoutX="64.0" layoutY="3.0" prefHeight="40.0" prefWidth="500.0" />
+            <Label layoutX="10.0" layoutY="14.0" prefHeight="18.0" prefWidth="55.0" text="Ngày ">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font></Label>
+            <DatePicker fx:id="datePicker" layoutX="64.0" layoutY="3.0" prefHeight="40.0" prefWidth="500.0" styleClass="input" stylesheets="@../css/category/income.css" />
          </children></AnchorPane>
       <AnchorPane prefHeight="30.0" prefWidth="600.0">
          <children>
             <Text layoutX="3.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" />
-            <TextField fx:id="noteField" layoutX="64.0" layoutY="12.0" prefHeight="40.0" prefWidth="500.0" />
-            <Label layoutY="7.0" prefHeight="39.0" prefWidth="64.0" text="Ghi chú" />
+            <TextField fx:id="noteField" layoutX="64.0" layoutY="12.0" prefHeight="40.0" prefWidth="500.0" styleClass="input" stylesheets="@../css/category/income.css" />
+            <Label layoutX="10.0" layoutY="23.0" prefHeight="18.0" prefWidth="55.0" text="Ghi chú">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font></Label>
          </children></AnchorPane>
       <AnchorPane prefHeight="69.0" prefWidth="600.0">
          <children>
-            <Label layoutY="14.0" prefHeight="39.0" prefWidth="64.0" text="Tiền thu" />
-            <TextField fx:id="amountField" layoutX="64.0" layoutY="15.0" prefHeight="40.0" prefWidth="500.0" />
-            <Label layoutY="65.0" text="Danh mục" />
+            <Label layoutX="10.0" layoutY="26.0" prefHeight="18.0" prefWidth="55.0" text="Tiền thu">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font></Label>
+            <TextField fx:id="amountField" layoutX="64.0" layoutY="15.0" prefHeight="40.0" prefWidth="500.0" styleClass="input" stylesheets="@../css/category/income.css" />
+            <Label layoutY="65.0" text="Danh mục">
+               <font>
+                  <Font name="System Bold Italic" size="13.0" />
+               </font></Label>
          </children></AnchorPane>
-      <ScrollPane prefHeight="600.0" prefWidth="600.0">
+      <ScrollPane fx:id="scrollPane" prefHeight="600.0" prefWidth="595.0">
          <content>
-            <GridPane fx:id="incomeGridPane" prefHeight="750.0" prefWidth="585.0">
+            <GridPane fx:id="incomeGridPane" prefHeight="750.0" prefWidth="598.0" styleClass="input" stylesheets="@../css/category/income.css">
               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -57,7 +71,7 @@
       </ScrollPane>
       <AnchorPane prefHeight="38.0" prefWidth="600.0">
          <children>
-            <Button fx:id="submitButton" layoutY="-18.0" mnemonicParsing="false" prefHeight="73.0" prefWidth="600.0" text="Nhập khoản Tiền thu" />
+            <Button fx:id="submitButton" layoutY="-18.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="600.0" styleClass="submit-button" stylesheets="@../css/category/income.css" text="Nhập khoản Tiền thu" />
          </children>
       </AnchorPane>
    </children>

@@ -3,10 +3,13 @@ package org.example.projectassignment.view.feature.input.income;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader ;
+import javafx.geometry.HPos;
+import javafx.geometry.VPos;
 import javafx.scene.Scene ;
 import javafx.scene.Node ;
 import javafx.scene.Parent ;
 import javafx.scene.control.Button ;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage ;
 import org.example.projectassignment.controller.feature.input.category.ManagerCategoryEditor;
@@ -28,6 +31,9 @@ public class CategoryIncomeEditor extends ManagerCategoryEditor {
     private Button addButton ;
 
     @FXML
+    private ScrollPane scrollPane;
+
+    @FXML
     private GridPane category ;
 
     private Stage stage ;
@@ -39,6 +45,8 @@ public class CategoryIncomeEditor extends ManagerCategoryEditor {
     private ManagerUser managerUser;
 
     public void init(ManagerUser managerUser) throws IOException {
+        scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         this.managerUser = managerUser;
         updateCategory(managerUser.getIncomeCategory());
         addButton.setOnAction(event -> {
@@ -122,6 +130,7 @@ public class CategoryIncomeEditor extends ManagerCategoryEditor {
                 }
             });
             category.add(button, col, row);
+            setCategoryImage(button);
             col++;
             if (col == limitColumn) {
                 col = 0;

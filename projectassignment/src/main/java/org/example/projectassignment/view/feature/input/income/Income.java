@@ -38,6 +38,9 @@ public class Income extends ManagerInput{
     @FXML
     private Button submitButton;
 
+    @FXML
+    private ScrollPane scrollPane;
+
     private FeatureSelection featureSelection;
 
     private ManagerUser managerUser;
@@ -47,6 +50,8 @@ public class Income extends ManagerInput{
         this.featureSelection = featureSelection;
         setDatePicker(datePicker);
         helper.setAmountField(amountField);
+        scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         submitButton.setOnAction(event -> handleSubmit(amountField, datePicker, noteField, managerUser, TypeCategory.INCOME));
     }
 
