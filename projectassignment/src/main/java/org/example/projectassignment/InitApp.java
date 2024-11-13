@@ -61,6 +61,7 @@ public class InitApp {
                         stage.setOnCloseRequest(event -> {
                             firebaseUser.saveUser(users);
                         });
+                        stage.setResizable(false);
                         waitStage.close();
                         System.out.println(Instant.now().toEpochMilli() - start.toEpochMilli());
                     }catch (IOException e){

@@ -8,7 +8,7 @@ import org.example.projectassignment.Main;
 import org.example.projectassignment.view.feature.calendar.Calendar;
 import org.example.projectassignment.view.feature.input.expense.Expense;
 import org.example.projectassignment.view.feature.input.income.Income;
-import org.example.projectassignment.model.user.ManagerUser;
+import org.example.projectassignment.controller.ManagerUser;
 import org.example.projectassignment.model.user.informationuser.User;
 import org.example.projectassignment.view.feature.other.OtherScene;
 import org.example.projectassignment.view.feature.report.ReportScene;
@@ -40,14 +40,14 @@ public class FeatureSelection {
     }
 
     public void switchExpenseMoneyTab() throws IOException {
-        loadScreen("view/SpendingMoney.fxml");
+        loadScreen("view/Expense.fxml");
         Expense expense = loader.getController();
         expense.init(managerUser, this);
         expense.updateCategoryExpense();
     }
 
     public void switchIncomeTab() throws IOException {
-        loadScreen("view/Revenue.fxml");
+        loadScreen("view/Income.fxml");
         Income income = loader.getController();
         income.init(managerUser, this);
         income.updateCategoryIncome();

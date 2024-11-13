@@ -8,8 +8,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
-import org.example.projectassignment.common.TypeTransaction;
-import org.example.projectassignment.model.user.ManagerUser;
+import org.example.projectassignment.common.TypeCategory;
+import org.example.projectassignment.controller.ManagerUser;
 import org.example.projectassignment.model.user.informationuser.CalendarDay;
 import org.example.projectassignment.model.user.informationuser.Transaction;
 import org.example.projectassignment.model.user.informationuser.User;
@@ -80,10 +80,10 @@ public class ReportScene {
             if (calendarDay.getDate().substring(0,7).equals(currentYearMonth.toString())) {
                 List<Transaction> listTransactions = calendarDay.getListTransactions();
                 for (Transaction transaction : listTransactions) {
-                    if (transaction.getTypeTransaction() == TypeTransaction.EXPENSE) {
+                    if (transaction.getTypeTransaction() == TypeCategory.EXPENSE) {
                         expenseMap.put(transaction.getCategory(), expenseMap.getOrDefault(transaction.getCategory(), 0L) + transaction.getAmount());
                         totalExpense += transaction.getAmount();
-                    } else if (transaction.getTypeTransaction() == TypeTransaction.INCOME) {
+                    } else if (transaction.getTypeTransaction() == TypeCategory.INCOME) {
                         incomeMap.put(transaction.getCategory(), incomeMap.getOrDefault(transaction.getCategory(), 0L) + transaction.getAmount());
                         totalIncome += transaction.getAmount();
                     }

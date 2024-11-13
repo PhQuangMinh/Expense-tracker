@@ -11,7 +11,7 @@ import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 import org.example.projectassignment.InitApp;
 import org.example.projectassignment.Main;
-import org.example.projectassignment.model.user.ManagerUser;
+import org.example.projectassignment.controller.ManagerUser;
 import org.example.projectassignment.view.feature.other.informationuser.EditInformation;
 import org.example.projectassignment.view.feature.other.informationuser.EditPassword;
 import org.example.projectassignment.view.feature.other.annualreport.AnnualReportScene;
