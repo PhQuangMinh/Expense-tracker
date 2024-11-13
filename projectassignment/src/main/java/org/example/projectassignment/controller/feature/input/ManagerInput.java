@@ -7,6 +7,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import org.example.projectassignment.common.TypeCategory;
+import org.example.projectassignment.controller.Helper;
 import org.example.projectassignment.controller.ManagerUser;
 import org.example.projectassignment.model.CategoryImage;
 import org.example.projectassignment.model.user.informationuser.CalendarDay;
@@ -27,6 +28,10 @@ public class ManagerInput {
 
     private final Notification notification = new Notification();
 
+    protected Helper helper = new Helper();
+
+
+
     protected void setEditButton(CategoryImage editButton){
         editButton.setAlignment(Pos.CENTER);
         editButton.setContentDisplay(ContentDisplay.CENTER);
@@ -44,18 +49,17 @@ public class ManagerInput {
         LocalDate date = datePicker.getValue();
         String note = noteField.getText();
         String amount = removeCommas(amountField.getText());
-        Transaction transaction = new Transaction(note, Long.parseLong(amount), category, typeTransaction, "0");
+        Transaction transaction = new Transaction(note, Long.parseLong(amount), category, typeTransaction);
         CalendarDay foundDay = getCalendarInList(user.getListCalendarDays(), date);
         if (foundDay == null){
             List<Transaction> listTransaction = new ArrayList<>();
-            transaction.setIdTransaction("0");
+            transaction.setIdTransaction(date + "0");
             listTransaction.add(transaction);
             CalendarDay calendarDay = new CalendarDay(String.valueOf(datePicker.getValue()), listTransaction);
             user.getListCalendarDays().add(calendarDay);
             return;
         }
-        System.out.println("nhap thanh cong");
-        transaction.setIdTransaction(String.valueOf(Integer.parseInt(foundDay.getListTransactions().getLast().getIdTransaction())+1));
+        transaction.setIdTransaction(date + String.valueOf(Integer.parseInt(foundDay.getListTransactions().getLast().getIdTransaction())+1));
         foundDay.getListTransactions().add(transaction);
 
     }
@@ -69,36 +73,6 @@ public class ManagerInput {
         datePicker.setEditable(false);
     }
 
-    public void setAmountField(TextField amountField){
-        amountField.textProperty().addListener(new ChangeListener<String>() {
-            private boolean changing = false;
-
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                if (changing) {
-                    return;
-                }
-                changing = true;
-                try{
-                    if(newValue == null || newValue.isEmpty()){
-                        amountField.setText("") ;
-                    }
-                    else{
-                        String cleanString = removeCommas(newValue);
-                        double parsed = Double.parseDouble(cleanString) ;
-                        NumberFormat formatter = NumberFormat.getInstance(Locale.US);
-                        formatter.setGroupingUsed(true);
-                        String formattedString = formatter.format(parsed);
-                        amountField.setText(formattedString);
-                    }
-                }
-                catch(NumberFormatException e){
-                    amountField.setText(oldValue);
-                }
-                changing = false;
-            }
-        });
-    }
 
     private void handleCategorySelection(ActionEvent event){
         Button button = (Button) event.getSource() ;
@@ -123,6 +97,10 @@ public class ManagerInput {
     }
 
     protected void handleSubmit(TextField amountField, DatePicker datePicker, TextField noteField, ManagerUser managerUser, TypeCategory typeCategory){
+        if (selectedCategory.isEmpty()){
+            notification.notification("Bạn chưa lựa chọn danh mục");
+            return;
+        }
         double amountValue;
         try {
             amountValue = Double.parseDouble(removeCommas(amountField.getText()));
@@ -130,15 +108,13 @@ public class ManagerInput {
                 throw new NumberFormatException();
             }
         } catch (NumberFormatException e) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setHeaderText("Số tiền không hợp lệ, bạn vui lòng nhập lại số tiền!");
-            alert.showAndWait();
+            notification.notification("Số tiền không hợp lệ, bạn vui lòng nhập lại số tiền!");
             return;
         }
         addTransaction(datePicker, noteField, amountField, selectedCategory, managerUser.getUser(), typeCategory);
         noteField.clear();
         amountField.clear();
-        datePicker.setValue(null);
+        setDatePicker(datePicker);
         notification.notification("Nhập thành công");
     }
 }

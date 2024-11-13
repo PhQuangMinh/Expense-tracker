@@ -1,15 +1,12 @@
-package org.example.projectassignment.controller.category;
+package org.example.projectassignment.controller.feature.input.category;
 
-import javafx.scene.image.Image;
 import org.example.projectassignment.common.TypeCategory;
 import org.example.projectassignment.model.category.CategoryModel;
 import org.example.projectassignment.model.category.CategoryUser;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
 public class ManagerCategory {
