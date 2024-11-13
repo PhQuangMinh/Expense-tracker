@@ -67,6 +67,7 @@ public class CategoryEditor extends ManagerCategoryEditor {
             }
             notification.notification("Xóa nút thành công!");
         }
+        managerUser.getFirebaseUser().updateUser(managerUser.getUser());
     }
 
     public void getButton(CategoryImage button){
@@ -77,6 +78,8 @@ public class CategoryEditor extends ManagerCategoryEditor {
             categoryUserEditor = findCategoryUser.get();
             editNameButton.setText(button.getName());
             categoryImageChooser = button;
+            categoryImageChooser.setName(categoryUserEditor.getIdCategoryModel());
+            System.out.println(categoryImageChooser.getName());
         }
         else{
             System.out.println("Không tìm thấy");
@@ -97,6 +100,8 @@ public class CategoryEditor extends ManagerCategoryEditor {
                 return;
             }
         }
+        System.out.println(editNameButton.getText());
+        System.out.println(categoryImageChooser.getName());
         categoryUserEditor.setNameCategory(editNameButton.getText());
         categoryUserEditor.setIdCategoryModel(categoryImageChooser.getName());
         if(editExpense){
@@ -108,6 +113,7 @@ public class CategoryEditor extends ManagerCategoryEditor {
             editIncome = false;
         }
         notification.notification("Lưu thành công!");
+        managerUser.getFirebaseUser().updateUser(managerUser.getUser());
     }
 
     @FXML
@@ -123,7 +129,7 @@ public class CategoryEditor extends ManagerCategoryEditor {
             return;
         }
         if(addExpense){
-            CategoryUser newCategoryUser = new CategoryUser(categoryImageChooser.getName(), editNameButton.getText(), TypeCategory.EXPENSE);
+            CategoryUser newCategoryUser = new CategoryUser(categoryImageChooser.getId(), editNameButton.getText(), TypeCategory.EXPENSE);
             managerUser.getUser().getListCategoryUsers().add(newCategoryUser);
             switchToCategoryExpenseEditor(event);
             addExpense = false;
@@ -135,6 +141,7 @@ public class CategoryEditor extends ManagerCategoryEditor {
             addIncome = false;
         }
         notification.notification("Thêm nút thành công!");
+        managerUser.getFirebaseUser().updateUser(managerUser.getUser());
     }
 
     @FXML

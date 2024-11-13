@@ -55,16 +55,4 @@ public class InitCategory {
             }
         }
     }
-
-    protected void setCategoryImageChooser(Transaction transaction, ManagerUser managerUser){
-        Optional<CategoryUser> categoryUserOptional = managerUser.getUser().getListCategoryUsers().stream()
-                .filter(cattegory -> cattegory.getNameCategory().equals(transaction.getCategory()))
-                .findFirst();
-        if (categoryUserOptional.isPresent()) {
-            Optional<CategoryModel> categoryModelOptional = managerUser.getManagerCategory().getListCategoryModels().stream()
-                    .filter(category -> category.getIdCategory().equals(categoryUserOptional.get().getIdCategoryModel()))
-                    .findFirst();
-            categoryModelOptional.ifPresent(categoryModel -> categoryImageChooser = new CategoryImage(categoryUserOptional.get().getNameCategory(), categoryModel.getImage()));
-        }
-    }
 }

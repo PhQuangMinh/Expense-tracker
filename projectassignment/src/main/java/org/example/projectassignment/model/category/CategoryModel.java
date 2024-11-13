@@ -36,4 +36,9 @@ public class CategoryModel implements Comparable<CategoryModel> {
     public int compareTo(@NotNull CategoryModel o) {
         return this.idCategory.compareTo(o.idCategory);
     }
+
+    @Override
+    public String toString(){
+        return idCategory;
+    }
 }
