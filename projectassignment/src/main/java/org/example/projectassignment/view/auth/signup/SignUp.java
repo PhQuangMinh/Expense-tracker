@@ -83,7 +83,7 @@ public class SignUp {
             User user = new User(String.valueOf(listUsers.size()), firstName.getText(), lastName.getText(), email.getText(),
                     password.getText(), managerCategory.initListUserSignUp());
             listUsers.add(user);
-            firebaseUser.saveUser(listUsers);
+            firebaseUser.updateUser(user);
             inform.setTextFill(Color.GREEN);
             inform.setText("Đăng kí thành công!");
             inform.setVisible(true);
