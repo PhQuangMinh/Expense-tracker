@@ -41,7 +41,6 @@ public class CategoryIncomeEditor extends ManagerCategoryEditor {
     public void init(ManagerUser managerUser) throws IOException {
         this.managerUser = managerUser;
         updateCategory(managerUser.getIncomeCategory());
-        System.out.println(managerUser.getIncomeCategory().size());
         addButton.setOnAction(event -> {
             try {
                 switchToAddButtonCategory(event);

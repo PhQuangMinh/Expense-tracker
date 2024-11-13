@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 import org.example.projectassignment.InitApp;
 import org.example.projectassignment.Main;
 import org.example.projectassignment.controller.ManagerUser;
+import org.example.projectassignment.controller.firebase.FirebaseUser;
 import org.example.projectassignment.view.feature.other.informationuser.EditInformation;
 import org.example.projectassignment.view.feature.other.informationuser.EditPassword;
 import org.example.projectassignment.view.feature.other.annualreport.AnnualReportScene;
@@ -64,6 +65,7 @@ public class OtherScene {
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK) {
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            managerUser.getFirebaseUser().updateUser(managerUser.getUser());
             InitApp initApp = new InitApp();
             initApp.init(stage);
         }

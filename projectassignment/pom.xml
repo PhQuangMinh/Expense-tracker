@@ -21,9 +21,16 @@
         <google-cloud-firestore.version>3.20.0</google-cloud-firestore.version>
         <firebase-admin.version>9.2.0</firebase-admin.version>
         <javax.mail.version>1.6.2</javax.mail.version>
+        <spring-security-core.version>6.3.2</spring-security-core.version>
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-core</artifactId>
+            <version>${spring-security-core.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>com.sun.mail</groupId>
             <artifactId>javax.mail</artifactId>

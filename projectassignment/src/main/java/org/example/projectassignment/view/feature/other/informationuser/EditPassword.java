@@ -68,6 +68,7 @@ public class EditPassword {
         this.managerUser.getUser().setPassword(newPassword.getText());
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setHeaderText("Thay đổi mật khẩu thành công!");
+        managerUser.getFirebaseUser().updateUser(managerUser.getUser());
         if(alert.showAndWait().get()  == ButtonType.OK){
             goBack(event) ;
         }

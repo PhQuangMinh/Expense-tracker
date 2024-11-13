@@ -2,6 +2,7 @@ package org.example.projectassignment.controller;
 
 import org.example.projectassignment.common.TypeCategory;
 import org.example.projectassignment.controller.feature.input.category.ManagerCategory;
+import org.example.projectassignment.controller.firebase.FirebaseUser;
 import org.example.projectassignment.model.CategoryImage;
 import org.example.projectassignment.model.category.CategoryModel;
 import org.example.projectassignment.model.category.CategoryUser;
@@ -15,8 +16,11 @@ public class ManagerUser  {
     private ManagerCategory managerCategory;
     private List<CategoryImage> expenseCategory = new ArrayList<>();
     private List<CategoryImage> incomeCategory = new ArrayList<>();
-    public ManagerUser(User user, ManagerCategory managerCategory) {
+    private FirebaseUser firebaseUser;
+
+    public ManagerUser(User user, FirebaseUser firebaseUser, ManagerCategory managerCategory) {
         this.user = user;
+        this.firebaseUser = firebaseUser;
         this.managerCategory = managerCategory;
         loadCategory();
     }
@@ -74,5 +78,13 @@ public class ManagerUser  {
 
     public void setIncomeCategory(List<CategoryImage> incomeCategory) {
         this.incomeCategory = incomeCategory;
+    }
+
+    public FirebaseUser getFirebaseUser() {
+        return firebaseUser;
+    }
+
+    public void setFirebaseUser(FirebaseUser firebaseUser) {
+        this.firebaseUser = firebaseUser;
     }
 }
