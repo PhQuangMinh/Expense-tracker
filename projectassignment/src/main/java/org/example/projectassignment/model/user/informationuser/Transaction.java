@@ -10,17 +10,15 @@ public class Transaction implements Serializable {
     private long amount;
     private String category;
     private TypeCategory typeTransaction;
-    private String idCategory;
 
     public Transaction(){
     }
 
-    public Transaction(String note , long amount , String category, TypeCategory typeTransaction, String idCategory) {
+    public Transaction(String note , long amount , String category, TypeCategory typeTransaction) {
         this.note = note;
         this.amount = amount;
         this.category = category;
         this.typeTransaction = typeTransaction;
-        this.idCategory = idCategory;
     }
 
     public String getNote() {
@@ -53,14 +51,6 @@ public class Transaction implements Serializable {
 
     public void setTypeTransaction(TypeCategory typeTransaction) {
         this.typeTransaction = typeTransaction;
-    }
-
-    public String getIdCategory() {
-        return idCategory;
-    }
-
-    public void setIdCategory(String idCategory) {
-        this.idCategory = idCategory;
     }
 
     public String getIdTransaction() {

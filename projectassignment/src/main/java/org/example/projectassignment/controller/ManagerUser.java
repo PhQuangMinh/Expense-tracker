@@ -1,7 +1,7 @@
 package org.example.projectassignment.controller;
 
 import org.example.projectassignment.common.TypeCategory;
-import org.example.projectassignment.controller.category.ManagerCategory;
+import org.example.projectassignment.controller.feature.input.category.ManagerCategory;
 import org.example.projectassignment.model.CategoryImage;
 import org.example.projectassignment.model.category.CategoryModel;
 import org.example.projectassignment.model.category.CategoryUser;
@@ -29,9 +29,7 @@ public class ManagerUser  {
 
     private void  loadCategory() {
         for(CategoryUser categoryUser : user.getListCategoryUsers()){
-//            System.out.println(categoryUser.getIdCategoryModel());
             for(CategoryModel categoryModel : this.getManagerCategory().getListCategoryModels() ){
-//                System.out.println(categoryModel);
                 if(categoryUser.getIdCategoryModel().equals(categoryModel.getIdCategory())) {
                     CategoryImage categoryImage = new CategoryImage(categoryUser.getNameCategory(), categoryModel.getImage());
                     categoryImage.setPrefSize(70, 70);

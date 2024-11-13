@@ -11,7 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import org.example.projectassignment.controller.category.ManagerCategory;
+import org.example.projectassignment.controller.feature.input.category.ManagerCategory;
 import org.example.projectassignment.controller.firebase.FirebaseUser;
 import org.example.projectassignment.model.user.informationuser.User;
 import org.example.projectassignment.view.auth.signin.SignIn;

@@ -9,7 +9,7 @@ import javafx.scene.Parent ;
 import javafx.scene.control.Button ;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage ;
-import org.example.projectassignment.controller.feature.input.ManagerCategoryEditor;
+import org.example.projectassignment.controller.feature.input.category.ManagerCategoryEditor;
 import org.example.projectassignment.view.feature.input.CategoryEditor;
 import org.example.projectassignment.controller.ManagerUser;
 import org.example.projectassignment.view.feature.FeatureSelection;

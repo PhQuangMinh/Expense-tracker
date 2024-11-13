@@ -1,4 +1,4 @@
-package org.example.projectassignment.controller.category;
+package org.example.projectassignment.controller.feature.input.category;
 
 import org.example.projectassignment.controller.firebase.FirebaseCategory;
 import org.example.projectassignment.model.category.CategoryModel;

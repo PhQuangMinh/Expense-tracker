@@ -44,7 +44,7 @@ public class Expense extends ManagerInput {
         this.featureSelection = featureSelection;
         this.managerUser = managerUser;
         setDatePicker(datePicker);
-        setAmountField(amountField);
+        helper.setAmountField(amountField);
         submitButton.setOnAction(event -> handleSubmit(amountField, datePicker, noteField, managerUser, TypeCategory.EXPENSE));
     }
 
