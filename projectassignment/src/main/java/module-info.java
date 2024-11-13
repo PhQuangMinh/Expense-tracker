@@ -20,6 +20,7 @@ module org.example.projectassignment {
     requires google.cloud.core;
     requires google.cloud.firestore;
     requires java.mail;
+    requires spring.security.crypto;
 
     exports org.example.projectassignment.model.category;
     opens org.example.projectassignment to javafx.fxml;

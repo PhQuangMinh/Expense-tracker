@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.Locale;
 
 public class ManagerInput {
-    protected String selectedCategory ;
+    protected String selectedCategory = "";
 
     protected CategoryImage editButton = new CategoryImage("Chỉnh sửa" ,null);
 
@@ -76,7 +76,10 @@ public class ManagerInput {
 
     private void handleCategorySelection(ActionEvent event){
         Button button = (Button) event.getSource() ;
-        selectedCategory = button.getText() ;
+        selectedCategory = button.getText();
+        if (selectedCategory == null){
+            selectedCategory = "";
+        }
     }
 
     protected void updateCategory(CategoryImage editButton, ManagerUser managerUser, GridPane gridPane, List<CategoryImage> categoryImageList){
@@ -116,5 +119,6 @@ public class ManagerInput {
         amountField.clear();
         setDatePicker(datePicker);
         notification.notification("Nhập thành công");
+        managerUser.getFirebaseUser().updateUser(managerUser.getUser());
     }
 }

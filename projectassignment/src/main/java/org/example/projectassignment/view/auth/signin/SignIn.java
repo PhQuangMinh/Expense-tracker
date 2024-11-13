@@ -11,6 +11,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import org.example.projectassignment.controller.feature.input.category.ManagerCategory;
 import org.example.projectassignment.controller.ManagerUser;
+import org.example.projectassignment.controller.firebase.FirebaseUser;
 import org.example.projectassignment.view.auth.forgotpassword.ForgotPassword;
 import org.example.projectassignment.view.feature.FeatureSelection;
 import org.example.projectassignment.model.user.informationuser.User;
@@ -112,7 +113,7 @@ public class SignIn {
         pane.getChildren().clear();
         pane.getChildren().add(root);
         FeatureSelection featureSelect = loader.getController();
-        ManagerUser managerUser = new ManagerUser(user, managerCategory);
+        ManagerUser managerUser = new ManagerUser(user, new FirebaseUser(), managerCategory);
         featureSelect.init(managerUser);
     }
 }

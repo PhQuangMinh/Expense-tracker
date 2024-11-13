@@ -47,6 +47,7 @@ public class EditInformation {
         alert.showAndWait();
         managerUser.getUser().setFirstName(firstName.getText());
         managerUser.getUser().setLastName(lastName.getText());
+        managerUser.getFirebaseUser().updateUser(managerUser.getUser());
         goBack(event);
     }
     @FXML

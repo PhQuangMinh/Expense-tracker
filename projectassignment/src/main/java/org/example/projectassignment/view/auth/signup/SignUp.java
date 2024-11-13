@@ -60,14 +60,14 @@ public class SignUp {
         signUp.setOnAction(event -> signUpAction(managerCategory));
         signIn.setOnMouseClicked(event -> {
             try {
-                signInAction(managerCategory);
+                signInAction(managerCategory, firebaseUser);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         });
     }
 
-    private void signInAction(ManagerCategory managerCategory) throws IOException {
+    private void signInAction(ManagerCategory managerCategory, FirebaseUser firebaseUser) throws IOException {
         FXMLLoader loader = new FXMLLoader(SignIn.class.getResource("SignIn.fxml"));
         Parent root = loader.load();
         SignIn signIn = loader.getController();

@@ -86,13 +86,7 @@ public class User {
     @Override
     public String toString(){
         if (listCalendarDays==null){
-            return firstName + " " + lastName;
-        }
-        for (CalendarDay calendarDay : listCalendarDays){
-            System.out.println(calendarDay.getDate());
-            for (Transaction transaction:calendarDay.getListTransactions()){
-                System.out.println(transaction);
-            }
+            return firstName + " " + lastName + " " + password;
         }
         return firstName + " " + lastName;
     }
