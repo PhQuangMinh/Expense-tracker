@@ -1,0 +1,94 @@
+.container-vbox {
+    -fx-background-color: white;
+}
+
+.header__hbox {
+    -fx-border-width: 0 0 1px 0;
+    -fx-border-color: darkgrey;
+    -fx-border-style: solid;
+    -fx-background-color: #f1f0f0;
+}
+
+.header__label {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+
+.navi-time__button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.navi-time__label {
+    -fx-background-color: #f1f0f0;
+    -fx-font-weight: bold;
+    -fx-font-family: "Arial";
+    -fx-font-size: 20px;
+    -fx-background-radius: 5px;
+}
+
+.navi-time__button:hover {
+    -fx-background-color: #f1f0f0;
+}
+
+.select-time__overlay {
+    -fx-background-color: rgba(0, 0, 0, 0.5);
+}
+
+.select-time__main {
+    -fx-background-color: white;
+}
+
+.select-year__header {
+    -fx-background-color: #f1f0f0;
+}
+
+.select-time__button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #fe5d02;
+    -fx-font-size: 20px;
+}
+
+.select-time__button:hover {
+    -fx-background-color: #DDDDDD;
+}
+
+.report-hbox {
+    -fx-border-color: black; /* Màu viền */
+    -fx-border-width: 1px;   /* Độ dày viền */
+    -fx-padding: 0 10px;       /* Khoảng cách bên trong */
+    -fx-border-radius: 5px;
+}
+
+.report-label_expense {
+    -fx-text-fill: #fe5d02;
+    -fx-font-size: 20px;
+}
+
+.report-label_income {
+    -fx-text-fill: #0592d3;
+    -fx-font-size: 20px;
+}
+
+.report-label_total {
+    -fx-font-size: 22px;
+}
+
+.piechart-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: darkgrey;
+    -fx-font-size: 16px;
+    -fx-border-width: 0 0 2px 0;
+    -fx-border-color: darkgrey;
+    -fx-border-style: solid;
+}
+
+.piechart-button:hover {
+    -fx-border-color: #fe5d02;
+    -fx-text-fill: #fe5d02;
+}
+
+.detail_scrollpane:focused {
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}

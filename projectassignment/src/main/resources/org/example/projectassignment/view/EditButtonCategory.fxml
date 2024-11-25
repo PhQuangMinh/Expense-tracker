@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="600.0" stylesheets="@../css/category/buttoneditor.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.projectassignment.view.feature.input.CategoryEditor">
+   <children>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="600.0">
+         <children>
+            <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#goBackEdit" prefHeight="50.0" prefWidth="50.0" styleClass="header__button" stylesheets="@../css/category/back.css">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Image/icons8-less-than-orange-100.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="86.0" layoutY="10.0" prefHeight="30.0" prefWidth="427.0" text="Chỉnh sửa thông tin danh mục">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Button layoutX="549.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#deleteButton" prefHeight="50.0" prefWidth="50.0" styleClass="header__button" stylesheets="@../css/category/back.css">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Image/trash.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="50.0" prefWidth="600.0">
+         <children>
+            <Label layoutX="5.0" layoutY="8.0" prefHeight="35.0" prefWidth="137.0" styleClass="label-title" text="Tên danh mục" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="8.0">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Label>
+            <TextField fx:id="editNameButton" layoutX="107.0" layoutY="8.0" prefHeight="39.0" prefWidth="408.0" styleClass="input__textfield" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="8.0" />
+         </children>
+      </AnchorPane>
+      <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="600.0">
+         <children>
+            <Label styleClass="label-title" text="Danh mục">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </Label>
+         </children>
+      </HBox>
+      <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" prefHeight="400.0" prefWidth="600.0" vbarPolicy="NEVER">
+         <content>
+            <GridPane fx:id="categoryImagesGrid" prefHeight="900.0" prefWidth="598.0" styleClass="category" stylesheets="@../css/category/buttoneditor.css">
+              <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+            </GridPane>
+         </content>
+      </ScrollPane>
+      <Button layoutY="-1.0" mnemonicParsing="false" onAction="#saveEdit" prefHeight="50.0" prefWidth="300.0" styleClass="submit-button" stylesheets="@../css/category/buttoneditor.css" text="Lưu" AnchorPane.topAnchor="20.0">
+         <font>
+            <Font size="22.0" />
+         </font>
+         <VBox.margin>
+            <Insets top="10.0" />
+         </VBox.margin>
+      </Button>
+   </children>
+</VBox>

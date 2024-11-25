@@ -1,0 +1,27 @@
+.header__button {
+    -fx-background-color: transparent;
+}
+
+.header__button:hover {
+    -fx-background-color: #DDDDDD;
+}
+
+.header__label {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+
+.header__hbox {
+    -fx-border-width: 0 0 1px 0;
+    -fx-border-style: solid;
+    -fx-border-color: darkgrey;
+}
+
+.input__label {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+
+.input__textfield {
+    -fx-font-size: 18px;
+}

@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="600.0" styleClass="container__stackpane" stylesheets="@Calendar.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.projectassignment.view.feature.calendar.Calendar">
+   <children>
+      <VBox>
+         <children>
+            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="600.0" styleClass="header__hbox">
+               <children>
+                  <Label text="Lịch" />
+               </children>
+            </HBox>
+              <HBox alignment="CENTER" layoutY="50.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="600.0" styleClass="navi-time__hbox">
+                  <children>
+                      <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onActionButtonDecreaseMonth" prefHeight="35.0" prefWidth="35.0" styleClass="navi-time__button">
+                          <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                  <image>
+                                      <Image url="@../../Image/icons8-less-than-black-100.png" />
+                                  </image>
+                              </ImageView>
+                          </graphic>
+                  </Button>
+                      <Label fx:id="naviTimeLabel" alignment="CENTER" onMouseClicked="#onMouseClickedNaviMonthYearLabel" prefHeight="35.0" prefWidth="480.0" styleClass="navi-time__label" text="nam hien tai">
+                          <HBox.margin>
+                              <Insets left="10.0" right="10.0" />
+                          </HBox.margin>
+                      </Label>
+                      <Button layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onActionButtonIncreaseMonth" prefHeight="35.0" prefWidth="35.0" styleClass="navi-time__button">
+                          <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
+                                  <image>
+                                      <Image url="@../../Image/icons8-less-than-black-100.png" />
+                                  </image>
+                              </ImageView>
+                          </graphic>
+                      </Button>
+                  </children>
+              </HBox>
+              <GridPane fx:id="calendarGridPane" alignment="CENTER" gridLinesVisible="true" prefHeight="300.0" prefWidth="600.0" styleClass="calendar__gridpane">
+                  <columnConstraints>
+                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" percentWidth="0.0" prefWidth="85.0" />
+                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" percentWidth="0.0" prefWidth="85.0" />
+                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="85.0" />
+                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="85.0" />
+                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="85.0" />
+                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="85.0" />
+                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="85.0" />
+                  </columnConstraints>
+                  <rowConstraints>
+                      <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" percentHeight="0.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" percentHeight="0.0" prefHeight="54.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="54.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="54.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="54.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="54.0" vgrow="SOMETIMES" />
+                  </rowConstraints>
+               <children>
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="85.0" styleClass="calendar__title-label" text="T2" />
+                  <Label alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="30.0" prefWidth="85.0" styleClass="calendar__title-label" text="T3" textAlignment="CENTER" GridPane.columnIndex="1" />
+                  <Label alignment="CENTER" layoutX="95.0" layoutY="10.0" prefHeight="30.0" prefWidth="85.0" styleClass="calendar__title-label" text="T4" textAlignment="CENTER" GridPane.columnIndex="2" />
+                  <Label alignment="CENTER" layoutX="180.0" layoutY="10.0" prefHeight="30.0" prefWidth="85.0" styleClass="calendar__title-label" text="T5" textAlignment="CENTER" GridPane.columnIndex="3" />
+                  <Label alignment="CENTER" layoutX="266.0" layoutY="10.0" prefHeight="30.0" prefWidth="85.0" styleClass="calendar__title-label" text="T6" textAlignment="CENTER" GridPane.columnIndex="4" />
+                  <Label alignment="CENTER" layoutX="352.0" layoutY="10.0" prefHeight="30.0" prefWidth="85.0" styleClass="calendar__title-label" text="T7" textAlignment="CENTER" GridPane.columnIndex="5" />
+                  <Label alignment="CENTER" layoutX="438.0" layoutY="10.0" prefHeight="30.0" prefWidth="85.0" styleClass="calendar__title-label" text="CN" textAlignment="CENTER" GridPane.columnIndex="6" />
+               </children>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+              </GridPane>
+            <ScrollPane focusTraversable="false" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="600.0" styleClass="detail__scrollpane" vbarPolicy="NEVER" VBox.vgrow="ALWAYS">
+               <VBox.margin>
+                  <Insets top="1.0" />
+               </VBox.margin>
+               <content>
+                  <VBox>
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="50.0" prefWidth="600.0" styleClass="detail-header__hbox">
+                           <children>
+                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <Label styleClass="detail-header__label" text="Thu Nhập" />
+                                    <Label fx:id="detailHeaderIncome" styleClass="detail-header__income" text="Label" />
+                                 </children>
+                              </VBox>
+                              <VBox alignment="CENTER" layoutX="156.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <Label styleClass="detail-header__label" text="Chi tiêu" />
+                                    <Label fx:id="detailHeaderExpense" styleClass="detail-header__expense" text="Label" />
+                                 </children>
+                              </VBox>
+                              <VBox alignment="CENTER" layoutX="310.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <Label styleClass="detail-header__label" text="Tổng" />
+                                    <Label fx:id="detailHeaderSum" text="Label" />
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <VBox fx:id="detailVBox" prefHeight="250.0" />
+                     </children>
+                  </VBox>
+               </content>
+            </ScrollPane>
+         </children>
+      </VBox>
+       <Pane fx:id="selectTimeOverlay" prefHeight="700.0" prefWidth="600.0" styleClass="select-time__overlay" visible="false">
+           <children>
+               <Pane fx:id="paneMonthYearSelector" layoutY="400.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="300.0" prefWidth="600.0" styleClass="select-time__main">
+                   <children>
+                       <ComboBox fx:id="monthComboBox" layoutX="131.0" layoutY="89.0" prefWidth="150.0" visibleRowCount="6" />
+                       <ComboBox fx:id="yearComboBox" layoutX="328.0" layoutY="89.0" prefWidth="150.0" visibleRowCount="6" />
+                       <HBox alignment="CENTER" prefHeight="50.0" prefWidth="600.0" styleClass="select-year__header">
+                           <children>
+                               <Button mnemonicParsing="false" onAction="#onActionCancelButton" styleClass="select-time__button" text="Bỏ qua">
+                                   <HBox.margin>
+                                       <Insets left="20.0" />
+                                   </HBox.margin>
+                               </Button>
+                               <Pane maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                               <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#onActionConfirmButton" styleClass="select-time__button" text="OK">
+                                   <HBox.margin>
+                                       <Insets right="20.0" />
+                                   </HBox.margin>
+                               </Button>
+                           </children>
+                       </HBox>
+                   </children>
+               </Pane>
+           </children>
+       </Pane>
+      <Pane fx:id="modifyOverlay" prefHeight="700.0" prefWidth="600.0" styleClass="modify__overlay" visible="false">
+         <children>
+            <VBox>
+               <children>
+                  <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="600.0" styleClass="modify__header-borderpane">
+                     <center>
+                        <Label id="header__label" alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="340.0" styleClass="modify-header__label" text="Chỉnh sửa" BorderPane.alignment="CENTER" />
+                     </center>
+                     <left>
+                        <Button alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#onActionButtonBackToCalendar" prefHeight="50.0" prefWidth="100.0" styleClass="modify-header__back-button" BorderPane.alignment="CENTER">
+                           <graphic>
+                              <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="35.0" prefWidth="100.0">
+                                 <children>
+                                    <ImageView fitHeight="35.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../Image/icons8-less-than-orange-100.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label id="header__back-label" prefHeight="35.0" prefWidth="40.0" styleClass="modify-header__back-label" text="Lịch" />
+                                 </children>
+                              </HBox>
+                           </graphic>
+                        </Button>
+                     </left>
+                     <right>
+                        <Pane prefHeight="50.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
+                     </right>
+                  </BorderPane>
+                  <HBox alignment="CENTER" layoutY="121.0" prefHeight="50.0" prefWidth="600.0" styleClass="modify__hbox">
+                     <children>
+                        <Label minHeight="-Infinity" minWidth="-Infinity" prefWidth="80.0" text="Ngày">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                        <DatePicker fx:id="modifyDatePicker" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="476.0" styleClass="modify__textfield">
+                           <HBox.margin>
+                              <Insets right="20.0" />
+                           </HBox.margin>
+                        </DatePicker>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="60.0" prefHeight="50.0" prefWidth="600.0" styleClass="modify__hbox">
+                     <children>
+                        <Label minHeight="-Infinity" minWidth="-Infinity" prefWidth="80.0" text="Ghi chú">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                        <TextField fx:id="modifyNote" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="476.0" styleClass="modify__textfield">
+                           <HBox.margin>
+                              <Insets right="20.0" />
+                           </HBox.margin>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="110.0" prefHeight="50.0" prefWidth="600.0" styleClass="modify__hbox">
+                     <children>
+                        <Label minHeight="-Infinity" minWidth="-Infinity" prefWidth="80.0" text="Số tiền">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                        <TextField fx:id="modifyAmount" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="476.0" styleClass="modify__textfield">
+                           <HBox.margin>
+                              <Insets right="20.0" />
+                           </HBox.margin>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="600.0" styleClass="category__scrollpane" vbarPolicy="NEVER">
+                     <content>
+                        <GridPane fx:id="categoryImageGridPane" prefHeight="900.0" prefWidth="598.0" stylesheets="@Calendar.css">
+                          <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                        </GridPane>
+                     </content>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </ScrollPane>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#onActionButtonModifyConfirm" prefHeight="44.0" prefWidth="200.0" styleClass="modify__button" text="Chỉnh sửa">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin></Button>
+                        <Button mnemonicParsing="false" onAction="#onActionButtonModifyDelete" prefHeight="44.0" prefWidth="200.0" styleClass="modify__button" text="Xoá bản ghi" />
+                     </children>
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </Pane>
+   </children>
+</StackPane>

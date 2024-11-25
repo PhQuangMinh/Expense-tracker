@@ -1,0 +1,31 @@
+
+.submit-button {
+    -fx-font-size: 20 px;
+    -fx-text-fill: white;
+    -fx-background-color:#fe5d02;
+    -fx-border-color: transparent;
+    -fx-font-weight: bold;
+    -fx-background-radius: 10px;
+}
+
+.submit-button:hover {
+    -fx-background-color: #DDDDDD;
+    -fx-text-fill: black;
+}
+
+.header__button {
+    -fx-background-color: transparent;
+}
+
+.header__button:hover {
+    -fx-background-color: #DDDDDD;
+}
+
+.label-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+
+.input__textfield {
+    -fx-font-size: 20px;
+}

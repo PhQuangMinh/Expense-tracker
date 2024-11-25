@@ -1,0 +1,10 @@
+.submit-button {
+    -fx-background-color:white;
+    -fx-border-color: transparent;
+    -fx-font-weight: bold;
+}
+
+.submit-button:hover {
+    -fx-background-color: gray;
+    -fx-text-fill: black;
+}

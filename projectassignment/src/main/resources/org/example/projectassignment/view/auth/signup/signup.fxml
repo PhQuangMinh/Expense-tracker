@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="pane" prefHeight="750.0" prefWidth="600.0" styleClass="parent" stylesheets="@signup.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.projectassignment.view.auth.signup.SignUp">
+   <children>
+      <!-- Tiêu đề -->
+      <Label layoutX="245.0" layoutY="100.0" styleClass="label-header" text="Đăng Ký">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Label>
+
+      <!-- TextField Tên -->
+      <TextField fx:id="firstName" layoutX="75.0" layoutY="200.0" prefHeight="40.0" prefWidth="200.0" promptText="Tên" styleClass="sign-up__text-field">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </TextField>
+
+      <!-- TextField Họ -->
+      <TextField fx:id="lastName" layoutX="325.0" layoutY="200.0" prefHeight="40.0" prefWidth="200.0" promptText="Họ" styleClass="sign-up__text-field">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </TextField>
+
+      <!-- TextField Email -->
+      <TextField fx:id="email" layoutX="75.0" layoutY="270.0" prefHeight="40.0" prefWidth="450.0" promptText="example@gmail.com" styleClass="sign-up__text-field">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </TextField>
+
+      <!-- PasswordField Mật khẩu -->
+      <PasswordField fx:id="password" layoutX="75.0" layoutY="340.0" prefHeight="40.0" prefWidth="450.0" promptText="Mật khẩu" styleClass="sign-up__text-field">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </PasswordField>
+
+      <!-- PasswordField Xác nhận mật khẩu -->
+      <PasswordField fx:id="confirmPassword" layoutX="75.0" layoutY="410.0" prefHeight="40.0" prefWidth="450.0" promptText="Xác nhận mật khẩu" styleClass="sign-up__text-field">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </PasswordField>
+
+      <!-- Label thông báo lỗi -->
+      <Label fx:id="inform" layoutX="75.0" layoutY="470.0" prefHeight="20.0" prefWidth="450.0" styleClass="inform-label" text="" />
+
+      <!-- Nút Đăng Ký -->
+      <Button fx:id="signUp" layoutX="190.0" layoutY="520.0" prefHeight="50.0" prefWidth="220.0" styleClass="sign__button" text="Đăng Ký">
+         <font>
+            <Font name="Arial Bold" size="20.0" />
+         </font>
+      </Button>
+
+      <!-- Label "Bạn đã có tài khoản?" -->
+      <Label layoutX="150.0" layoutY="690.0" styleClass="label-info" text="Bạn đã có tài khoản?">
+         <font>
+            <Font name="Arial" size="18.0" />
+         </font>
+      </Label>
+
+      <!-- Label "Đăng nhập" -->
+      <Label fx:id="signIn" layoutX="320.0" layoutY="690.0" styleClass="label-button" text="Đăng nhập">
+         <font>
+            <Font name="Ebrima Bold" size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Label>
+   </children>
+</AnchorPane>

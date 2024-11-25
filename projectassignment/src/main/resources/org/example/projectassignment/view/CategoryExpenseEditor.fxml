@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="600.0" spacing="10.0" stylesheets="@../css/category/expenseeditor.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.projectassignment.view.feature.input.expense.CategoryExpenseEditor">
+   <children>
+      <AnchorPane prefHeight="30.0" prefWidth="600.0">
+         <children>
+            <Button fx:id="backButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onActionSwitchExpense" prefHeight="50.0" prefWidth="50.0" styleClass="header__button">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Image/icons8-less-than-orange-100.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button layoutX="550.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#switchToAddButtonCategory" prefHeight="50.0" prefWidth="50.0" styleClass="header__button">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Image/plus.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="86.0" layoutY="10.0" prefHeight="30.0" prefWidth="427.0" text="Thêm danh mục">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font></Label>
+         </children>
+      </AnchorPane>
+      <HBox alignment="CENTER" layoutY="-1.0" prefHeight="50.0" prefWidth="600.0">
+         <children>
+            <Button layoutY="-1.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" styleClass="expense_header" stylesheets="@../css/category/expenseeditor.css" text="Tiền chi" />
+            <Button layoutX="300.0" layoutY="-1.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#switchToEditCategoryIncome" prefHeight="40.0" prefWidth="200.0" styleClass="income_header" stylesheets="@../css/category/expenseeditor.css" text="Tiền thu" />
+         </children>
+      </HBox>
+      <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" prefHeight="500.0" prefWidth="600.0" vbarPolicy="NEVER">
+         <content>
+            <GridPane fx:id="expenseGridPane" prefHeight="750.0" prefWidth="598.0" stylesheets="@../css/category/expenseeditor.css">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+            </GridPane>
+         </content>
+      </ScrollPane>
+   </children>
+</VBox>

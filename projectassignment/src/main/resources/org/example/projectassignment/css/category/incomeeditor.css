@@ -1,0 +1,42 @@
+
+.submit-button {
+    -fx-font-size: 16px;
+    -fx-text-fill: black;
+    -fx-background-color:#fe5d02;
+    -fx-border-color: transparent;
+
+}
+
+.submit-button:hover {
+    -fx-background-color: white;
+    -fx-text-fill: black;
+}
+
+.income_header {
+    -fx-font-size: 20px;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-color: #fe5d02;
+    -fx-background-radius: 10px;
+    -fx-border-color: transparent;
+}
+
+.expense_header {
+    -fx-font-size: 20px;
+    -fx-text-fill: black;
+    -fx-background-color: white;
+    -fx-background-radius: 10px;
+    -fx-font-weight: bold;
+    -fx-border-color: darkgrey;
+    -fx-border-style: solid;
+    -fx-border-width: 1px; /* Đặt độ dày của viền */
+    -fx-border-radius: 10px; /* Optional: làm tròn góc viền */
+}
+
+.header__button {
+    -fx-background-color: transparent;
+}
+
+.header__button:hover {
+    -fx-background-color: #DDDDDD;
+}

@@ -1,0 +1,161 @@
+/* Nền chính của AnchorPane */
+.parent {
+    -fx-background-color: #ffffff; /* Nền trắng */
+    -fx-padding: 20px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 5);
+}
+
+/* Tiêu đề */
+.label-header {
+    -fx-font-size: 28px;
+    -fx-text-fill: #fe5d02; /* Cam đậm */
+    -fx-font-weight: bold;
+    -fx-layoutX: 200.0;
+    -fx-layoutY: 150.0;
+    -fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.1), 5, 0, 0, 2);
+    -fx-opacity: 0;
+    -fx-translateY: 20;
+    -fx-transition: opacity 0.6s ease-out, translateY 0.6s ease-out;
+}
+
+/* TextField và PasswordField */
+.sign-up__text-field {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #fe5d02; /* Cam đậm */
+    -fx-border-radius: 8px;
+    -fx-border-width: 2px;
+    -fx-font-size: 16px;
+    -fx-padding: 10px 15px;
+    -fx-prompt-text-fill: #a0a0a0;
+    -fx-effect: dropshadow(three-pass-box, rgba(254, 93, 2, 0.2), 0, 0, 0, 1);
+    -fx-transition: all 0.3s ease-in-out;
+    -fx-opacity: 0;
+    -fx-translateY: 20;
+}
+
+/* Khi TextField và PasswordField được focus */
+.sign-up__text-field:focused {
+    -fx-border-color: #d04a00; /* Cam rất đậm khi focus */
+    -fx-border-width: 2px;
+    -fx-effect: dropshadow(three-pass-box, rgba(254, 93, 2, 0.3), 0, 0, 0, 2);
+}
+
+/* Nút Sign Up */
+.sign__button {
+    -fx-background-color: #fe5d02; /* Cam đậm */
+    -fx-background-radius: 25px;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-pref-width: 220px;
+    -fx-pref-height: 50px;
+    -fx-effect: dropshadow(three-pass-box, rgba(254, 93, 2, 0.3), 0, 0, 0, 3);
+    -fx-cursor: hand;
+    -fx-transition: all 0.3s ease-in-out;
+    -fx-opacity: 0;
+    -fx-translateY: 20;
+}
+
+.sign__button:hover {
+    -fx-background-color: #d04a00; /* Cam rất đậm khi hover */
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+/* Label thông báo */
+.inform-label {
+    -fx-text-fill: #d84315; /* Cam đậm cho thông báo lỗi */
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.1), 2, 0, 0, 1);
+    -fx-opacity: 0;
+    -fx-translateY: 20;
+}
+
+/* Label "Have an account?" */
+.label-info {
+    -fx-text-fill: #555555;
+    -fx-font-size: 18px;
+    -fx-opacity: 0;
+    -fx-translateY: 20;
+    -fx-transition: opacity 0.6s ease-out, translateY 0.6s ease-out;
+}
+
+/* Label "Sign in" */
+.label-button {
+    -fx-font-size: 18px;
+    -fx-text-fill: #fe5d02; /* Cam đậm */
+    -fx-underline: true;
+    -fx-cursor: hand;
+    -fx-transition: all 0.3s ease-in-out;
+    -fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.05), 1, 0, 0, 1);
+    -fx-opacity: 0;
+    -fx-translateY: 20;
+}
+
+.label-button:hover {
+    -fx-text-fill: #d04a00; /* Cam rất đậm khi hover */
+    -fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.1), 2, 0, 0, 1);
+}
+
+/* Hiệu ứng chuyển động cho toàn bộ AnchorPane */
+.parent .label-header,
+.parent .sign-up__text-field,
+.parent .sign__button,
+.parent .forgot-password,
+.parent .label-button,
+.parent .inform-label,
+.parent .label-info {
+    -fx-opacity: 1;
+    -fx-translateY: 0;
+}
+
+/* Animation cho các phần tử khi tải */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        translateY: 20;
+    }
+    to {
+        opacity: 1;
+        translateY: 0;
+    }
+}
+
+.label-header, .sign-up__text-field, .sign__button, .forgot-password, .label-button, .inform-label, .label-info {
+    -fx-opacity: 0;
+    -fx-translateY: 20;
+    -fx-transition: opacity 0.6s ease-out, translateY 0.6s ease-out;
+}
+
+.label-header {
+    -fx-delay: 0.2s;
+}
+
+.sign-up__text-field {
+    -fx-delay: 0.4s;
+}
+
+.sign__button {
+    -fx-delay: 0.6s;
+}
+
+.label-info, .label-button {
+    -fx-delay: 0.8s;
+}
+
+.inform-label {
+    -fx-delay: 1s;
+}
+
+/* Hiển thị các phần tử với animation */
+.parent .label-header,
+.parent .sign-up__text-field,
+.parent .sign__button,
+.parent .forgot-password,
+.parent .label-button,
+.parent .inform-label,
+.parent .label-info {
+    -fx-opacity: 1;
+    -fx-translateY: 0;
+}

@@ -1,0 +1,38 @@
+#header__borderpane {
+    -fx-border-width: 0 0 1px 0; /* Top, Right, Bottom, Left */
+    -fx-border-color: darkgrey; /* Đặt màu cho cạnh dưới */
+    -fx-border-style: solid; /* Kiểu viền là solid */
+    -fx-background-color: #f1f0f0;
+}
+
+#header__label {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+
+#header__back-label {
+    -fx-font-size: 16px;
+    -fx-text-fill: #fe5d02;
+}
+
+#header__back-button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+#header__back-button:hover {
+    -fx-background-color: #DDDDDD;
+}
+
+.infor__label {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+
+.confirm__button {
+    -fx-background-color: #fe5d02;
+    -fx-background-radius: 10px;
+    -fx-text-fill: white;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
