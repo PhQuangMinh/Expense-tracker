@@ -161,4 +161,4 @@ This app is ideal for individuals or businesses seeking an organized and straigh
 
 **Next development direction:** In the future, the team plans to research and develop additional features such as: expanding functionality (e.g., adding more detailed financial analysis), improving user experience (e.g., more intuitive navigation), and integrating advanced features (e.g., AI-based financial suggestions).
 
-Through this project, our team gained valuable experience with Gitflow, enhanced teamwork skills, and learned how to manage a project in a real-life setting, significantly improving our programming abilities. We hope users will enjoy and find the app helpful. All contributions are welcome! For major changes, please open an issue first to discuss your proposed updates.
+Through this project, our team gained valuable experience with Gitflow, enhanced teamwork skills, and learned how to manage a project in a real-life setting, significantly improving our programming abilities. We hope users will enjoy and find the app helpful. All contributions are welcome! For major changes, please open an issue first to discuss your proposed updates...
